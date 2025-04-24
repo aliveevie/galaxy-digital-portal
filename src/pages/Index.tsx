@@ -21,10 +21,27 @@ const Index = () => {
             Transforming businesses through cutting-edge digital innovation and expert IT consulting
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-[#1EAEDB] hover:bg-[#33C3F0] text-white px-8 py-6 text-lg">
+            <Button 
+              className="relative bg-[#1EAEDB] hover:bg-[#33C3F0] text-white px-8 py-6 text-lg
+                before:content-[''] before:absolute before:inset-0 before:bg-[#1EAEDB] 
+                before:blur-lg before:opacity-50 before:-z-10 hover:before:opacity-75
+                transition-all duration-300 overflow-hidden
+                after:content-[''] after:absolute after:inset-0 
+                after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent 
+                after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000"
+            >
               Our Services
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg">
+            <Button 
+              variant="outline" 
+              className="relative border-white text-white hover:bg-white/10 px-8 py-6 text-lg
+                before:content-[''] before:absolute before:inset-0 before:border-white 
+                before:blur-lg before:opacity-30 before:-z-10 hover:before:opacity-50
+                transition-all duration-300 overflow-hidden
+                after:content-[''] after:absolute after:inset-0 
+                after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent 
+                after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000"
+            >
               Contact Us
             </Button>
           </div>
@@ -141,13 +158,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer - remove logo */}
       <footer className="bg-[#1A1F2C] text-white py-12 px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="h-16 mb-4">
-              <LogoAnimation />
-            </div>
             <p className="text-gray-300">
               Innovative technology solutions for forward-thinking businesses.
             </p>

@@ -36,7 +36,7 @@ const GalaxyAnimation: React.FC = () => {
     if (!ctx) return;
     
     const createStars = () => {
-      const starCount = Math.floor((canvas.width * canvas.height) / 2000);
+      const starCount = Math.floor((canvas.width * canvas.height) / 1500);
       const stars: Star[] = [];
       
       const starColors = [
@@ -46,18 +46,19 @@ const GalaxyAnimation: React.FC = () => {
         '#8B5CF6',
         '#D946EF',
         '#FCD34D',
-        '#F9FAFB'
+        '#F9FAFB',
+        '#60A5FA'
       ];
       
       for (let i = 0; i < starCount; i++) {
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2.5 + 0.5,
-          speed: Math.random() * 0.2 + 0.05,
-          opacity: Math.random() * 0.5 + 0.5,
+          size: Math.random() * 3 + 0.5,
+          speed: Math.random() * 0.3 + 0.05,
+          opacity: Math.random() * 0.7 + 0.3,
           color: starColors[Math.floor(Math.random() * starColors.length)],
-          twinkleSpeed: Math.random() * 0.02 + 0.005
+          twinkleSpeed: Math.random() * 0.03 + 0.005
         });
       }
       
@@ -70,7 +71,7 @@ const GalaxyAnimation: React.FC = () => {
       const endX = startX + (Math.random() * 200 - 100);
       const endY = startY + (Math.random() * canvas.height * 0.3);
       
-      const branchCount = Math.floor(Math.random() * 4) + 2;
+      const branchCount = Math.floor(Math.random() * 6) + 3;
       const branches = [];
       
       for (let i = 0; i < branchCount; i++) {
@@ -148,7 +149,7 @@ const GalaxyAnimation: React.FC = () => {
         ctx.fill();
       });
       
-      if (Math.random() < 0.005) {
+      if (Math.random() < 0.01) {
         createLightning();
       }
     };
@@ -245,6 +246,38 @@ const GalaxyAnimation: React.FC = () => {
       
       updateLightning();
       
+      if (Math.random() < 0.02) {
+        const shootingStar = {
+          x: Math.random() * canvas.width,
+          y: 0,
+          length: Math.random() * 50 + 30,
+          speed: Math.random() * 15 + 10,
+          angle: Math.PI / 4 + (Math.random() * Math.PI / 8)
+        };
+        
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+        ctx.lineWidth = 2;
+        ctx.moveTo(shootingStar.x, shootingStar.y);
+        ctx.lineTo(
+          shootingStar.x + Math.cos(shootingStar.angle) * shootingStar.length,
+          shootingStar.y + Math.sin(shootingStar.angle) * shootingStar.length
+        );
+        ctx.stroke();
+        
+        const gradient = ctx.createLinearGradient(
+          shootingStar.x,
+          shootingStar.y,
+          shootingStar.x + Math.cos(shootingStar.angle) * shootingStar.length,
+          shootingStar.y + Math.sin(shootingStar.angle) * shootingStar.length
+        );
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 4;
+        ctx.stroke();
+      }
+      
       animationFrameRef.current = requestAnimationFrame(animate);
     };
     
@@ -259,8 +292,11 @@ const GalaxyAnimation: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-0 left-0 w-full h-full object-cover"
-      style={{ background: 'linear-gradient(to bottom, #0C0E15, #1A1F2C)' }}
+      className="absolute top-0 left-0 w-full h-full object-cover cursor-crosshair"
+      style={{ 
+        background: 'linear-gradient(to bottom, #0C0E15, #1A1F2C)',
+        cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'><path d='M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9z M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'/></svg>") 12 12, auto`
+      }}
     />
   );
 };
