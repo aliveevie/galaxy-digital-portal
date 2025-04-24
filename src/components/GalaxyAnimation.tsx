@@ -21,16 +21,7 @@ const GalaxyAnimation: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
-    // Set canvas dimensions
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight * 0.6;
-      createStars();
-    };
-    
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Initialize size
-    
+    // Define createStars function before using it
     const createStars = () => {
       const starCount = Math.floor((canvas.width * canvas.height) / 3000);
       const stars: Star[] = [];
@@ -50,6 +41,16 @@ const GalaxyAnimation: React.FC = () => {
       
       starsRef.current = stars;
     };
+    
+    // Set canvas dimensions
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight * 0.6;
+      createStars();
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initialize size
     
     // Animation loop
     let animationId: number;

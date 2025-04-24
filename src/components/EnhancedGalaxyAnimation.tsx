@@ -35,21 +35,7 @@ const EnhancedGalaxyAnimation: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
-    // Set canvas dimensions
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight * 0.6;
-      initializeAnimation();
-    };
-    
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Initialize size
-    
-    const initializeAnimation = () => {
-      createStars();
-      createOrbits();
-    };
-    
+    // Define functions before using them
     const createStars = () => {
       const starCount = Math.floor((canvas.width * canvas.height) / 3000);
       const stars: Star[] = [];
@@ -104,6 +90,21 @@ const EnhancedGalaxyAnimation: React.FC = () => {
       
       orbitsRef.current = orbits;
     };
+    
+    const initializeAnimation = () => {
+      createStars();
+      createOrbits();
+    };
+    
+    // Set canvas dimensions
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight * 0.6;
+      initializeAnimation();
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initialize size
     
     // Animation loop
     let animationId: number;
