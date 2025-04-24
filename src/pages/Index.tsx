@@ -1,10 +1,10 @@
-
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Rocket, Globe, Navigation, Sparkles } from 'lucide-react';
 import GalaxyAnimation from '@/components/GalaxyAnimation';
+import LogoAnimation from '@/components/LogoAnimation';
 
 const Index = () => {
   return (
@@ -13,11 +13,7 @@ const Index = () => {
       <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <GalaxyAnimation />
         <div className="relative z-10 text-center px-4">
-          <img 
-            src="/lovable-uploads/2fc4b6aa-6598-4865-a031-afc359af07cc.png" 
-            alt="Galaxy ITT Logo" 
-            className="h-24 md:h-32 mx-auto mb-6"
-          />
+          <LogoAnimation />
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
             Innovative Technology Solutions
           </h1>
@@ -149,11 +145,9 @@ const Index = () => {
       <footer className="bg-[#1A1F2C] text-white py-12 px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <img 
-              src="/lovable-uploads/2fc4b6aa-6598-4865-a031-afc359af07cc.png" 
-              alt="Galaxy ITT Logo" 
-              className="h-16 mb-4"
-            />
+            <div className="h-16 mb-4">
+              <LogoAnimation />
+            </div>
             <p className="text-gray-300">
               Innovative technology solutions for forward-thinking businesses.
             </p>
