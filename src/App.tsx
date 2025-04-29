@@ -8,7 +8,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ClientsPage from "./pages/ClientsPage";
 import FeedbackPage from "./pages/FeedbackPage";
-import ManagementPage from "./pages/ManagementPage";
 import ContactPage from "./pages/ContactPage";
 import ClientDetail from "./pages/ClientDetail";
 
@@ -26,7 +25,6 @@ const App = () => (
           <Route path="/clients/:clientId" element={<ClientDetail />} />
           <Route path="/feedback" element={<FeedbackPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/management" element={<ManagementPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
