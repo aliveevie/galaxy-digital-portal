@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 interface Star {
@@ -35,8 +36,9 @@ const GalaxyAnimation: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
+    // Define functions before using them
     const createStars = () => {
-      const starCount = Math.floor((canvas.width * canvas.height) / 1500);
+      const starCount = Math.floor((canvas.width * canvas.height) / 1000); // Increased star density
       const stars: Star[] = [];
       
       const starColors = [
@@ -71,15 +73,15 @@ const GalaxyAnimation: React.FC = () => {
       const endX = startX + (Math.random() * 200 - 100);
       const endY = startY + (Math.random() * canvas.height * 0.3);
       
-      const branchCount = Math.floor(Math.random() * 6) + 3;
+      const branchCount = Math.floor(Math.random() * 8) + 5; // More branches
       const branches = [];
       
       for (let i = 0; i < branchCount; i++) {
         const midX = startX + (endX - startX) * Math.random();
         const midY = startY + (endY - startY) * Math.random();
         
-        const branchEndX = midX + (Math.random() * 100 - 50);
-        const branchEndY = midY + (Math.random() * 100);
+        const branchEndX = midX + (Math.random() * 120 - 60);
+        const branchEndY = midY + (Math.random() * 120);
         
         branches.push({
           x1: midX, 
@@ -96,7 +98,7 @@ const GalaxyAnimation: React.FC = () => {
         endX,
         endY,
         width: Math.random() * 3 + 1,
-        opacity: 0.8,
+        opacity: 0.9, // Increased opacity
         duration: Math.random() * 200 + 100,
         startTime: Date.now(),
         branches
@@ -149,14 +151,15 @@ const GalaxyAnimation: React.FC = () => {
         ctx.fill();
       });
       
-      if (Math.random() < 0.01) {
+      // Increased lightning frequency
+      if (Math.random() < 0.015) {
         createLightning();
       }
     };
     
     const handleResize = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight * 0.6;
+      canvas.height = window.innerHeight * 0.7; // Increased header height
       createStars();
     };
     
@@ -172,10 +175,11 @@ const GalaxyAnimation: React.FC = () => {
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      for (let i = 0; i < 3; i++) {
-        const centerX = canvas.width * (0.25 + i * 0.25);
+      // Enhanced nebula effect
+      for (let i = 0; i < 5; i++) { // Increased number of nebulae
+        const centerX = canvas.width * (0.1 + i * 0.2);
         const centerY = canvas.height * (0.2 + (i % 2) * 0.4);
-        const radius = canvas.width * 0.15;
+        const radius = canvas.width * 0.18;
         
         const nebulaGradient = ctx.createRadialGradient(
           centerX, centerY, 0,
@@ -183,13 +187,13 @@ const GalaxyAnimation: React.FC = () => {
         );
         
         if (i % 3 === 0) {
-          nebulaGradient.addColorStop(0, 'rgba(139, 92, 246, 0.05)');
+          nebulaGradient.addColorStop(0, 'rgba(139, 92, 246, 0.07)');
           nebulaGradient.addColorStop(1, 'rgba(139, 92, 246, 0)');
         } else if (i % 3 === 1) {
-          nebulaGradient.addColorStop(0, 'rgba(30, 174, 219, 0.03)');
+          nebulaGradient.addColorStop(0, 'rgba(30, 174, 219, 0.05)');
           nebulaGradient.addColorStop(1, 'rgba(30, 174, 219, 0)');
         } else {
-          nebulaGradient.addColorStop(0, 'rgba(217, 70, 239, 0.04)');
+          nebulaGradient.addColorStop(0, 'rgba(217, 70, 239, 0.06)');
           nebulaGradient.addColorStop(1, 'rgba(217, 70, 239, 0)');
         }
         
@@ -246,18 +250,19 @@ const GalaxyAnimation: React.FC = () => {
       
       updateLightning();
       
-      if (Math.random() < 0.02) {
+      // Enhanced shooting star effect with increased frequency
+      if (Math.random() < 0.04) {
         const shootingStar = {
           x: Math.random() * canvas.width,
           y: 0,
-          length: Math.random() * 50 + 30,
+          length: Math.random() * 60 + 40,
           speed: Math.random() * 15 + 10,
-          angle: Math.PI / 4 + (Math.random() * Math.PI / 8)
+          angle: Math.PI / 4 + (Math.random() * Math.PI / 6)
         };
         
         ctx.beginPath();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+        ctx.lineWidth = 2.5;
         ctx.moveTo(shootingStar.x, shootingStar.y);
         ctx.lineTo(
           shootingStar.x + Math.cos(shootingStar.angle) * shootingStar.length,
@@ -271,10 +276,10 @@ const GalaxyAnimation: React.FC = () => {
           shootingStar.x + Math.cos(shootingStar.angle) * shootingStar.length,
           shootingStar.y + Math.sin(shootingStar.angle) * shootingStar.length
         );
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
         gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = 4;
+        ctx.lineWidth = 5;
         ctx.stroke();
       }
       
@@ -292,10 +297,10 @@ const GalaxyAnimation: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-0 left-0 w-full h-full object-cover cursor-crosshair"
+      className="absolute top-0 left-0 w-full h-full object-cover"
       style={{ 
         background: 'linear-gradient(to bottom, #0C0E15, #1A1F2C)',
-        cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'><path d='M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9z M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'/></svg>") 12 12, auto`
+        cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none' stroke='white'><path d='M16 2 C 14 4, 10 8, 16 16 C 22 8, 18 4, 16 2 Z M16 16 C 8 22, 4 18, 2 16 C 4 14, 8 10, 16 16 Z M16 16 C 24 10, 28 14, 30 16 C 28 18, 24 22, 16 16 Z M16 16 C 8 10, 12 6, 16 4 C 18 6, 22 10, 16 16 Z' stroke-width='1.5'/></svg>") 16 16, auto`
       }}
     />
   );

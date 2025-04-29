@@ -9,40 +9,30 @@ import LogoAnimation from '@/components/LogoAnimation';
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
-      {/* Header section with galaxy animation */}
-      <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      {/* Enhanced Header section with galaxy animation */}
+      <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <GalaxyAnimation />
-        <div className="relative z-10 text-center px-4">
+        <div className="relative z-10 text-center px-4 mt-[-50px]">
           <LogoAnimation />
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(30,174,219,0.6)]">
             Innovative Technology Solutions
           </h1>
-          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
             Transforming businesses through cutting-edge digital innovation and expert IT consulting
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Button 
-              className="relative bg-[#1EAEDB] hover:bg-[#33C3F0] text-white px-8 py-6 text-lg
+              className="relative bg-[#1EAEDB] hover:bg-[#33C3F0] text-white px-12 py-7 text-xl
+                bg-opacity-70 backdrop-blur-sm rounded-xl
                 before:content-[''] before:absolute before:inset-0 before:bg-[#1EAEDB] 
-                before:blur-lg before:opacity-50 before:-z-10 hover:before:opacity-75
-                transition-all duration-300 overflow-hidden
+                before:blur-xl before:opacity-70 before:-z-10 hover:before:opacity-90
+                transition-all duration-500 overflow-hidden shadow-[0_0_25px_rgba(30,174,219,0.6)]
                 after:content-[''] after:absolute after:inset-0 
-                after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent 
-                after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000"
+                after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent 
+                after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000
+                border border-[#33C3F0]/30"
             >
               Our Services
-            </Button>
-            <Button 
-              variant="outline" 
-              className="relative border-white text-white hover:bg-white/10 px-8 py-6 text-lg
-                before:content-[''] before:absolute before:inset-0 before:border-white 
-                before:blur-lg before:opacity-30 before:-z-10 hover:before:opacity-50
-                transition-all duration-300 overflow-hidden
-                after:content-[''] after:absolute after:inset-0 
-                after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent 
-                after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000"
-            >
-              Contact Us
             </Button>
           </div>
         </div>
