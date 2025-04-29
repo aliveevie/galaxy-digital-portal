@@ -5,10 +5,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Rocket, Globe, Navigation, Sparkles } from 'lucide-react';
 import GalaxyAnimation from '@/components/GalaxyAnimation';
 import LogoAnimation from '@/components/LogoAnimation';
+import Header from '@/components/Header';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
+      {/* Added Header */}
+      <Header />
+      
       {/* Enhanced Header section with galaxy animation */}
       <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <GalaxyAnimation />
@@ -148,7 +152,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer - remove logo */}
+      {/* Footer - logo removed */}
       <footer className="bg-[#1A1F2C] text-white py-12 px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
