@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, Clock, Trophy, Wifi, Network, Server, Cloud, Lock, Users } from 'lucide-react';
+import { Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, Clock, Trophy, Wifi, Network, Server, Cloud, Lock, Users, Mail, Bell, ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AOS from 'aos';
@@ -11,6 +11,30 @@ import 'aos/dist/aos.css';
 const Index = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [counts, setCounts] = useState({ years: 0, projects: 0, team: 0, networkSpeed: 0 });
+  const [email, setEmail] = useState('');
+  const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  // Email validation function
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  // Handle newsletter subscription
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!isValidEmail(email)) {
+      setSubscriptionStatus('error');
+      setErrorMessage('Please enter a valid email address');
+      return;
+    }
+
+    // Simulating API call
+    setSubscriptionStatus('success');
+    setEmail('');
+    setTimeout(() => setSubscriptionStatus('idle'), 3000);
+  };
 
   useEffect(() => {
     AOS.init({
@@ -493,6 +517,105 @@ const Index = () => {
                 company="Innovation Labs"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-16 px-4 bg-gradient-to-br from-[#221F26] to-[#2A2D3E]">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Newsletter Subscription */}
+            <div className="bg-[#2A2D3E]/50 p-8 rounded-lg backdrop-blur-sm" data-aos="fade-right">
+              <div className="flex items-center mb-6">
+                <Mail className="w-8 h-8 text-[#33C3F0] mr-3" />
+                <h2 className="text-2xl font-bold text-white">Subscribe to Our Newsletter</h2>
+              </div>
+              <p className="text-gray-300 mb-6">Stay updated with the latest in technology and telecommunications.</p>
+              
+              <form onSubmit={handleSubscribe} className="space-y-4">
+                <div className="relative">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-3 bg-[#221F26] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#33C3F0]"
+                  />
+                  <Button 
+                    type="submit"
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#33C3F0] hover:bg-[#1EAEDB] text-white px-4 py-2 rounded-md"
+                  >
+                    Subscribe
+                  </Button>
+                </div>
+                {subscriptionStatus === 'success' && (
+                  <div className="flex items-center text-green-400">
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    <span>Thank you for subscribing!</span>
+                  </div>
+                )}
+                {subscriptionStatus === 'error' && (
+                  <div className="flex items-center text-red-400">
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+              </form>
+            </div>
+
+            {/* Updates Preview */}
+            <div className="space-y-6" data-aos="fade-left">
+              <h3 className="text-xl font-bold text-white mb-4">Latest Updates</h3>
+              
+              <div className="bg-[#2A2D3E] p-6 rounded-lg transform hover:scale-105 transition-transform duration-300">
+                <div className="flex items-center mb-3">
+                  <Bell className="w-6 h-6 text-[#9B87F5] mr-2" />
+                  <span className="text-sm text-gray-400">Technology Update</span>
+                </div>
+                <h4 className="text-white font-semibold mb-2">Next-Gen Network Infrastructure</h4>
+                <p className="text-gray-300 text-sm">Discover how our latest network upgrades are revolutionizing connectivity.</p>
+                <Link to="/news" className="flex items-center mt-4 text-[#33C3F0] hover:text-[#1EAEDB]">
+                  Read More <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </div>
+
+              <div className="bg-[#2A2D3E] p-6 rounded-lg transform hover:scale-105 transition-transform duration-300">
+                <div className="flex items-center mb-3">
+                  <Bell className="w-6 h-6 text-[#9B87F5] mr-2" />
+                  <span className="text-sm text-gray-400">Industry News</span>
+                </div>
+                <h4 className="text-white font-semibold mb-2">5G Evolution and Beyond</h4>
+                <p className="text-gray-300 text-sm">Explore the future of telecommunications with our expert insights.</p>
+                <Link to="/news" className="flex items-center mt-4 text-[#33C3F0] hover:text-[#1EAEDB]">
+                  Read More <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="py-16 px-4 bg-[#221F26] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/network-pattern.svg')] opacity-5"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10" data-aos="fade-up">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Transform Your Digital Infrastructure?
+          </h2>
+          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+            Join the thousands of businesses that trust Galaxy ITT for their technology and telecommunications needs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact">
+              <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white px-8 py-3">
+                Contact Sales
+              </Button>
+            </Link>
+            <Link to="/services">
+              <Button className="bg-transparent border-2 border-[#33C3F0] text-white hover:bg-[#33C3F0]/10 px-8 py-3">
+                View Solutions
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
