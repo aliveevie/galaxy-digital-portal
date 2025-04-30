@@ -151,34 +151,34 @@ const Header = () => {
             {[
               {
                 title: "IT Consulting",
-                description: "Strategic technology guidance to optimize your business operations.",
+                description: "Strategic technology guidance to optimize your business operations and drive innovation.",
               },
               {
                 title: "Cloud Solutions",
-                description: "Secure, scalable cloud infrastructure and migration services.",
+                description: "Secure, scalable cloud infrastructure and migration services for modern businesses.",
               },
               {
                 title: "Software Development",
-                description: "Custom software solutions for your unique business needs.",
+                description: "Custom software solutions designed to meet your unique business requirements.",
               },
               {
                 title: "Cybersecurity",
-                description: "Comprehensive security services to protect your valuable data.",
+                description: "Comprehensive security services to protect your valuable data and systems.",
+              },
+              {
+                title: "IT Infrastructure",
+                description: "Robust infrastructure solutions designed for reliability and performance.",
               },
               {
                 title: "Network Installations",
-                description: "Professional wired and wireless network installation services.",
-              },
-              {
-                title: "Wireless Installations",
-                description: "Expert wireless network setup and configuration services.",
+                description: "Professional wired and wireless network setup and configuration.",
               }
             ].map((service) => (
               <li key={service.title}>
                 <NavigationMenuLink asChild>
                   <a
                     className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
-                    href="/#"
+                    href="/#services"
                   >
                     <div className="text-sm font-medium leading-none text-white">{service.title}</div>
                     <p className="line-clamp-2 text-xs leading-snug text-white/70">
