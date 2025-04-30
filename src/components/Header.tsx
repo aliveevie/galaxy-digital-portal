@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Menu } from 'lucide-react';
+import { Menu, Info, Book, File, Users, Phone, Mail, Video, FileQuestion, Newspaper } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -53,10 +53,13 @@ const Header = () => {
                   href="/#"
                 >
                   <div className="mt-4 mb-2 text-lg font-medium text-white">
-                    Galaxy ITT
+                    Mandate
                   </div>
+                  <p className="text-sm leading-tight text-white/80 mb-4">
+                    <strong>Our Vision:</strong> To become a leading provider of broadband connectivity, software solutions and drive digital transformation in sub-Saharan Africa.
+                  </p>
                   <p className="text-sm leading-tight text-white/80">
-                    Discover our innovative approach to technology solutions and how we can transform your business.
+                    <strong>Our Mission:</strong> To provide reliable internet services, telecommunications, & software solutions to MDAs and individuals.
                   </p>
                 </a>
               </NavigationMenuLink>
@@ -67,9 +70,12 @@ const Header = () => {
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
                   href="/#"
                 >
-                  <div className="text-sm font-medium leading-none text-white">Our Team</div>
+                  <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
+                    <Users className="h-4 w-4" />
+                    Management
+                  </div>
                   <p className="line-clamp-2 text-xs leading-snug text-white/70">
-                    Meet the experts behind Galaxy ITT.
+                    Learn about our leadership team
                   </p>
                 </a>
               </NavigationMenuLink>
@@ -80,9 +86,45 @@ const Header = () => {
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
                   href="/#"
                 >
-                  <div className="text-sm font-medium leading-none text-white">Our Story</div>
+                  <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
+                    <Users className="h-4 w-4" />
+                    Board of Directors
+                  </div>
                   <p className="line-clamp-2 text-xs leading-snug text-white/70">
-                    Learn about our history and vision.
+                    Executive Director Technical: Engr Nura<br />
+                    Executive Director Business Development: Umar Gumel
+                  </p>
+                </a>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink asChild>
+                <a
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
+                  href="/#"
+                >
+                  <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
+                    <Info className="h-4 w-4" />
+                    Organigram
+                  </div>
+                  <p className="line-clamp-2 text-xs leading-snug text-white/70">
+                    View our company structure
+                  </p>
+                </a>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink asChild>
+                <a
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
+                  href="/#"
+                >
+                  <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
+                    <Book className="h-4 w-4" />
+                    Careers
+                  </div>
+                  <p className="line-clamp-2 text-xs leading-snug text-white/70">
+                    Explore career opportunities with us
                   </p>
                 </a>
               </NavigationMenuLink>
@@ -114,6 +156,10 @@ const Header = () => {
                 title: "Cybersecurity",
                 description: "Comprehensive security services to protect your valuable data.",
               },
+              {
+                title: "Network Installations",
+                description: "Professional wired and wireless network installation services.",
+              },
             ].map((service) => (
               <li key={service.title}>
                 <NavigationMenuLink asChild>
@@ -134,29 +180,111 @@ const Header = () => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
-              "text-white hover:text-[#33C3F0] hover:bg-white/10 transition-colors bg-transparent cursor-pointer"
-            )}>
-              Clients
-            </NavigationMenuLink>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-gradient-to-b from-[#1A1F2C]/95 to-[#2C3342]/95 backdrop-blur-md border border-white/10 text-white min-w-[200px]">
-            <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 cursor-pointer">
-              <Link to="/clients/techcorp" className="w-full text-white">TechCorp</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 cursor-pointer">
-              <Link to="/clients/securedata" className="w-full text-white">SecureData Inc</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 cursor-pointer">
-              <Link to="/clients/innovation" className="w-full text-white">Innovation Labs</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 cursor-pointer">
-              <Link to="/clients" className="w-full text-white">View All Clients</Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-white/10 transition-colors bg-transparent">
+          Customer Service
+        </NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid gap-3 p-4 w-[200px] md:w-[300px] bg-gradient-to-b from-[#1A1F2C]/95 to-[#2C3342]/95 backdrop-blur-md border border-white/10">
+            <li>
+              <NavigationMenuLink asChild>
+                <a
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
+                  href="/#"
+                >
+                  <div className="text-sm font-medium leading-none text-white">Service Desk</div>
+                  <p className="text-xs leading-snug text-white/70">
+                    Get help with your technical issues
+                  </p>
+                </a>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink asChild>
+                <a
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
+                  href="/#"
+                >
+                  <div className="text-sm font-medium leading-none text-white">Escalation Path</div>
+                  <p className="text-xs leading-snug text-white/70">
+                    How to escalate service issues
+                  </p>
+                </a>
+              </NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      
+      <NavigationMenuItem>
+        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-white/10 transition-colors bg-transparent">
+          Resources
+        </NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid gap-3 p-4 md:grid-cols-2 w-[400px] bg-gradient-to-b from-[#1A1F2C]/95 to-[#2C3342]/95 backdrop-blur-md border border-white/10">
+            <li>
+              <NavigationMenuLink asChild>
+                <Link to="/faq" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white">
+                  <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
+                    <FileQuestion className="h-4 w-4" />
+                    FAQ
+                  </div>
+                  <p className="text-xs leading-snug text-white/70">
+                    Frequently asked questions
+                  </p>
+                </Link>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink asChild>
+                <Link to="/media" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white">
+                  <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
+                    <File className="h-4 w-4" />
+                    Media
+                  </div>
+                  <p className="text-xs leading-snug text-white/70">
+                    Press releases and media resources
+                  </p>
+                </Link>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink asChild>
+                <Link to="/news" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white">
+                  <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
+                    <Newspaper className="h-4 w-4" />
+                    News
+                  </div>
+                  <p className="text-xs leading-snug text-white/70">
+                    Latest company news and updates
+                  </p>
+                </Link>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink asChild>
+                <Link to="/videos" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white">
+                  <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
+                    <Video className="h-4 w-4" />
+                    Video
+                  </div>
+                  <p className="text-xs leading-snug text-white/70">
+                    Product demonstrations and tutorials
+                  </p>
+                </Link>
+              </NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      
+      <NavigationMenuItem>
+        <Link to="/clients">
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
+            "text-white hover:text-[#33C3F0] hover:bg-white/10 transition-colors bg-transparent"
+          )}>
+            Clients
+          </NavigationMenuLink>
+        </Link>
       </NavigationMenuItem>
       
       <NavigationMenuItem>
@@ -170,39 +298,60 @@ const Header = () => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <Link to="/contact">
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
-            "text-white hover:text-[#33C3F0] hover:bg-white/10 transition-colors bg-transparent"
-          )}>
-            Contact
-          </NavigationMenuLink>
-        </Link>
-      </NavigationMenuItem>
-
-      <NavigationMenuItem>
-        <Link to="/management">
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
-            "text-white hover:text-[#33C3F0] hover:bg-white/10 transition-colors bg-transparent"
-          )}>
-            Management
-          </NavigationMenuLink>
-        </Link>
+        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-white/10 transition-colors bg-transparent">
+          Contact Us
+        </NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div className="p-4 w-[350px] bg-gradient-to-b from-[#1A1F2C]/95 to-[#2C3342]/95 backdrop-blur-md border border-white/10 text-white">
+            <h4 className="font-medium mb-2">Galaxy ITT</h4>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <Mail className="h-4 w-4 mt-1 text-[#33C3F0]" />
+                <span>info@galaxyitt.com.ng</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Phone className="h-4 w-4 mt-1 text-[#33C3F0]" />
+                <span>08039600006</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Book className="h-4 w-4 mt-1 text-[#33C3F0]" />
+                <span>www.galaxyitt.com.ng</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Info className="h-4 w-4 mt-1 text-[#33C3F0]" />
+                <span>No.2 Kiyawa Road, Dutse Jigawa State</span>
+              </li>
+              <li className="mt-3">
+                <Link to="/contact" className="bg-[#33C3F0] text-white px-4 py-1.5 rounded-md text-sm inline-block hover:bg-[#1EAEDB] transition-colors">
+                  Contact Page
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </NavigationMenuContent>
       </NavigationMenuItem>
     </>
   );
 
   return (
-    <div className="w-full absolute top-0 z-50">
+    <div className="w-full fixed top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-4">
         {isMobile ? (
-          <div className="flex justify-end">
+          <div className="flex justify-between items-center">
+            <Link to="/" className="z-10">
+              <img 
+                src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png" 
+                alt="Galaxy ITT Logo" 
+                className="h-10 w-auto"
+              />
+            </Link>
             <Sheet>
               <SheetTrigger className="p-2 rounded-full bg-black/30 backdrop-blur-md border border-white/10 shadow-lg shadow-blue-500/10">
                 <Menu className="h-6 w-6 text-white" />
               </SheetTrigger>
               <SheetContent side="right" className="bg-gradient-to-b from-[#1A1F2C]/95 to-[#2C3342]/95 backdrop-blur-md border-l border-white/10 p-0 w-[300px]">
-                <NavigationMenu className="mx-auto w-full p-4">
-                  <NavigationMenuList className="flex flex-col space-y-2 w-full">
+                <NavigationMenu orientation="vertical" className="mx-auto w-full p-4 max-w-none">
+                  <NavigationMenuList className="flex flex-col space-y-2 w-full items-start">
                     {menuContent}
                   </NavigationMenuList>
                 </NavigationMenu>
@@ -210,11 +359,20 @@ const Header = () => {
             </Sheet>
           </div>
         ) : (
-          <NavigationMenu className="mx-auto backdrop-blur-md bg-black/20 rounded-full px-4 py-1 border border-white/10 shadow-lg shadow-blue-500/10">
-            <NavigationMenuList className="gap-1 md:gap-4">
-              {menuContent}
-            </NavigationMenuList>
-          </NavigationMenu>
+          <div className="flex justify-between items-center">
+            <Link to="/" className="z-10">
+              <img 
+                src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png" 
+                alt="Galaxy ITT Logo" 
+                className="h-12 w-auto"
+              />
+            </Link>
+            <NavigationMenu className="backdrop-blur-md bg-black/20 rounded-full px-4 py-1 border border-white/10 shadow-lg shadow-blue-500/10">
+              <NavigationMenuList className="gap-1 md:gap-2">
+                {menuContent}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
         )}
       </div>
     </div>
