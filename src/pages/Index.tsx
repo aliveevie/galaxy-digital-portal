@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, Clock, Trophy } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Index = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-out',
+    });
+  }, []);
+
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services');
+    servicesSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
       {/* Header */}
@@ -29,16 +44,18 @@ const Index = () => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4">
+        <div className="relative z-10 container mx-auto px-4" data-aos="fade-up">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             {/* Left Content */}
             <div className="flex-1 text-left max-w-2xl">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8"
+                   data-aos="fade-down">
                 <span className="w-2 h-2 rounded-full bg-[#33C3F0] mr-2 animate-pulse"></span>
                 <span className="text-[#33C3F0] text-sm font-medium">Leading Technology Solutions Provider</span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 tracking-tight"
+                  data-aos="fade-right" data-aos-delay="100">
                 <span className="text-white">Innovative</span>
                 <br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#33C3F0] via-purple-500 to-pink-500">
@@ -46,28 +63,33 @@ const Index = () => {
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-300 mb-8 max-w-xl">
+              <p className="text-xl text-gray-300 mb-8 max-w-xl"
+                 data-aos="fade-right" data-aos-delay="200">
                 Transforming businesses through cutting-edge digital innovation and expert IT consulting. We help organizations navigate the digital landscape.
               </p>
               
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4"
+                   data-aos="fade-up" data-aos-delay="300">
                 <Button 
+                  onClick={scrollToServices}
                   className="bg-[#33C3F0] hover:bg-[#33C3F0]/90 text-white px-8 py-6 text-lg
                     rounded-xl transition-all duration-300 shadow-lg shadow-[#33C3F0]/25
                     hover:shadow-xl hover:shadow-[#33C3F0]/30 hover:scale-[1.02]"
                 >
                   Explore Our Services
                 </Button>
-                <Button 
-                  className="bg-white/10 backdrop-blur-sm text-white px-8 py-6 text-lg
-                    rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
-                >
-                  Contact Us
-                </Button>
+                <Link to="/contact">
+                  <Button 
+                    className="bg-white/10 backdrop-blur-sm text-white px-8 py-6 text-lg
+                      rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                  >
+                    Contact Us
+                  </Button>
+                </Link>
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 mt-12">
+              <div className="grid grid-cols-3 gap-8 mt-12" data-aos="fade-up" data-aos-delay="400">
                 <div>
                   <div className="text-3xl font-bold text-white mb-1">10+</div>
                   <div className="text-sm text-gray-400">Years Experience</div>
@@ -84,7 +106,7 @@ const Index = () => {
             </div>
 
             {/* Right Content - 3D or Abstract Visualization */}
-            <div className="flex-1 relative">
+            <div className="flex-1 relative" data-aos="zoom-in" data-aos-delay="200">
               <div className="relative w-full aspect-square max-w-[600px] mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#33C3F0] to-purple-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
                 <img 
@@ -99,43 +121,56 @@ const Index = () => {
       </div>
 
       {/* Services Section */}
-      <section className="py-16 px-4 bg-white">
+      <section id="services" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#1A1F2C]">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#1A1F2C]"
+              data-aos="fade-up">
             Our Expert Services
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ServiceCard 
-              icon={<Rocket className="h-8 w-8 text-[#33C3F0]" />}
-              title="IT Consulting"
-              description="Strategic technology guidance to optimize your business operations and drive innovation."
-            />
-            <ServiceCard 
-              icon={<Globe className="h-8 w-8 text-[#33C3F0]" />}
-              title="Cloud Solutions"
-              description="Secure, scalable cloud infrastructure and migration services for modern businesses."
-            />
-            <ServiceCard 
-              icon={<Navigation className="h-8 w-8 text-[#33C3F0]" />}
-              title="Software Development"
-              description="Custom software solutions designed to meet your unique business requirements."
-            />
-            <ServiceCard 
-              icon={<Sparkles className="h-8 w-8 text-[#33C3F0]" />}
-              title="Cybersecurity"
-              description="Comprehensive security services to protect your valuable data and systems."
-            />
-            <ServiceCard 
-              icon={<Rocket className="h-8 w-8 text-[#33C3F0]" />}
-              title="IT Infrastructure"
-              description="Robust infrastructure solutions designed for reliability and performance."
-            />
-            <ServiceCard 
-              icon={<Sparkles className="h-8 w-8 text-[#33C3F0]" />}
-              title="Network Installations"
-              description="Professional wired and wireless network setup and configuration."
-            />
+            <div data-aos="fade-up" data-aos-delay="100">
+              <ServiceCard 
+                icon={<Rocket className="h-8 w-8 text-[#33C3F0]" />}
+                title="IT Consulting"
+                description="Strategic technology guidance to optimize your business operations and drive innovation."
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200">
+              <ServiceCard 
+                icon={<Globe className="h-8 w-8 text-[#33C3F0]" />}
+                title="Cloud Solutions"
+                description="Secure, scalable cloud infrastructure and migration services for modern businesses."
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="300">
+              <ServiceCard 
+                icon={<Navigation className="h-8 w-8 text-[#33C3F0]" />}
+                title="Software Development"
+                description="Custom software solutions designed to meet your unique business requirements."
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="400">
+              <ServiceCard 
+                icon={<Sparkles className="h-8 w-8 text-[#33C3F0]" />}
+                title="Cybersecurity"
+                description="Comprehensive security services to protect your valuable data and systems."
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="500">
+              <ServiceCard 
+                icon={<Rocket className="h-8 w-8 text-[#33C3F0]" />}
+                title="IT Infrastructure"
+                description="Robust infrastructure solutions designed for reliability and performance."
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="600">
+              <ServiceCard 
+                icon={<Sparkles className="h-8 w-8 text-[#33C3F0]" />}
+                title="Network Installations"
+                description="Professional wired and wireless network setup and configuration."
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -143,38 +178,49 @@ const Index = () => {
       {/* Why Choose Us Section */}
       <section className="py-16 px-4 bg-[#F6F6F7]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#1A1F2C]">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#1A1F2C]"
+              data-aos="fade-up">
             Why Choose Us
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto"
+             data-aos="fade-up" data-aos-delay="100">
             At Galaxy ITT, we're committed to delivering exceptional value through our technology services.
             Here's why clients trust us with their digital transformation needs:
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <WhyChooseCard 
-              icon={<Trophy className="h-8 w-8 text-[#33C3F0]" />}
-              title="Proven Expertise"
-              description="Years of experience delivering successful IT solutions across various industries."
-            />
-            <WhyChooseCard 
-              icon={<ShieldCheck className="h-8 w-8 text-[#33C3F0]" />}
-              title="Security Focused"
-              description="Comprehensive approach to protecting your valuable data and systems."
-            />
-            <WhyChooseCard 
-              icon={<Clock className="h-8 w-8 text-[#33C3F0]" />}
-              title="Timely Delivery"
-              description="Committed to delivering projects on schedule and within budget."
-            />
-            <WhyChooseCard 
-              icon={<CheckCircle className="h-8 w-8 text-[#33C3F0]" />}
-              title="Quality Assurance"
-              description="Rigorous testing and quality control for all our solutions."
-            />
+            <div data-aos="fade-up" data-aos-delay="200">
+              <WhyChooseCard 
+                icon={<Trophy className="h-8 w-8 text-[#33C3F0]" />}
+                title="Proven Expertise"
+                description="Years of experience delivering successful IT solutions across various industries."
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="300">
+              <WhyChooseCard 
+                icon={<ShieldCheck className="h-8 w-8 text-[#33C3F0]" />}
+                title="Security Focused"
+                description="Comprehensive approach to protecting your valuable data and systems."
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="400">
+              <WhyChooseCard 
+                icon={<Clock className="h-8 w-8 text-[#33C3F0]" />}
+                title="Timely Delivery"
+                description="Committed to delivering projects on schedule and within budget."
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="500">
+              <WhyChooseCard 
+                icon={<CheckCircle className="h-8 w-8 text-[#33C3F0]" />}
+                title="Quality Assurance"
+                description="Rigorous testing and quality control for all our solutions."
+              />
+            </div>
           </div>
           
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center"
+               data-aos="fade-up" data-aos-delay="600">
             <Link to="/about">
               <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
                 Learn More About Us
@@ -187,22 +233,30 @@ const Index = () => {
       {/* About Section */}
       <section className="py-16 px-4 bg-[#221F26] text-white">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-12">
+          <div className="flex flex-col md:flex-row items-center gap-12"
+               data-aos="fade-up">
             <div className="md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">About Galaxy ITT</h2>
-              <p className="text-lg mb-4 text-gray-300">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white"
+                  data-aos="fade-up" data-aos-delay="100">
+                About Galaxy ITT
+              </h2>
+              <p className="text-lg mb-4 text-gray-300"
+                 data-aos="fade-up" data-aos-delay="200">
                 Galaxy ITT is a premier provider of innovative technology solutions, dedicated to helping businesses navigate the digital universe.
               </p>
-              <p className="text-lg mb-6 text-gray-300">
+              <p className="text-lg mb-6 text-gray-300"
+                 data-aos="fade-up" data-aos-delay="300">
                 With decades of combined experience, our team of experts delivers customized solutions that drive efficiency, security, and growth.
               </p>
               <Link to="/about">
-                <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
+                <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white"
+                        data-aos="fade-up" data-aos-delay="400">
                   Learn More About Us
                 </Button>
               </Link>
             </div>
-            <div className="md:w-1/2 bg-gradient-to-br from-[#33C3F0] to-[#9B87F5] rounded-lg p-1">
+            <div className="md:w-1/2 bg-gradient-to-br from-[#33C3F0] to-[#9B87F5] rounded-lg p-1"
+                 data-aos="fade-up" data-aos-delay="500">
               <div className="bg-[#221F26] rounded-lg w-full h-full p-6">
                 <div className="aspect-video bg-[#2C3342] rounded-lg flex items-center justify-center">
                   <p className="text-gray-300">Company Video</p>
@@ -216,40 +270,51 @@ const Index = () => {
       {/* Testimonials Section */}
       <section className="py-16 px-4 bg-[#1A1F2C] text-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12"
+              data-aos="fade-up">
             What Our Clients Say
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <TestimonialCard 
-              quote="Galaxy ITT transformed our business with their cloud solutions. Our operations are now more efficient than ever."
-              author="Jane Smith, CEO"
-              company="TechCorp"
-            />
-            <TestimonialCard 
-              quote="The cybersecurity team at Galaxy ITT helped us prevent what could have been a catastrophic data breach."
-              author="Michael Johnson, CTO"
-              company="SecureData Inc."
-            />
-            <TestimonialCard 
-              quote="Their software development team delivered a custom solution that perfectly met our requirements and timeline."
-              author="Sarah Williams, COO"
-              company="Innovation Labs"
-            />
+            <div data-aos="fade-up" data-aos-delay="100">
+              <TestimonialCard 
+                quote="Galaxy ITT transformed our business with their cloud solutions. Our operations are now more efficient than ever."
+                author="Jane Smith, CEO"
+                company="TechCorp"
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200">
+              <TestimonialCard 
+                quote="The cybersecurity team at Galaxy ITT helped us prevent what could have been a catastrophic data breach."
+                author="Michael Johnson, CTO"
+                company="SecureData Inc."
+              />
+            </div>
+            <div data-aos="fade-up" data-aos-delay="300">
+              <TestimonialCard 
+                quote="Their software development team delivered a custom solution that perfectly met our requirements and timeline."
+                author="Sarah Williams, COO"
+                company="Innovation Labs"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact CTA Section */}
       <section className="py-16 px-4 bg-gradient-to-r from-[#1A1F2C] to-[#33C3F0]">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+        <div className="max-w-4xl mx-auto text-center text-white"
+             data-aos="fade-up">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6"
+              data-aos="fade-up" data-aos-delay="100">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 max-w-2xl mx-auto"
+             data-aos="fade-up" data-aos-delay="200">
             Contact us today to discover how our technology solutions can propel your business forward.
           </p>
           <Link to="/contact">
-            <Button className="bg-white text-[#33C3F0] hover:bg-gray-100 px-8 py-6 text-lg">
+            <Button className="bg-white text-[#33C3F0] hover:bg-gray-100 px-8 py-6 text-lg"
+                    data-aos="fade-up" data-aos-delay="300">
               Contact Us Now
             </Button>
           </Link>
