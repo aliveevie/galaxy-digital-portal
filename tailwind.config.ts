@@ -85,6 +85,20 @@ export default {
 						height: '0'
 					}
 				},
+				'ping': {
+					'75%, 100%': {
+						transform: 'scale(2)',
+						opacity: '0'
+					}
+				},
+				'pulse': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '.5'
+					}
+				},
 				carousel: {
 					'0%, 26.66%': { opacity: '1', transform: 'scale(1)' },
 					'33.33%, 93.33%': { opacity: '0', transform: 'scale(1.1)' },
@@ -95,6 +109,8 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'carousel': 'carousel 15s linear infinite',
+				'ping': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+				'pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 			}
 		}
 	},

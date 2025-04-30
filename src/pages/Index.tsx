@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, Clock, Trophy } from 'lucide-react';
+import { Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, Clock, Trophy, Wifi, Network, Server, Cloud, Lock, Users } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AOS from 'aos';
@@ -10,7 +10,7 @@ import 'aos/dist/aos.css';
 
 const Index = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
-  const [counts, setCounts] = useState({ years: 0, projects: 0, team: 0 });
+  const [counts, setCounts] = useState({ years: 0, projects: 0, team: 0, networkSpeed: 0 });
 
   useEffect(() => {
     AOS.init({
@@ -60,6 +60,14 @@ const Index = () => {
           setCounts(prev => ({ ...prev, team: teamCount }));
           if (teamCount >= 50) clearInterval(teamInterval);
         }, 60);
+
+        // Animate network speed count
+        let networkSpeedCount = 0;
+        const networkSpeedInterval = setInterval(() => {
+          networkSpeedCount++;
+          setCounts(prev => ({ ...prev, networkSpeed: networkSpeedCount }));
+          if (networkSpeedCount >= 99.99) clearInterval(networkSpeedInterval);
+        }, 10);
       }
     };
 
@@ -235,6 +243,89 @@ const Index = () => {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Network Visualization Section */}
+      <section className="py-16 relative overflow-hidden" data-aos="fade-up">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 animate-pulse"></div>
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+            Powering Next-Gen <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#33C3F0] to-[#9B87F5]">Digital Infrastructure</span>
+          </h2>
+          
+          {/* Technology Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-[#2A2D3E] p-6 rounded-lg transform hover:scale-105 transition-transform duration-300"
+                 data-aos="fade-up"
+                 data-aos-delay="100">
+              <div className="flex items-center mb-4">
+                <Network className="w-8 h-8 text-[#33C3F0] mr-3" />
+                <h3 className="text-xl font-semibold text-white">5G Networks</h3>
+              </div>
+              <p className="text-gray-300">Ultra-fast connectivity solutions with speeds up to 10Gbps and sub-millisecond latency.</p>
+            </div>
+
+            <div className="bg-[#2A2D3E] p-6 rounded-lg transform hover:scale-105 transition-transform duration-300"
+                 data-aos="fade-up"
+                 data-aos-delay="200">
+              <div className="flex items-center mb-4">
+                <Cloud className="w-8 h-8 text-[#9B87F5] mr-3" />
+                <h3 className="text-xl font-semibold text-white">Cloud Integration</h3>
+              </div>
+              <p className="text-gray-300">Seamless hybrid cloud solutions with 99.99% uptime guarantee and global reach.</p>
+            </div>
+
+            <div className="bg-[#2A2D3E] p-6 rounded-lg transform hover:scale-105 transition-transform duration-300"
+                 data-aos="fade-up"
+                 data-aos-delay="300">
+              <div className="flex items-center mb-4">
+                <Lock className="w-8 h-8 text-[#33C3F0] mr-3" />
+                <h3 className="text-xl font-semibold text-white">Cyber Security</h3>
+              </div>
+              <p className="text-gray-300">Enterprise-grade security with AI-powered threat detection and real-time monitoring.</p>
+            </div>
+          </div>
+
+          {/* Live Network Stats */}
+          <div className="bg-[#2A2D3E]/50 p-8 rounded-lg backdrop-blur-sm"
+               data-aos="fade-up"
+               data-aos-delay="400">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-[#33C3F0] mb-2">
+                  <span className="tabular-nums">{counts.networkSpeed || '99.99'}%</span>
+                </div>
+                <div className="text-sm text-gray-300">Network Uptime</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-[#9B87F5] mb-2">
+                  <span className="tabular-nums">10</span> Gbps
+                </div>
+                <div className="text-sm text-gray-300">Peak Speed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-[#33C3F0] mb-2">
+                  <span className="tabular-nums">50</span>+
+                </div>
+                <div className="text-sm text-gray-300">Data Centers</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-[#9B87F5] mb-2">
+                  <span className="tabular-nums">24/7</span>
+                </div>
+                <div className="text-sm text-gray-300">Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Animated Network Lines */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute w-1 h-1 bg-[#33C3F0] rounded-full animate-ping" style={{ top: '20%', left: '10%' }}></div>
+          <div className="absolute w-1 h-1 bg-[#9B87F5] rounded-full animate-ping" style={{ top: '70%', left: '80%' }}></div>
+          <div className="absolute w-1 h-1 bg-[#33C3F0] rounded-full animate-ping" style={{ top: '40%', left: '90%' }}></div>
+          <div className="absolute w-1 h-1 bg-[#9B87F5] rounded-full animate-ping" style={{ top: '80%', left: '20%' }}></div>
         </div>
       </section>
 
