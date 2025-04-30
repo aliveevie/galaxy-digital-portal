@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -42,9 +41,9 @@ const Header = () => {
           <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2 bg-gradient-to-b from-[#1A1F2C]/95 to-[#2C3342]/95 backdrop-blur-md border border-white/10">
             <li className="row-span-3">
               <NavigationMenuLink asChild>
-                <a
+                <Link
                   className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-[#1A1F2C]/80 to-[#2C3342] p-6 no-underline outline-none focus:shadow-md"
-                  href="/#"
+                  to="/about#mandate"
                 >
                   <div className="mt-4 mb-2 text-lg font-medium text-white">
                     Mandate
@@ -55,14 +54,14 @@ const Header = () => {
                   <p className="text-sm leading-tight text-white/80">
                     <strong>Our Mission:</strong> To provide reliable internet services, telecommunications, & software solutions to MDAs and individuals.
                   </p>
-                </a>
+                </Link>
               </NavigationMenuLink>
             </li>
             <li>
               <NavigationMenuLink asChild>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
-                  href="/#"
+                  to="/about#management"
                 >
                   <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
                     <Users className="h-4 w-4" />
@@ -71,14 +70,14 @@ const Header = () => {
                   <p className="line-clamp-2 text-xs leading-snug text-white/70">
                     Learn about our leadership team
                   </p>
-                </a>
+                </Link>
               </NavigationMenuLink>
             </li>
             <li>
               <NavigationMenuLink asChild>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
-                  href="/#"
+                  to="/about#board"
                 >
                   <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
                     <Users className="h-4 w-4" />
@@ -88,14 +87,14 @@ const Header = () => {
                     Executive Director Technical: Engr Nura<br />
                     Executive Director Business Development: Umar Gumel
                   </p>
-                </a>
+                </Link>
               </NavigationMenuLink>
             </li>
             <li>
               <NavigationMenuLink asChild>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
-                  href="/#"
+                  to="/about#organigram"
                 >
                   <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
                     <Info className="h-4 w-4" />
@@ -104,14 +103,14 @@ const Header = () => {
                   <p className="line-clamp-2 text-xs leading-snug text-white/70">
                     View our company structure
                   </p>
-                </a>
+                </Link>
               </NavigationMenuLink>
             </li>
             <li>
               <NavigationMenuLink asChild>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
-                  href="/#"
+                  to="/about#careers"
                 >
                   <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
                     <Book className="h-4 w-4" />
@@ -120,7 +119,7 @@ const Header = () => {
                   <p className="line-clamp-2 text-xs leading-snug text-white/70">
                     Explore career opportunities with us
                   </p>
-                </a>
+                </Link>
               </NavigationMenuLink>
             </li>
           </ul>
@@ -317,14 +316,10 @@ const Header = () => {
         {isMobile ? (
           <div className="flex justify-between items-center">
             <Link to="/" className="z-10">
-              <img 
-                src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png" 
-                alt="Galaxy ITT Logo" 
-                className="h-10 w-auto"
-              />
+              {/* Logo removed */}
             </Link>
             <Sheet>
-              <SheetTrigger className="p-2 rounded-full bg-black/30 backdrop-blur-md border border-white/10 shadow-lg shadow-blue-500/10">
+              <SheetTrigger className="p-2 rounded-full bg-[#33C3F0]/30 backdrop-blur-md border border-white/10 shadow-lg shadow-blue-500/10">
                 <Menu className="h-6 w-6 text-white" />
               </SheetTrigger>
               <SheetContent side="right" className="bg-gradient-to-b from-[#1A1F2C]/95 to-[#2C3342]/95 backdrop-blur-md border-l border-white/10 p-0 w-[300px]">
@@ -337,15 +332,8 @@ const Header = () => {
             </Sheet>
           </div>
         ) : (
-          <div className="flex justify-between items-center">
-            <Link to="/" className="z-10">
-              <img 
-                src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png" 
-                alt="Galaxy ITT Logo" 
-                className="h-12 w-auto"
-              />
-            </Link>
-            <NavigationMenu className="backdrop-blur-md bg-black/20 rounded-full px-4 py-1 border border-white/10 shadow-lg shadow-blue-500/10">
+          <div className="flex justify-center items-center">
+            <NavigationMenu className="backdrop-blur-md bg-[#33C3F0]/20 rounded-full px-4 py-1 border border-white/10 shadow-lg shadow-blue-500/10">
               <NavigationMenuList className="gap-1 md:gap-2">
                 {menuContent}
               </NavigationMenuList>
