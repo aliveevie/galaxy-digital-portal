@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, Clock, Trophy } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import HeroSection from '@/components/HeroSection';
 
 const Index = () => {
   return (
@@ -13,42 +14,17 @@ const Index = () => {
       <Header />
       
       {/* Enhanced Header section with gradient background matching logo colors */}
-      <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/40"></div>
-        <div className="relative z-10 text-center px-4">
-          <div className="flex justify-center mb-6 mt-16">
-            <img 
-              src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png"
-              alt="Galaxy ITT Logo" 
-              className="h-32 md:h-40 w-auto"
-            />
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(51,195,240,0.6)]">
-            Innovative Technology Solutions
-          </h1>
-          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
-            Transforming businesses through cutting-edge digital innovation and expert IT consulting
-          </p>
-          <div className="flex justify-center">
-            <Button 
-              className="relative bg-[#33C3F0] hover:bg-[#1EAEDB] text-white px-12 py-7 text-xl
-                bg-opacity-70 backdrop-blur-sm rounded-xl
-                before:content-[''] before:absolute before:inset-0 before:bg-[#33C3F0] 
-                before:blur-xl before:opacity-70 before:-z-10 hover:before:opacity-90
-                transition-all duration-500 overflow-hidden shadow-[0_0_25px_rgba(51,195,240,0.6)]
-                after:content-[''] after:absolute after:inset-0 
-                after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent 
-                after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000
-                border border-[#33C3F0]/30"
-            >
-              Our Services
-            </Button>
-          </div>
-        </div>
-      </div>
+      <HeroSection 
+        title="Innovative Technology Solutions"
+        description="Transforming businesses through cutting-edge digital innovation and expert IT consulting"
+        showLogo={true}
+        showButton={true}
+        buttonText="Our Services"
+        buttonLink="#services"
+      />
 
       {/* Services Section */}
-      <section className="py-16 px-4 bg-white">
+      <section id="services" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#1A1F2C]">
             Our Expert Services

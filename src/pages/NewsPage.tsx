@@ -1,6 +1,7 @@
-
 import React from 'react';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import HeroSection from '@/components/HeroSection';
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
@@ -48,8 +49,15 @@ const NewsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
+    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
       <Header />
+      
+      <HeroSection 
+        title="News"
+        description="Latest company news and updates"
+        showLogo={false}
+        showButton={false}
+      />
       
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
@@ -122,11 +130,7 @@ const NewsPage = () => {
         </div>
       </div>
       
-      <footer className="bg-[#1A1F2C] text-white py-8 px-4 border-t border-white/10">
-        <div className="max-w-6xl mx-auto text-center">
-          <p>&copy; {new Date().getFullYear()} Galaxy ITT. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

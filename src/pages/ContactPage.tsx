@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,7 +5,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/use-toast';
 import Header from '@/components/Header';
-import GalaxyAnimation from '@/components/GalaxyAnimation';
+import Footer from '@/components/Footer';
+import HeroSection from '@/components/HeroSection';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 const ContactPage = () => {
@@ -19,13 +19,15 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342] pb-16">
-      {/* Background animation */}
-      <div className="fixed inset-0 z-0">
-        <GalaxyAnimation />
-      </div>
-      
+    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
       <Header />
+      
+      <HeroSection 
+        title="Contact Us"
+        description="Get in touch with our team of experts"
+        showLogo={false}
+        showButton={false}
+      />
       
       <div className="relative z-10 pt-32 px-4">
         <div className="max-w-6xl mx-auto">
@@ -160,6 +162,8 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };

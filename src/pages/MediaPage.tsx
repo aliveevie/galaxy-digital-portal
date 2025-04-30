@@ -1,6 +1,7 @@
-
 import React from 'react';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import HeroSection from '@/components/HeroSection';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, ExternalLink } from 'lucide-react';
@@ -48,8 +49,15 @@ const MediaPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
+    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
       <Header />
+      
+      <HeroSection 
+        title="Media"
+        description="Press releases and media resources"
+        showLogo={false}
+        showButton={false}
+      />
       
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
@@ -113,11 +121,7 @@ const MediaPage = () => {
         </div>
       </div>
       
-      <footer className="bg-[#1A1F2C] text-white py-8 px-4 border-t border-white/10">
-        <div className="max-w-6xl mx-auto text-center">
-          <p>&copy; {new Date().getFullYear()} Galaxy ITT. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
