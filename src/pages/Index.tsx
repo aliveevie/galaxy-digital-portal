@@ -15,7 +15,7 @@ const Index = () => {
       
       {/* Enhanced Header section with galaxy animation */}
       <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <GalaxyAnimation />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#354AA0]/40"></div>
         <div className="relative z-10 text-center px-4 mt-[-50px]">
           <div className="flex justify-center mb-6">
             <img 

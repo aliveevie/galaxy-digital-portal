@@ -51,7 +51,7 @@ const FAQPage = () => {
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border-b border-white/10">
-                  <AccordionTrigger className="text-white hover:text-[#5971D0] text-left">
+                  <AccordionTrigger className="text-white hover:text-[#33C3F0] text-left">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-200">

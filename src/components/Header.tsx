@@ -18,12 +18,6 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const isMobile = useIsMobile();
@@ -160,6 +154,10 @@ const Header = () => {
                 title: "Network Installations",
                 description: "Professional wired and wireless network installation services.",
               },
+              {
+                title: "Wireless Installations",
+                description: "Expert wireless network setup and configuration services.",
+              }
             ].map((service) => (
               <li key={service.title}>
                 <NavigationMenuLink asChild>
@@ -265,7 +263,7 @@ const Header = () => {
                 <Link to="/videos" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white">
                   <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
                     <Video className="h-4 w-4" />
-                    Video
+                    Videos
                   </div>
                   <p className="text-xs leading-snug text-white/70">
                     Product demonstrations and tutorials
@@ -275,26 +273,6 @@ const Header = () => {
             </li>
           </ul>
         </NavigationMenuContent>
-      </NavigationMenuItem>
-      
-      <NavigationMenuItem>
-        <Link to="/clients">
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
-            "text-white hover:text-[#33C3F0] hover:bg-white/10 transition-colors bg-transparent"
-          )}>
-            Clients
-          </NavigationMenuLink>
-        </Link>
-      </NavigationMenuItem>
-      
-      <NavigationMenuItem>
-        <Link to="/feedback">
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
-            "text-white hover:text-[#33C3F0] hover:bg-white/10 transition-colors bg-transparent"
-          )}>
-            Feedback
-          </NavigationMenuLink>
-        </Link>
       </NavigationMenuItem>
       
       <NavigationMenuItem>
