@@ -1,7 +1,6 @@
+
 import React from 'react';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import HeroSection from '@/components/HeroSection';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const FAQPage = () => {
@@ -41,15 +40,8 @@ const FAQPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
+    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
       <Header />
-      
-      <HeroSection 
-        title="Frequently Asked Questions"
-        description="Find answers to common questions about our services"
-        showLogo={false}
-        showButton={false}
-      />
       
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-4xl mx-auto">
@@ -82,7 +74,11 @@ const FAQPage = () => {
         </div>
       </div>
       
-      <Footer />
+      <footer className="bg-[#1A1F2C] text-white py-8 px-4 border-t border-white/10">
+        <div className="max-w-6xl mx-auto text-center">
+          <p>&copy; {new Date().getFullYear()} Galaxy ITT. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };
