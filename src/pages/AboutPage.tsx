@@ -9,7 +9,6 @@ const AboutPage = () => {
   const location = useLocation();
   
   useEffect(() => {
-    // Handle hash navigation to scroll to the right section
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
@@ -25,10 +24,13 @@ const AboutPage = () => {
       <Header />
       
       {/* Hero Section */}
-      <div className="pt-32 pb-16 px-4 bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">About Galaxy ITT</h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+      <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/40"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(51,195,240,0.6)]">
+            About Galaxy ITT
+          </h1>
+          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
             Your trusted partner for innovative technology solutions in sub-Saharan Africa
           </p>
         </div>

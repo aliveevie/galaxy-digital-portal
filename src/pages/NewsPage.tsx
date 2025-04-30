@@ -1,6 +1,6 @@
-
 import React from 'react';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
@@ -48,16 +48,27 @@ const NewsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
+    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
       <Header />
       
-      <div className="pt-32 pb-16 px-4">
+      {/* Hero Section */}
+      <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/40"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(51,195,240,0.6)]">
+            Latest News
+          </h1>
+          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+            Stay updated with Galaxy ITT's latest announcements and achievements
+          </p>
+        </div>
+      </div>
+
+      <div className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-white mb-12 text-center">Latest News</h1>
-          
           {/* Featured News */}
           <div className="mb-16">
-            <Card className="bg-gradient-to-br from-[#354AA0]/30 to-[#9B87F5]/30 backdrop-blur-md border-white/10 overflow-hidden">
+            <Card className="bg-black/30 backdrop-blur-md border border-white/10 overflow-hidden hover:shadow-[0_0_25px_rgba(51,195,240,0.3)] transition-all duration-300">
               <div className="md:flex">
                 <div className="md:w-2/5">
                   <img 
@@ -68,19 +79,31 @@ const NewsPage = () => {
                 </div>
                 <div className="md:w-3/5 p-6 md:p-8">
                   <div className="flex items-center mb-3">
-                    <span className="bg-[#354AA0] text-white text-xs px-3 py-1 rounded-full">Featured</span>
+                    <span className="bg-[#33C3F0] text-white text-xs px-3 py-1 rounded-full">Featured</span>
                     <span className="text-gray-300 text-sm ml-3">{featuredNews.date}</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{featuredNews.title}</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+                    {featuredNews.title}
+                  </h2>
                   <p className="text-gray-200 mb-6">{featuredNews.excerpt}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {featuredNews.tags.map((tag, index) => (
-                      <span key={index} className="bg-white/10 text-white text-xs px-3 py-1 rounded-full">
+                      <span key={index} className="bg-[#33C3F0]/20 text-[#33C3F0] text-xs px-3 py-1 rounded-full border border-[#33C3F0]/30">
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <Button className="bg-[#354AA0] hover:bg-[#5971D0] text-white">
+                  <Button 
+                    className="relative bg-[#33C3F0] hover:bg-[#1EAEDB] text-white px-6 py-5
+                      bg-opacity-70 backdrop-blur-sm rounded-xl
+                      before:content-[''] before:absolute before:inset-0 before:bg-[#33C3F0] 
+                      before:blur-xl before:opacity-70 before:-z-10 hover:before:opacity-90
+                      transition-all duration-500 overflow-hidden shadow-[0_0_25px_rgba(51,195,240,0.6)]
+                      after:content-[''] after:absolute after:inset-0 
+                      after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent 
+                      after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000
+                      border border-[#33C3F0]/30"
+                  >
                     Read Full Story
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -92,41 +115,33 @@ const NewsPage = () => {
           {/* News List */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {newsItems.map((news, index) => (
-              <Card key={index} className="bg-white/10 backdrop-blur-md border-white/10 hover:bg-white/20 transition-colors">
+              <Card key={index} className="bg-black/30 backdrop-blur-md border border-white/10 overflow-hidden hover:shadow-[0_0_25px_rgba(51,195,240,0.3)] transition-all duration-300">
                 <CardContent className="p-6">
-                  <p className="text-[#5971D0] text-sm mb-2">{news.date}</p>
+                  <p className="text-[#33C3F0] text-sm mb-2">{news.date}</p>
                   <h3 className="text-white text-xl font-medium mb-3">{news.title}</h3>
                   <p className="text-gray-300 mb-4">{news.excerpt}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {news.tags.map((tag, idx) => (
-                      <span key={idx} className="bg-white/10 text-white text-xs px-2 py-1 rounded-full">
+                      <span key={idx} className="bg-[#33C3F0]/20 text-[#33C3F0] text-xs px-3 py-1 rounded-full border border-[#33C3F0]/30">
                         {tag}
                       </span>
                     ))}
                   </div>
-                </CardContent>
-                <CardFooter className="px-6 pb-6 pt-0">
-                  <Button variant="ghost" className="text-white hover:text-[#5971D0] p-0">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button 
+                    variant="outline" 
+                    className="bg-transparent border-[#33C3F0]/30 text-white hover:bg-[#33C3F0]/10 hover:text-[#33C3F0] transition-all duration-300"
+                  >
+                    Read More
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                </CardFooter>
+                </CardContent>
               </Card>
             ))}
           </div>
-          
-          <div className="mt-12 text-center">
-            <Button className="bg-transparent border border-white/20 text-white hover:bg-white/10">
-              Load More News
-            </Button>
-          </div>
         </div>
       </div>
-      
-      <footer className="bg-[#1A1F2C] text-white py-8 px-4 border-t border-white/10">
-        <div className="max-w-6xl mx-auto text-center">
-          <p>&copy; {new Date().getFullYear()} Galaxy ITT. All rights reserved.</p>
-        </div>
-      </footer>
+
+      <Footer />
     </div>
   );
 };

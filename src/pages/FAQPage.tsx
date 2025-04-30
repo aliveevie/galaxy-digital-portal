@@ -1,6 +1,6 @@
-
 import React from 'react';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const FAQPage = () => {
@@ -40,13 +40,24 @@ const FAQPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
+    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
       <Header />
       
+      {/* Hero Section */}
+      <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/40"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(51,195,240,0.6)]">
+            Frequently Asked Questions
+          </h1>
+          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+            Find answers to common questions about our services and solutions
+          </p>
+        </div>
+      </div>
+
       <div className="pt-32 pb-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h1>
-          
           <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 shadow-lg border border-white/10">
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
@@ -74,11 +85,7 @@ const FAQPage = () => {
         </div>
       </div>
       
-      <footer className="bg-[#1A1F2C] text-white py-8 px-4 border-t border-white/10">
-        <div className="max-w-6xl mx-auto text-center">
-          <p>&copy; {new Date().getFullYear()} Galaxy ITT. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

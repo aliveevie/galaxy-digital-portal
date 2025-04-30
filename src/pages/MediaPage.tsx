@@ -1,6 +1,6 @@
-
 import React from 'react';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, ExternalLink } from 'lucide-react';
@@ -48,25 +48,39 @@ const MediaPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
+    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
       <Header />
       
-      <div className="pt-32 pb-16 px-4">
+      {/* Hero Section */}
+      <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/40"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(51,195,240,0.6)]">
+            Media Resources
+          </h1>
+          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+            Access our press releases, media kit, and other resources
+          </p>
+        </div>
+      </div>
+
+      <div className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-white mb-8 text-center">Media Resources</h1>
-          
           {/* Press Releases Section */}
           <section className="mb-16">
             <h2 className="text-2xl font-semibold text-white mb-6">Press Releases</h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {pressReleases.map((item, index) => (
-                <Card key={index} className="bg-white/10 backdrop-blur-md border-white/10 hover:bg-white/20 transition-colors">
+                <Card key={index} className="bg-black/30 backdrop-blur-md border border-white/10 overflow-hidden hover:shadow-[0_0_25px_rgba(51,195,240,0.3)] transition-all duration-300">
                   <CardContent className="p-6">
-                    <p className="text-[#5971D0] text-sm mb-2">{item.date}</p>
+                    <p className="text-[#33C3F0] text-sm mb-2">{item.date}</p>
                     <h3 className="text-white text-xl font-medium mb-3">{item.title}</h3>
                     <p className="text-gray-300 mb-4">{item.excerpt}</p>
-                    <Button variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-[#5971D0]">
+                    <Button 
+                      variant="outline" 
+                      className="bg-transparent border-[#33C3F0]/30 text-white hover:bg-[#33C3F0]/10 hover:text-[#33C3F0] transition-all duration-300"
+                    >
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Read Full Release
                     </Button>
@@ -76,7 +90,17 @@ const MediaPage = () => {
             </div>
             
             <div className="mt-8 text-center">
-              <Button className="bg-transparent border border-white/20 text-white hover:bg-white/10">
+              <Button 
+                className="relative bg-[#33C3F0] hover:bg-[#1EAEDB] text-white px-8 py-6
+                  bg-opacity-70 backdrop-blur-sm rounded-xl
+                  before:content-[''] before:absolute before:inset-0 before:bg-[#33C3F0] 
+                  before:blur-xl before:opacity-70 before:-z-10 hover:before:opacity-90
+                  transition-all duration-500 overflow-hidden shadow-[0_0_25px_rgba(51,195,240,0.6)]
+                  after:content-[''] after:absolute after:inset-0 
+                  after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent 
+                  after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000
+                  border border-[#33C3F0]/30"
+              >
                 View All Press Releases
               </Button>
             </div>
@@ -86,7 +110,7 @@ const MediaPage = () => {
           <section>
             <h2 className="text-2xl font-semibold text-white mb-6">Media Kit</h2>
             
-            <div className="bg-white/10 backdrop-blur-md rounded-lg border border-white/10 overflow-hidden">
+            <div className="bg-black/30 backdrop-blur-md rounded-lg border border-white/10 overflow-hidden">
               <div className="grid divide-y divide-white/10">
                 {mediaAssets.map((asset, index) => (
                   <div key={index} className="p-4 flex justify-between items-center">
@@ -94,7 +118,10 @@ const MediaPage = () => {
                       <h4 className="text-white font-medium">{asset.title}</h4>
                       <p className="text-gray-400 text-sm">{asset.type} • {asset.fileSize}</p>
                     </div>
-                    <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-[#5971D0]">
+                    <Button 
+                      variant="ghost" 
+                      className="text-white hover:bg-[#33C3F0]/10 hover:text-[#33C3F0] transition-all duration-300"
+                    >
                       <Download className="h-4 w-4 mr-2" />
                       Download
                     </Button>
@@ -102,22 +129,11 @@ const MediaPage = () => {
                 ))}
               </div>
             </div>
-            
-            <div className="mt-12 bg-[#354AA0]/20 backdrop-blur-md rounded-lg p-6 border border-[#354AA0]/30">
-              <h3 className="text-xl font-semibold text-white mb-3">Media Inquiries</h3>
-              <p className="text-gray-200 mb-4">For media inquiries, please contact our communications department:</p>
-              <p className="text-gray-200">Email: media@galaxyitt.com.ng</p>
-              <p className="text-gray-200">Phone: 08039600006</p>
-            </div>
           </section>
         </div>
       </div>
-      
-      <footer className="bg-[#1A1F2C] text-white py-8 px-4 border-t border-white/10">
-        <div className="max-w-6xl mx-auto text-center">
-          <p>&copy; {new Date().getFullYear()} Galaxy ITT. All rights reserved.</p>
-        </div>
-      </footer>
+
+      <Footer />
     </div>
   );
 };

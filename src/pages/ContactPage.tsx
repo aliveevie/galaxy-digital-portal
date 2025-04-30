@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/use-toast';
 import Header from '@/components/Header';
-import GalaxyAnimation from '@/components/GalaxyAnimation';
+import Footer from '@/components/Footer';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 const ContactPage = () => {
@@ -19,26 +18,26 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342] pb-16">
-      {/* Background animation */}
-      <div className="fixed inset-0 z-0">
-        <GalaxyAnimation />
-      </div>
-      
+    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
       <Header />
       
-      <div className="relative z-10 pt-32 px-4">
+      {/* Hero Section */}
+      <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/40"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(51,195,240,0.6)]">
+            Contact Us
+          </h1>
+          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+            Get in touch with our team of experts to discuss how we can help your business
+          </p>
+        </div>
+      </div>
+
+      <div className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(30,174,219,0.6)]">
-              Contact Us
-            </h1>
-            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-              Get in touch with our team of experts to discuss how we can help your business
-            </p>
-          </div>
-          
           <div className="grid md:grid-cols-2 gap-8">
+            {/* Contact Form */}
             <div className="bg-black/30 backdrop-blur-md border border-white/10 p-8 rounded-lg">
               <h2 className="text-2xl font-bold text-white mb-6">Send us a message</h2>
               
@@ -86,80 +85,70 @@ const ContactPage = () => {
                 
                 <Button 
                   type="submit"
-                  className="relative bg-[#1EAEDB] hover:bg-[#33C3F0] text-white w-full py-6 text-lg
-                  bg-opacity-70 backdrop-blur-sm rounded-xl
-                  before:content-[''] before:absolute before:inset-0 before:bg-[#1EAEDB] 
-                  before:blur-xl before:opacity-70 before:-z-10 hover:before:opacity-90
-                  transition-all duration-500 overflow-hidden shadow-[0_0_25px_rgba(30,174,219,0.6)]
-                  after:content-[''] after:absolute after:inset-0 
-                  after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent 
-                  after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000
-                  border border-[#33C3F0]/30"
+                  className="relative bg-[#33C3F0] hover:bg-[#1EAEDB] text-white w-full py-6 text-lg
+                    bg-opacity-70 backdrop-blur-sm rounded-xl
+                    before:content-[''] before:absolute before:inset-0 before:bg-[#33C3F0] 
+                    before:blur-xl before:opacity-70 before:-z-10 hover:before:opacity-90
+                    transition-all duration-500 overflow-hidden shadow-[0_0_25px_rgba(51,195,240,0.6)]
+                    after:content-[''] after:absolute after:inset-0 
+                    after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent 
+                    after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000
+                    border border-[#33C3F0]/30"
                 >
                   Send Message
                 </Button>
               </form>
             </div>
-            
-            <div className="space-y-6">
+
+            {/* Contact Information */}
+            <div className="space-y-8">
               <div className="bg-black/30 backdrop-blur-md border border-white/10 p-8 rounded-lg">
                 <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
-                
                 <div className="space-y-6">
-                  <div className="flex items-start">
-                    <MapPin className="h-6 w-6 text-[#33C3F0] mr-4 mt-1" />
+                  <div className="flex items-start space-x-4">
+                    <MapPin className="h-6 w-6 text-[#33C3F0] mt-1" />
                     <div>
-                      <h3 className="text-lg font-medium text-white">Location</h3>
+                      <h3 className="text-white font-semibold mb-1">Address</h3>
                       <p className="text-gray-300">
-                        123 Tech Avenue<br />
-                        Innovation City, IC 12345<br />
-                        United States
+                        Plot 9 Dutse Industrial Layout,<br />
+                        Dutse, Jigawa State<br />
+                        Nigeria
                       </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start">
-                    <Mail className="h-6 w-6 text-[#33C3F0] mr-4 mt-1" />
+                  <div className="flex items-start space-x-4">
+                    <Phone className="h-6 w-6 text-[#33C3F0] mt-1" />
                     <div>
-                      <h3 className="text-lg font-medium text-white">Email</h3>
-                      <p className="text-gray-300">contact@galaxyitt.com</p>
-                      <p className="text-gray-300">support@galaxyitt.com</p>
+                      <h3 className="text-white font-semibold mb-1">Phone</h3>
+                      <p className="text-gray-300">+234 803 960 0006</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start">
-                    <Phone className="h-6 w-6 text-[#33C3F0] mr-4 mt-1" />
+                  <div className="flex items-start space-x-4">
+                    <Mail className="h-6 w-6 text-[#33C3F0] mt-1" />
                     <div>
-                      <h3 className="text-lg font-medium text-white">Phone</h3>
-                      <p className="text-gray-300">+1 (555) 123-4567</p>
-                      <p className="text-gray-300">+1 (555) 987-6543</p>
+                      <h3 className="text-white font-semibold mb-1">Email</h3>
+                      <p className="text-gray-300">info@galaxyitt.com.ng</p>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-black/30 backdrop-blur-md border border-white/10 p-8 rounded-lg">
-                <h2 className="text-2xl font-bold text-white mb-4">Office Hours</h2>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <p className="text-gray-300">Monday - Friday:</p>
-                    <p className="text-white">9:00 AM - 6:00 PM</p>
-                  </div>
-                  <div className="flex justify-between">
-                    <p className="text-gray-300">Saturday:</p>
-                    <p className="text-white">10:00 AM - 4:00 PM</p>
-                  </div>
-                  <div className="flex justify-between">
-                    <p className="text-gray-300">Sunday:</p>
-                    <p className="text-white">Closed</p>
-                  </div>
+                <h2 className="text-2xl font-bold text-white mb-6">Business Hours</h2>
+                <div className="space-y-2 text-gray-300">
+                  <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                  <p>Saturday: 10:00 AM - 2:00 PM</p>
+                  <p>Sunday: Closed</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

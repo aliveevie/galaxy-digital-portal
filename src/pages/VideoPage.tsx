@@ -1,6 +1,6 @@
-
 import React from 'react';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, Info } from 'lucide-react';
@@ -77,134 +77,139 @@ const VideoPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#2C3342]">
+    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
       <Header />
       
-      <div className="pt-32 pb-16 px-4">
+      {/* Hero Section */}
+      <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/40"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(51,195,240,0.6)]">
+            Video Resources
+          </h1>
+          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+            Explore our collection of product demos, tutorials, and company videos
+          </p>
+        </div>
+      </div>
+
+      <div className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-white mb-12 text-center">Video Resources</h1>
-          
           {/* Featured Video */}
           <section className="mb-16">
-            <div className="relative overflow-hidden rounded-lg aspect-video bg-black">
+            <div className="relative overflow-hidden rounded-lg aspect-video bg-black/30 backdrop-blur-md border border-white/10">
               <img 
                 src={featuredVideo.thumbnail}
                 alt={featuredVideo.title} 
                 className="w-full h-full object-cover opacity-80"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <Button className="bg-[#354AA0]/80 hover:bg-[#5971D0] text-white rounded-full h-16 w-16 flex items-center justify-center mb-4">
+                <Button 
+                  className="relative bg-[#33C3F0] hover:bg-[#1EAEDB] text-white rounded-full h-16 w-16
+                    bg-opacity-70 backdrop-blur-sm
+                    before:content-[''] before:absolute before:inset-0 before:bg-[#33C3F0] 
+                    before:blur-xl before:opacity-70 before:-z-10 hover:before:opacity-90
+                    transition-all duration-500 overflow-hidden shadow-[0_0_25px_rgba(51,195,240,0.6)]
+                    flex items-center justify-center mb-4"
+                >
                   <Play className="h-8 w-8" />
                 </Button>
-                <h2 className="text-white text-2xl md:text-3xl font-bold text-center max-w-2xl">{featuredVideo.title}</h2>
+                <h2 className="text-white text-2xl md:text-3xl font-bold text-center max-w-2xl drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+                  {featuredVideo.title}
+                </h2>
                 <p className="text-white/80 mt-2">{featuredVideo.duration}</p>
               </div>
             </div>
           </section>
           
           {/* Video Categories */}
-          <section>
-            <Tabs defaultValue="products" className="mb-8">
-              <div className="flex justify-center mb-8">
-                <TabsList className="bg-white/10 backdrop-blur-md border border-white/10">
-                  <TabsTrigger value="products" className="text-white data-[state=active]:bg-[#354AA0] data-[state=active]:text-white">
-                    Product Videos
-                  </TabsTrigger>
-                  <TabsTrigger value="tutorials" className="text-white data-[state=active]:bg-[#354AA0] data-[state=active]:text-white">
-                    Tutorials
-                  </TabsTrigger>
-                  <TabsTrigger value="company" className="text-white data-[state=active]:bg-[#354AA0] data-[state=active]:text-white">
-                    Company
-                  </TabsTrigger>
-                </TabsList>
-              </div>
-              
-              <TabsContent value="products">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {productVideos.map((video, index) => (
-                    <VideoCard key={index} video={video} />
-                  ))}
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="tutorials">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {tutorialVideos.map((video, index) => (
-                    <VideoCard key={index} video={video} />
-                  ))}
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="company">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {companyVideos.map((video, index) => (
-                    <VideoCard key={index} video={video} />
-                  ))}
-                </div>
-              </TabsContent>
-            </Tabs>
+          <Tabs defaultValue="products" className="space-y-8">
+            <TabsList className="bg-black/30 border border-white/10 p-1">
+              <TabsTrigger 
+                value="products" 
+                className="data-[state=active]:bg-[#33C3F0] data-[state=active]:text-white"
+              >
+                Product Videos
+              </TabsTrigger>
+              <TabsTrigger 
+                value="tutorials"
+                className="data-[state=active]:bg-[#33C3F0] data-[state=active]:text-white"
+              >
+                Tutorials
+              </TabsTrigger>
+              <TabsTrigger 
+                value="company"
+                className="data-[state=active]:bg-[#33C3F0] data-[state=active]:text-white"
+              >
+                Company
+              </TabsTrigger>
+            </TabsList>
             
-            <div className="mt-12 text-center">
-              <Button className="bg-transparent border border-white/20 text-white hover:bg-white/10">
-                View All Videos
-              </Button>
-            </div>
-          </section>
-          
-          {/* Subscribe Section */}
-          <section className="mt-16 bg-gradient-to-r from-[#354AA0]/30 to-[#9B87F5]/30 backdrop-blur-md rounded-lg p-8 border border-white/10">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">Stay Updated</h3>
-              <p className="text-gray-200 mb-6 max-w-2xl mx-auto">Subscribe to our YouTube channel for the latest videos on technology solutions, tutorials, and company updates.</p>
-              <Button className="bg-red-600 hover:bg-red-700 text-white">
-                Subscribe to Our Channel
-              </Button>
-            </div>
-          </section>
+            <TabsContent value="products" className="space-y-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {productVideos.map((video, index) => (
+                  <VideoCard key={index} video={video} />
+                ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="tutorials" className="space-y-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {tutorialVideos.map((video, index) => (
+                  <VideoCard key={index} video={video} />
+                ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="company" className="space-y-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {companyVideos.map((video, index) => (
+                  <VideoCard key={index} video={video} />
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
-      
-      <footer className="bg-[#1A1F2C] text-white py-8 px-4 border-t border-white/10">
-        <div className="max-w-6xl mx-auto text-center">
-          <p>&copy; {new Date().getFullYear()} Galaxy ITT. All rights reserved.</p>
-        </div>
-      </footer>
+
+      <Footer />
     </div>
   );
 };
 
-const VideoCard = ({ video }) => {
-  return (
-    <Card className="bg-white/10 backdrop-blur-md border-white/10 overflow-hidden hover:bg-white/20 transition-colors">
+const VideoCard = ({ video }) => (
+  <Card className="bg-black/30 backdrop-blur-md border border-white/10 overflow-hidden hover:shadow-[0_0_25px_rgba(51,195,240,0.3)] transition-all duration-300">
+    <CardContent className="p-0">
       <div className="relative aspect-video">
         <img 
-          src={video.thumbnail}
-          alt={video.title} 
+          src={video.thumbnail} 
+          alt={video.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-          {video.duration}
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-          <Button className="bg-[#354AA0]/80 hover:bg-[#5971D0] text-white rounded-full h-12 w-12 flex items-center justify-center">
-            <Play className="h-5 w-5" />
+        <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+          <Button 
+            className="relative bg-[#33C3F0] hover:bg-[#1EAEDB] text-white rounded-full h-12 w-12
+              bg-opacity-70 backdrop-blur-sm
+              before:content-[''] before:absolute before:inset-0 before:bg-[#33C3F0] 
+              before:blur-xl before:opacity-70 before:-z-10 hover:before:opacity-90
+              transition-all duration-500 overflow-hidden shadow-[0_0_25px_rgba(51,195,240,0.6)]
+              flex items-center justify-center"
+          >
+            <Play className="h-6 w-6" />
           </Button>
         </div>
       </div>
-      <CardContent className="p-4">
-        <h3 className="text-white font-medium mb-1">{video.title}</h3>
-        <div className="flex items-center justify-between text-xs text-gray-400">
+    </CardContent>
+    <CardFooter className="p-4">
+      <div className="space-y-2 flex-1">
+        <h3 className="text-white font-medium">{video.title}</h3>
+        <div className="flex items-center justify-between text-sm text-gray-400">
+          <span>{video.duration}</span>
           <span>{video.views} views</span>
         </div>
-      </CardContent>
-      <CardFooter className="px-4 pb-4 pt-0">
-        <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 hover:text-[#5971D0]">
-          <Info className="h-4 w-4 mr-2" />
-          Video Details
-        </Button>
-      </CardFooter>
-    </Card>
-  );
-};
+      </div>
+    </CardFooter>
+  </Card>
+);
 
 export default VideoPage;
