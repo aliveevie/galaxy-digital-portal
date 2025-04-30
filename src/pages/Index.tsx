@@ -12,37 +12,88 @@ const Index = () => {
       {/* Header */}
       <Header />
       
-      {/* Enhanced Header section with gradient background matching logo colors */}
-      <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/40"></div>
-        <div className="relative z-10 text-center px-4">
-          <div className="flex justify-center mb-6 mt-16">
-            <img 
-              src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png"
-              alt="Galaxy ITT Logo" 
-              className="h-32 md:h-40 w-auto"
-            />
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ffffff] via-[#33C3F0] to-[#ffffff] drop-shadow-[0_0_15px_rgba(51,195,240,0.6)]">
-            Innovative Technology Solutions
-          </h1>
-          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
-            Transforming businesses through cutting-edge digital innovation and expert IT consulting
-          </p>
-          <div className="flex justify-center">
-            <Button 
-              className="relative bg-[#33C3F0] hover:bg-[#1EAEDB] text-white px-12 py-7 text-xl
-                bg-opacity-70 backdrop-blur-sm rounded-xl
-                before:content-[''] before:absolute before:inset-0 before:bg-[#33C3F0] 
-                before:blur-xl before:opacity-70 before:-z-10 hover:before:opacity-90
-                transition-all duration-500 overflow-hidden shadow-[0_0_25px_rgba(51,195,240,0.6)]
-                after:content-[''] after:absolute after:inset-0 
-                after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent 
-                after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-1000
-                border border-[#33C3F0]/30"
-            >
-              Our Services
-            </Button>
+      {/* Modern Hero Section */}
+      <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0A0F1E]">
+        {/* Background Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-500/20 to-pink-500/20 mix-blend-overlay"></div>
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0F1E]/50 to-[#0A0F1E]"></div>
+        </div>
+
+        {/* Animated Shapes */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-1/2 left-1/2 w-[1000px] h-[1000px] bg-gradient-conic from-blue-500 via-purple-500 to-pink-500 rounded-full mix-blend-normal opacity-20 animate-slow-spin"></div>
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500 rounded-full filter blur-[128px] opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500 rounded-full filter blur-[128px] opacity-20 animate-pulse delay-1000"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+            {/* Left Content */}
+            <div className="flex-1 text-left max-w-2xl">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+                <span className="w-2 h-2 rounded-full bg-[#33C3F0] mr-2 animate-pulse"></span>
+                <span className="text-[#33C3F0] text-sm font-medium">Leading Technology Solutions Provider</span>
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 tracking-tight">
+                <span className="text-white">Innovative</span>
+                <br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#33C3F0] via-purple-500 to-pink-500">
+                  Digital Solutions
+                </span>
+              </h1>
+              
+              <p className="text-xl text-gray-300 mb-8 max-w-xl">
+                Transforming businesses through cutting-edge digital innovation and expert IT consulting. We help organizations navigate the digital landscape.
+              </p>
+              
+              <div className="flex flex-wrap gap-4">
+                <Button 
+                  className="bg-[#33C3F0] hover:bg-[#33C3F0]/90 text-white px-8 py-6 text-lg
+                    rounded-xl transition-all duration-300 shadow-lg shadow-[#33C3F0]/25
+                    hover:shadow-xl hover:shadow-[#33C3F0]/30 hover:scale-[1.02]"
+                >
+                  Explore Our Services
+                </Button>
+                <Button 
+                  className="bg-white/10 backdrop-blur-sm text-white px-8 py-6 text-lg
+                    rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                >
+                  Contact Us
+                </Button>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-8 mt-12">
+                <div>
+                  <div className="text-3xl font-bold text-white mb-1">10+</div>
+                  <div className="text-sm text-gray-400">Years Experience</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-white mb-1">200+</div>
+                  <div className="text-sm text-gray-400">Projects Completed</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-white mb-1">50+</div>
+                  <div className="text-sm text-gray-400">Expert Team</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content - 3D or Abstract Visualization */}
+            <div className="flex-1 relative">
+              <div className="relative w-full aspect-square max-w-[600px] mx-auto">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#33C3F0] to-purple-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                <img 
+                  src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png"
+                  alt="Galaxy ITT Logo" 
+                  className="relative z-10 w-full h-full object-contain drop-shadow-[0_0_30px_rgba(51,195,240,0.5)]"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
