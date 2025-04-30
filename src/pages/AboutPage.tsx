@@ -130,19 +130,17 @@ const AboutPage = () => {
             <div className="w-24 h-1 bg-[#33C3F0] mx-auto"></div>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-[#2C3342]/60 p-6 rounded-lg text-center">
-                <div className="w-24 h-24 rounded-full bg-[#33C3F0]/20 mx-auto mb-4 flex items-center justify-center">
-                  <Users className="h-10 w-10 text-[#33C3F0]" />
-                </div>
-                <h3 className="text-xl font-semibold mb-1">Executive {i}</h3>
-                <p className="text-sm text-gray-300 mb-3">Chief Position</p>
-                <p className="text-sm text-gray-400">
-                  Experienced leader with expertise in technology solutions and business development.
-                </p>
+          <div className="flex justify-center">
+            <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center max-w-md">
+              <div className="w-32 h-32 rounded-full bg-[#33C3F0]/20 mx-auto mb-6 flex items-center justify-center">
+                <Users className="h-12 w-12 text-[#33C3F0]" />
               </div>
-            ))}
+              <h3 className="text-2xl font-semibold mb-2">Baffajo Beita</h3>
+              <p className="text-lg text-[#33C3F0] mb-4">Chief Executive Officer / Managing Director</p>
+              <p className="text-sm text-gray-300">
+                Leading Galaxy ITT's vision of digital transformation and technological innovation in sub-Saharan Africa.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -177,7 +175,7 @@ const AboutPage = () => {
       
       {/* Organigram Section */}
       <section id="organigram" className="py-16 px-4 bg-[#2C3342] text-white">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Company Structure</h2>
             <div className="w-24 h-1 bg-[#33C3F0] mx-auto"></div>
@@ -186,25 +184,108 @@ const AboutPage = () => {
             </p>
           </div>
           
-          <div className="bg-[#1A1F2C]/60 p-8 rounded-lg">
+          <div className="bg-[#1A1F2C]/60 p-8 rounded-lg overflow-x-auto">
+            {/* Level 1 - CEO/MD */}
             <div className="flex flex-col items-center">
-              <div className="w-48 py-3 bg-[#33C3F0] text-center rounded-lg text-white font-medium mb-8">
-                Board of Directors
+              <div className="w-64 py-4 px-6 bg-[#33C3F0] text-center rounded-lg text-white font-medium mb-8 shadow-lg shadow-[#33C3F0]/20">
+                MD/CEO
               </div>
               
-              <div className="w-40 py-3 bg-[#33C3F0]/80 text-center rounded-lg text-white font-medium mb-8">
-                CEO
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 w-full">
-                <div className="w-full py-3 bg-[#33C3F0]/60 text-center rounded-lg text-white font-medium">
-                  Technical Department
-                </div>
-                <div className="w-full py-3 bg-[#33C3F0]/60 text-center rounded-lg text-white font-medium">
-                  Business Development
-                </div>
-                <div className="w-full py-3 bg-[#33C3F0]/60 text-center rounded-lg text-white font-medium">
-                  Administration
+              {/* Level 2 - Department Heads */}
+              <div className="relative">
+                <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-8 bg-[#33C3F0]/50"></div>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 w-full">
+                  {/* Admin Department */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-full py-3 px-4 bg-[#33C3F0]/80 text-center rounded-lg text-white font-medium mb-8">
+                      Admin
+                    </div>
+                    <div className="relative w-full">
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-8 bg-[#33C3F0]/50"></div>
+                      <div className="grid gap-4">
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Chief Security
+                        </div>
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Cleaner
+                        </div>
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Driver
+                        </div>
+                        {/* Security Staff */}
+                        <div className="pl-4 grid gap-2">
+                          <div className="w-full py-2 px-3 bg-[#33C3F0]/40 text-center rounded-lg text-white text-xs">
+                            Security One
+                          </div>
+                          <div className="w-full py-2 px-3 bg-[#33C3F0]/40 text-center rounded-lg text-white text-xs">
+                            Security Two
+                          </div>
+                          <div className="w-full py-2 px-3 bg-[#33C3F0]/40 text-center rounded-lg text-white text-xs">
+                            Security Three
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Network Unit */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-full py-3 px-4 bg-[#33C3F0]/80 text-center rounded-lg text-white font-medium mb-8">
+                      Network Unit
+                    </div>
+                    <div className="relative w-full">
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-8 bg-[#33C3F0]/50"></div>
+                      <div className="grid gap-4">
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Wireless
+                        </div>
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Server
+                        </div>
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Rigger
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* HR */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-full py-3 px-4 bg-[#33C3F0]/80 text-center rounded-lg text-white font-medium mb-8">
+                      Human Resources
+                    </div>
+                  </div>
+
+                  {/* Finance */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-full py-3 px-4 bg-[#33C3F0]/80 text-center rounded-lg text-white font-medium mb-8">
+                      Finance
+                    </div>
+                  </div>
+
+                  {/* Software Unit */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-full py-3 px-4 bg-[#33C3F0]/80 text-center rounded-lg text-white font-medium mb-8">
+                      Software Unit
+                    </div>
+                    <div className="relative w-full">
+                      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-8 bg-[#33C3F0]/50"></div>
+                      <div className="grid gap-4">
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Software Developer
+                        </div>
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Mobile App Developer
+                        </div>
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Frontend Developer
+                        </div>
+                        <div className="w-full py-2 px-4 bg-[#33C3F0]/60 text-center rounded-lg text-white text-sm">
+                          Backend Developer
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
