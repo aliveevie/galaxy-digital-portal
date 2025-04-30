@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -9,13 +9,70 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Index = () => {
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [counts, setCounts] = useState({ years: 0, projects: 0, team: 0 });
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      once: true,
       easing: 'ease-out',
+      once: false,
+      mirror: true,
+      anchorPlacement: 'top-bottom',
     });
+
+    window.addEventListener('load', () => {
+      AOS.refresh();
+    });
+
+    return () => {
+      window.removeEventListener('load', () => {
+        AOS.refresh();
+      });
+    };
   }, []);
+
+  useEffect(() => {
+    const startCounting = (entry: IntersectionObserverEntry) => {
+      if (entry.isIntersecting && !hasAnimated) {
+        setHasAnimated(true);
+        
+        // Animate years count
+        let yearsCount = 0;
+        const yearsInterval = setInterval(() => {
+          yearsCount++;
+          setCounts(prev => ({ ...prev, years: yearsCount }));
+          if (yearsCount >= 10) clearInterval(yearsInterval);
+        }, 100);
+
+        // Animate projects count
+        let projectsCount = 0;
+        const projectsInterval = setInterval(() => {
+          projectsCount += 5;
+          setCounts(prev => ({ ...prev, projects: projectsCount }));
+          if (projectsCount >= 200) clearInterval(projectsInterval);
+        }, 50);
+
+        // Animate team count
+        let teamCount = 0;
+        const teamInterval = setInterval(() => {
+          teamCount++;
+          setCounts(prev => ({ ...prev, team: teamCount }));
+          if (teamCount >= 50) clearInterval(teamInterval);
+        }, 60);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(startCounting),
+      { threshold: 0.5 }
+    );
+
+    const statsSection = document.querySelector('#stats-section');
+    if (statsSection) observer.observe(statsSection);
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
   const scrollToServices = () => {
     const servicesSection = document.getElementById('services');
@@ -89,17 +146,23 @@ const Index = () => {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 mt-12" data-aos="fade-up" data-aos-delay="400">
+              <div id="stats-section" className="grid grid-cols-3 gap-8 mt-12" data-aos="fade-up" data-aos-delay="400">
                 <div>
-                  <div className="text-3xl font-bold text-white mb-1">10+</div>
+                  <div className="text-3xl font-bold text-white mb-1">
+                    <span className="tabular-nums">{counts.years}</span>+
+                  </div>
                   <div className="text-sm text-gray-400">Years Experience</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white mb-1">200+</div>
+                  <div className="text-3xl font-bold text-white mb-1">
+                    <span className="tabular-nums">{counts.projects}</span>+
+                  </div>
                   <div className="text-sm text-gray-400">Projects Completed</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white mb-1">50+</div>
+                  <div className="text-3xl font-bold text-white mb-1">
+                    <span className="tabular-nums">{counts.team}</span>+
+                  </div>
                   <div className="text-sm text-gray-400">Expert Team</div>
                 </div>
               </div>
