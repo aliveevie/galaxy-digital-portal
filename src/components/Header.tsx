@@ -61,6 +61,22 @@ const Header = () => {
               <NavigationMenuLink asChild>
                 <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
+                  to="/about#values"
+                >
+                  <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
+                    <Info className="h-4 w-4" />
+                    Core Values
+                  </div>
+                  <p className="line-clamp-2 text-xs leading-snug text-white/70">
+                    Reliability • Integrity • Confidence • Innovation
+                  </p>
+                </Link>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink asChild>
+                <Link
+                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-white focus:bg-slate-700 focus:text-white"
                   to="/about#management"
                 >
                   <div className="text-sm font-medium leading-none text-white flex items-center gap-2">
