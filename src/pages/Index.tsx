@@ -1,22 +1,22 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, Clock, Trophy } from 'lucide-react';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
-      {/* Added Header */}
+      {/* Header */}
       <Header />
       
       {/* Enhanced Header section with gradient background matching logo colors */}
       <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/40"></div>
-        <div className="relative z-10 text-center px-4 mt-[-50px]">
-          <div className="flex justify-center mb-6">
+        <div className="relative z-10 text-center px-4">
+          <div className="flex justify-center mb-6 mt-16">
             <img 
               src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png"
               alt="Galaxy ITT Logo" 
@@ -89,7 +89,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section - NEW */}
+      {/* Why Choose Us Section */}
       <section className="py-16 px-4 bg-[#F6F6F7]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#1A1F2C]">
@@ -205,51 +205,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#1A1F2C] text-white py-12 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <img 
-              src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png" 
-              alt="Galaxy ITT Logo" 
-              className="h-10 w-auto mb-4"
-            />
-            <p className="text-gray-300">
-              Innovative technology solutions for forward-thinking businesses.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
-              <li><Link to="/" className="text-gray-300 hover:text-white">IT Consulting</Link></li>
-              <li><Link to="/" className="text-gray-300 hover:text-white">Cloud Solutions</Link></li>
-              <li><Link to="/" className="text-gray-300 hover:text-white">Software Development</Link></li>
-              <li><Link to="/" className="text-gray-300 hover:text-white">Cybersecurity</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Company</h4>
-            <ul className="space-y-2">
-              <li><Link to="/about" className="text-gray-300 hover:text-white">About Us</Link></li>
-              <li><Link to="/about#management" className="text-gray-300 hover:text-white">Our Team</Link></li>
-              <li><Link to="/about#careers" className="text-gray-300 hover:text-white">Careers</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-white">Contact</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-            <address className="not-italic text-gray-300">
-              <p>No.2 Kiyawa Road</p>
-              <p>Dutse, Jigawa State</p>
-              <p className="mt-2">info@galaxyitt.com.ng</p>
-              <p>08039600006</p>
-            </address>
-          </div>
-        </div>
-        <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Galaxy ITT. All rights reserved.</p>
-        </div>
-      </footer>
+      {/* Footer - replaced with our new Footer component */}
+      <Footer />
     </div>
   );
 };

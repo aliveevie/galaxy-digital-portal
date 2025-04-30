@@ -31,7 +31,6 @@ const App = () => (
           <Route path="/media" element={<MediaPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/videos" element={<VideoPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
