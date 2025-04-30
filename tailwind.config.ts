@@ -84,11 +84,17 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				carousel: {
+					'0%, 26.66%': { opacity: '1', transform: 'scale(1)' },
+					'33.33%, 93.33%': { opacity: '0', transform: 'scale(1.1)' },
+					'100%': { opacity: '1', transform: 'scale(1)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'carousel': 'carousel 15s linear infinite',
 			}
 		}
 	},

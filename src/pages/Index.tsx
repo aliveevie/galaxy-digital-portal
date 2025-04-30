@@ -231,35 +231,78 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-16 px-4 bg-[#221F26] text-white">
+      <section className="py-16 px-4 bg-[#221F26] text-white overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-12"
-               data-aos="fade-up">
-            <div className="md:w-1/2">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            {/* Left Content */}
+            <div className="md:w-1/2" 
+                 data-aos="fade-right" 
+                 data-aos-duration="1200">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white"
-                  data-aos="fade-up" data-aos-delay="100">
+                  data-aos="fade-right"
+                  data-aos-delay="100">
                 About Galaxy ITT
               </h2>
               <p className="text-lg mb-4 text-gray-300"
-                 data-aos="fade-up" data-aos-delay="200">
+                 data-aos="fade-right"
+                 data-aos-delay="200">
                 Galaxy ITT is a premier provider of innovative technology solutions, dedicated to helping businesses navigate the digital universe.
               </p>
               <p className="text-lg mb-6 text-gray-300"
-                 data-aos="fade-up" data-aos-delay="300">
+                 data-aos="fade-right"
+                 data-aos-delay="300">
                 With decades of combined experience, our team of experts delivers customized solutions that drive efficiency, security, and growth.
               </p>
               <Link to="/about">
                 <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white"
-                        data-aos="fade-up" data-aos-delay="400">
+                        data-aos="fade-right"
+                        data-aos-delay="400">
                   Learn More About Us
                 </Button>
               </Link>
             </div>
-            <div className="md:w-1/2 bg-gradient-to-br from-[#33C3F0] to-[#9B87F5] rounded-lg p-1"
-                 data-aos="fade-up" data-aos-delay="500">
-              <div className="bg-[#221F26] rounded-lg w-full h-full p-6">
-                <div className="aspect-video bg-[#2C3342] rounded-lg flex items-center justify-center">
-                  <p className="text-gray-300">Company Video</p>
+
+            {/* Right Content - Image Carousel */}
+            <div className="md:w-1/2" 
+                 data-aos="fade-left" 
+                 data-aos-duration="1200">
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+                {/* Gradient Border */}
+                <div className="absolute inset-0 p-1 bg-gradient-to-br from-[#33C3F0] to-[#9B87F5] rounded-lg">
+                  {/* Content Container */}
+                  <div className="relative w-full h-full overflow-hidden rounded-lg bg-[#221F26]">
+                    {/* Image Carousel */}
+                    <div className="relative w-full h-full">
+                      <div className="absolute inset-0 flex items-center justify-center animate-carousel">
+                        <img 
+                          src="https://images.unsplash.com/photo-1661956602868-6ae368943878?auto=format&fit=crop&q=80&w=600&h=400"
+                          alt="Digital Transformation"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="absolute inset-0 flex items-center justify-center animate-carousel" style={{ animationDelay: '5s' }}>
+                        <img 
+                          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600&h=400"
+                          alt="Technology Innovation"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="absolute inset-0 flex items-center justify-center animate-carousel" style={{ animationDelay: '10s' }}>
+                        <img 
+                          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600&h=400"
+                          alt="IT Solutions"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    {/* Overlay with company name */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#221F26] via-transparent">
+                      <div className="absolute bottom-4 left-4">
+                        <h3 className="text-white text-xl font-semibold mb-2">Galaxy ITT</h3>
+                        <p className="text-gray-300 text-sm">Transforming Digital Future</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
