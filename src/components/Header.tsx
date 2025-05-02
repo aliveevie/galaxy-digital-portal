@@ -32,7 +32,7 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
       <NavigationMenuItem>
         <Link to="/">
           <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
-            "text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium"
+            "text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium"
           )}>
             Home
           </NavigationMenuLink>
@@ -40,7 +40,7 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
+        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
           About
         </NavigationMenuTrigger>
         <NavigationMenuContent>
@@ -149,7 +149,7 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
+        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
           Services
         </NavigationMenuTrigger>
         <NavigationMenuContent>
@@ -199,7 +199,7 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
+        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
           Customer Service
         </NavigationMenuTrigger>
         <NavigationMenuContent>
@@ -235,7 +235,7 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
+        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
           Resources
         </NavigationMenuTrigger>
         <NavigationMenuContent>
@@ -297,7 +297,7 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
+        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
           Contact Us
         </NavigationMenuTrigger>
         <NavigationMenuContent>
@@ -333,65 +333,59 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
   );
 
   return (
-    <div className="w-full fixed top-0 z-50 bg-gradient-to-b from-[#1A1F2C] to-[#2C3342] shadow-lg border-b border-white/10">
-      <div className="max-w-6xl mx-auto px-4 py-3">
-        <div className="flex justify-between items-center">
-          {/* Logo on the left */}
-          <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
-              <img 
-                src="/galaxy-logo.png" 
-                alt="Galaxy Digital Portal" 
-                className="h-10 w-auto"
-                style={{
-                  filter: 'brightness(0) invert(1)',
-                  opacity: 0.95
-                }}
-              />
-            </Link>
-          </div>
+    <div className="w-full fixed top-0 z-50 bg-[#1A1F2C]">
+      <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
+        {/* Logo on the left */}
+        <Link to="/" className="flex-shrink-0">
+          <img 
+            src="/galaxy-logo.png" 
+            alt="Galaxy Digital Portal" 
+            className="h-8 w-auto"
+            style={{
+              filter: 'brightness(0) invert(1)',
+              opacity: 0.95
+            }}
+          />
+        </Link>
 
-          {/* Navigation menu centered */}
-          <div className="flex-grow flex justify-center">
-            <NavigationMenu>
-              <NavigationMenuList className="hidden md:flex space-x-2">
-                {menuContent}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
+        {/* Menu with shaped background */}
+        <div className="bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900 rounded-full shadow-lg">
+          <NavigationMenu>
+            <NavigationMenuList className="hidden md:flex px-6 py-2">
+              {menuContent}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
 
-          {/* Theme toggle on the right */}
-          <div className="flex-shrink-0">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onThemeToggle}
-              className="text-white hover:text-[#33C3F0] hover:bg-white/10"
-            >
-              {theme === 'dark' ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-          </div>
+        {/* Theme Switch */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onThemeToggle}
+          className="text-white hover:text-[#33C3F0] hover:bg-white/10"
+        >
+          {theme === 'dark' ? (
+            <Sun className="h-5 w-5" />
+          ) : (
+            <Moon className="h-5 w-5" />
+          )}
+          <span className="sr-only">Toggle theme</span>
+        </Button>
 
-          {/* Mobile menu */}
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger className="p-2 rounded-full bg-[#1A1F2C] text-white hover:bg-[#33C3F0] transition-colors">
-                <Menu className="h-6 w-6" />
-              </SheetTrigger>
-              <SheetContent side="right" className="bg-[#1A1F2C]">
-                <NavigationMenu className="w-full">
-                  <NavigationMenuList className="flex-col items-start space-y-2">
-                    {menuContent}
-                  </NavigationMenuList>
-                </NavigationMenu>
-              </SheetContent>
-            </Sheet>
-          </div>
+        {/* Mobile Menu */}
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger className="p-2 rounded-full bg-[#1A1F2C] text-white hover:bg-[#33C3F0] transition-colors">
+              <Menu className="h-6 w-6" />
+            </SheetTrigger>
+            <SheetContent side="right" className="bg-[#1A1F2C]">
+              <NavigationMenu className="w-full">
+                <NavigationMenuList className="flex-col items-start space-y-2">
+                  {menuContent}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </div>
