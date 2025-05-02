@@ -194,7 +194,7 @@ const AboutPage = () => {
               {/* Level 2 - Department Heads */}
               <div className="relative">
                 <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-8 bg-[#33C3F0]/50"></div>
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 w-full">
                   {/* Admin Department */}
                   <div className="flex flex-col items-center">
                     <div className="w-full py-3 px-4 bg-[#33C3F0]/80 text-center rounded-lg text-white font-medium mb-8">
@@ -246,13 +246,6 @@ const AboutPage = () => {
                           Rigger
                         </div>
                       </div>
-                    </div>
-                  </div>
-
-                  {/* HR */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-full py-3 px-4 bg-[#33C3F0]/80 text-center rounded-lg text-white font-medium mb-8">
-                      Human Resources
                     </div>
                   </div>
 
