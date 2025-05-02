@@ -18,14 +18,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
+import { useTheme } from '@/hooks/use-theme';
 
-interface HeaderProps {
-  theme: 'light' | 'dark';
-  onThemeToggle: () => void;
-}
-
-const Header = ({ theme, onThemeToggle }: HeaderProps) => {
+const Header = () => {
   const isMobile = useIsMobile();
+  const { theme, toggleTheme } = useTheme();
 
   const menuContent = (
     <>
@@ -333,7 +330,7 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
   );
 
   return (
-    <div className="w-full fixed top-0 z-50 bg-[#1A1F2C]">
+    <div className={`w-full fixed top-0 z-50 ${theme === 'dark' ? 'bg-[#1A1F2C]' : 'bg-white'}`}>
       <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
         {/* Logo on the left */}
         <Link to="/" className="flex-shrink-0">
@@ -342,14 +339,14 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
             alt="Galaxy Digital Portal" 
             className="h-8 w-auto"
             style={{
-              filter: 'brightness(0) invert(1)',
+              filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
               opacity: 0.95
             }}
           />
         </Link>
 
         {/* Menu with shaped background */}
-        <div className="bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900 rounded-full shadow-lg">
+        <div className={`${theme === 'dark' ? 'bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900' : 'bg-gradient-to-r from-blue-100 via-indigo-200 to-blue-100'} rounded-full shadow-lg`}>
           <NavigationMenu>
             <NavigationMenuList className="hidden md:flex px-6 py-2">
               {menuContent}
@@ -361,8 +358,8 @@ const Header = ({ theme, onThemeToggle }: HeaderProps) => {
         <Button
           variant="ghost"
           size="icon"
-          onClick={onThemeToggle}
-          className="text-white hover:text-[#33C3F0] hover:bg-white/10"
+          onClick={toggleTheme}
+          className={`${theme === 'dark' ? 'text-white hover:text-[#33C3F0] hover:bg-white/10' : 'text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-100'}`}
         >
           {theme === 'dark' ? (
             <Sun className="h-5 w-5" />
