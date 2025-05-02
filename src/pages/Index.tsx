@@ -127,9 +127,9 @@ const Index = () => {
 
         {/* Animated Shapes */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-1/2 left-1/2 w-[1000px] h-[1000px] bg-gradient-conic from-blue-500 via-purple-500 to-pink-500 rounded-full mix-blend-normal opacity-20 animate-slow-spin"></div>
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500 rounded-full filter blur-[128px] opacity-20 animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500 rounded-full filter blur-[128px] opacity-20 animate-pulse delay-1000"></div>
+          <div className="absolute -top-1/2 left-1/2 w-[1000px] h-[1000px] bg-gradient-conic from-blue-500 via-purple-500 to-pink-500 rounded-full mix-blend-normal opacity-30 animate-slow-spin"></div>
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full filter blur-[128px] opacity-30 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-r from-purple-500 to-pink-500 rounded-full filter blur-[128px] opacity-30 animate-pulse delay-1000"></div>
         </div>
 
         {/* Content */}
@@ -137,7 +137,7 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             {/* Left Content */}
             <div className="flex-1 text-left max-w-2xl">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8"
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4 mt-16"
                    data-aos="fade-down">
                 <span className="w-2 h-2 rounded-full bg-[#33C3F0] mr-2 animate-pulse"></span>
                 <span className="text-[#33C3F0] text-sm font-medium">Leading Technology Solutions Provider</span>
@@ -200,15 +200,26 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right Content - 3D or Abstract Visualization */}
+            {/* Right Content - Single Animation */}
             <div className="flex-1 relative" data-aos="zoom-in" data-aos-delay="200">
               <div className="relative w-full aspect-square max-w-[600px] mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#33C3F0] to-purple-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-                <img 
-                  src="/lovable-uploads/67b936c0-aa3a-4b93-a661-a3a44fe17e3d.png"
-                  alt="Galaxy ITT Logo" 
-                  className="relative z-10 w-full h-full object-contain drop-shadow-[0_0_30px_rgba(51,195,240,0.5)]"
-                />
+                
+                {/* Animation container with background matching hero section */}
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-[#0A0F1E] to-[#221F26]">
+                  {/* Animated background to match hero gradients */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 via-purple-500/30 to-pink-500/30 mix-blend-overlay animate-pulse"></div>
+                  
+                  {/* Single animation with enhanced blending */}
+                  <img 
+                    src="/animations/animation1.gif"
+                    alt="Digital Transformation Animation"
+                    className="w-full h-full object-contain"
+                    style={{ 
+                      mixBlendMode: 'plus-lighter',  // More aggressive blend for dark backgrounds
+                      filter: 'drop-shadow(0 0 25px rgba(51,195,240,0.7))'
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -445,6 +456,7 @@ const Index = () => {
                  data-aos="fade-left" 
                  data-aos-duration="1200">
               <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+                
                 {/* Gradient Border */}
                 <div className="absolute inset-0 p-1 bg-gradient-to-br from-[#33C3F0] to-[#9B87F5] rounded-lg">
                   {/* Content Container */}
@@ -454,8 +466,8 @@ const Index = () => {
                       <div className="absolute inset-0 flex items-center justify-center animate-carousel">
                         <img 
                           src="https://images.unsplash.com/photo-1661956602868-6ae368943878?auto=format&fit=crop&q=80&w=600&h=400"
-                          alt="Digital Transformation"
-                          className="w-full h-full object-cover"
+                          alt="Galaxy ITT Logo" 
+                          className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(51,195,240,0.5)]"
                         />
                       </div>
                       <div className="absolute inset-0 flex items-center justify-center animate-carousel" style={{ animationDelay: '5s' }}>
