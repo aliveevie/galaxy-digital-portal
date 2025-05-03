@@ -49,7 +49,7 @@ const Header = () => {
                   to="/about#mandate"
                 >
                   <div className="mt-4 mb-2 text-lg font-medium text-[#1A1F2C]">
-                    Mandate
+                    Our Mandate
                   </div>
                   <p className="text-sm leading-tight text-[#1A1F2C]/80 mb-4">
                     <strong>Our Vision:</strong> To become a leading provider of broadband connectivity, software solutions and drive digital transformation in sub-Saharan Africa.
@@ -330,23 +330,23 @@ const Header = () => {
   );
 
   return (
-    <div className={`w-full fixed top-0 z-50 ${theme === 'dark' ? 'bg-[#1A1F2C]' : 'bg-white'}`}>
-      <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
+    <div className={`w-full fixed top-0 z-50 ${theme === 'dark' ? 'bg-[#1A1F2C]' : 'bg-blue-50'} shadow-md`}>
+      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo on the left */}
         <Link to="/" className="flex-shrink-0">
           <img 
             src="/galaxy-logo.png" 
             alt="Galaxy Digital Portal" 
-            className="h-8 w-auto"
+            className="h-9 w-auto"
             style={{
               filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
-              opacity: 0.95
+              opacity: 1
             }}
           />
         </Link>
 
         {/* Menu with shaped background */}
-        <div className={`${theme === 'dark' ? 'bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900' : 'bg-gradient-to-r from-blue-100 via-indigo-200 to-blue-100'} rounded-full shadow-lg`}>
+        <div className={`${theme === 'dark' ? 'bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900' : 'bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-400'} rounded-full shadow-lg`}>
           <NavigationMenu>
             <NavigationMenuList className="hidden md:flex px-6 py-2">
               {menuContent}
@@ -359,12 +359,12 @@ const Header = () => {
           variant="ghost"
           size="icon"
           onClick={toggleTheme}
-          className={`${theme === 'dark' ? 'text-white hover:text-[#33C3F0] hover:bg-white/10' : 'text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-100'}`}
+          className={`${theme === 'dark' ? 'text-white hover:text-[#33C3F0] hover:bg-white/10' : 'text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-100'} border border-gray-200`}
         >
           {theme === 'dark' ? (
-            <Sun className="h-5 w-5" />
-          ) : (
             <Moon className="h-5 w-5" />
+          ) : (
+            <Sun className="h-5 w-5" />
           )}
           <span className="sr-only">Toggle theme</span>
         </Button>

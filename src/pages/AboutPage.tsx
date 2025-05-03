@@ -126,48 +126,70 @@ const AboutPage = () => {
       <section id="management" className="py-16 px-4 bg-[#221F26] text-white">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Management Team</h2>
+            <h2 className="text-3xl font-bold mb-4">Management</h2>
             <div className="w-24 h-1 bg-[#33C3F0] mx-auto"></div>
           </div>
           
-          <div className="flex justify-center">
-            <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center max-w-md">
-              <div className="w-32 h-32 rounded-full bg-[#33C3F0]/20 mx-auto mb-6 flex items-center justify-center">
-                <Users className="h-12 w-12 text-[#33C3F0]" />
+          <div className="space-y-16">
+            {/* Board of Directors */}
+            <div id="board">
+              <h3 className="text-2xl font-semibold mb-6 text-center">Board of Directors</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-[#2C3342]/60 p-8 rounded-lg">
+                  <h4 className="text-xl font-semibold mb-2 text-[#33C3F0]">Chairman</h4>
+                  <h5 className="text-lg font-medium mb-3">Board Member One</h5>
+                  <p className="text-sm text-gray-300">
+                    Provides strategic leadership and governance oversight for Galaxy ITT, with extensive experience in corporate governance and technology sector.
+                  </p>
+                </div>
+                
+                <div className="bg-[#2C3342]/60 p-8 rounded-lg">
+                  <h4 className="text-xl font-semibold mb-2 text-[#33C3F0]">Board Member</h4>
+                  <h5 className="text-lg font-medium mb-3">Board Member Two</h5>
+                  <p className="text-sm text-gray-300">
+                    Brings valuable insights on financial management and corporate strategy to guide the company's long-term vision and growth.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold mb-2">Baffajo Beita</h3>
-              <p className="text-lg text-[#33C3F0] mb-4">Chief Executive Officer / Managing Director</p>
-              <p className="text-sm text-gray-300">
-                Leading Galaxy ITT's vision of digital transformation and technological innovation in sub-Saharan Africa.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Board of Directors */}
-      <section id="board" className="py-16 px-4 bg-[#F6F6F7]">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-[#1A1F2C] mb-4">Board of Directors</h2>
-            <div className="w-24 h-1 bg-[#33C3F0] mx-auto"></div>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold text-[#1A1F2C] mb-2">Executive Director Technical</h3>
-              <h4 className="text-lg font-semibold text-[#33C3F0] mb-4">Engr Nura</h4>
-              <p className="text-gray-700 leading-relaxed">
-                Leads the technical strategy and operations, bringing extensive experience in telecommunications and IT infrastructure development.
-              </p>
             </div>
             
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold text-[#1A1F2C] mb-2">Executive Director Business Development</h3>
-              <h4 className="text-lg font-semibold text-[#33C3F0] mb-4">Umar Gumel</h4>
-              <p className="text-gray-700 leading-relaxed">
-                Responsible for business growth strategies and client relationship management with a strong background in business development.
-              </p>
+            {/* CEO/MD */}
+            <div id="ceo" className="mt-16">
+              <h3 className="text-2xl font-semibold mb-6 text-center">CEO/MD</h3>
+              <div className="flex justify-center">
+                <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center max-w-md">
+                  <div className="w-32 h-32 rounded-full bg-[#33C3F0]/20 mx-auto mb-6 flex items-center justify-center">
+                    <Users className="h-12 w-12 text-[#33C3F0]" />
+                  </div>
+                  <h4 className="text-xl font-semibold mb-2">Baffajo Beita</h4>
+                  <p className="text-lg text-[#33C3F0] mb-4">Chief Executive Officer / Managing Director</p>
+                  <p className="text-sm text-gray-300">
+                    Leading Galaxy ITT's vision of digital transformation and technological innovation in sub-Saharan Africa.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Executive Directors */}
+            <div id="executive-directors" className="mt-16">
+              <h3 className="text-2xl font-semibold mb-6 text-center">Executive Directors</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-[#2C3342]/60 p-8 rounded-lg">
+                  <h4 className="text-xl font-semibold mb-2 text-[#33C3F0]">Executive Director Technical</h4>
+                  <h5 className="text-lg font-medium mb-3">Engr Nura</h5>
+                  <p className="text-sm text-gray-300">
+                    Leads the technical strategy and operations, bringing extensive experience in telecommunications and IT infrastructure development.
+                  </p>
+                </div>
+                
+                <div className="bg-[#2C3342]/60 p-8 rounded-lg">
+                  <h4 className="text-xl font-semibold mb-2 text-[#33C3F0]">Executive Director Business Development</h4>
+                  <h5 className="text-lg font-medium mb-3">Umar Gumel</h5>
+                  <p className="text-sm text-gray-300">
+                    Responsible for business growth strategies and client relationship management with a strong background in business development.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
