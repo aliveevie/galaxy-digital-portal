@@ -104,6 +104,18 @@ export default {
 					'33.33%, 93.33%': { opacity: '0', transform: 'scale(1.1)' },
 					'100%': { opacity: '1', transform: 'scale(1)' },
 				},
+				'grow-x': {
+					'0%': { width: '0', opacity: '0' },
+					'100%': { width: '100%', opacity: '1' }
+				},
+				'grow-y': {
+					'0%': { height: '0', opacity: '0' },
+					'100%': { height: '100%', opacity: '1' }
+				},
+				'slow-spin': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -111,6 +123,9 @@ export default {
 				'carousel': 'carousel 15s linear infinite',
 				'ping': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
 				'pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+				'grow-x': 'grow-x 2s ease-out forwards',
+				'grow-y': 'grow-y 2s ease-out forwards',
+				'slow-spin': 'slow-spin 20s linear infinite'
 			}
 		}
 	},
