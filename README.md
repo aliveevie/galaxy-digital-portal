@@ -1,73 +1,92 @@
-# Welcome to your Lovable project
+# Galaxy Digital Portal
 
-## Project info
+## About
 
-**URL**: https://lovable.dev/projects/2fe6cbcf-3465-4eb7-a66a-0a838f110479
+Galaxy Digital Portal is a modern web application featuring a sleek UI with an interactive rotating world animation that seamlessly blends with gradient backgrounds. The portal serves as a digital gateway to Galaxy services and information.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Modern, responsive UI built with React and TypeScript
+- Interactive 3D world animation in the hero section
+- Seamless gradient background integration
+- Clean design with proper spacing and matching color schemes
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/2fe6cbcf-3465-4eb7-a66a-0a838f110479) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- React with TypeScript
+- Vite for fast development and building
+- Tailwind CSS for styling
+- Radix UI components
+- AOS for scroll animations
 
-## How can I deploy this project?
+## Getting Started
 
-Simply open [Lovable](https://lovable.dev/projects/2fe6cbcf-3465-4eb7-a66a-0a838f110479) and click on Share -> Publish.
+### Prerequisites
 
-## Can I connect a custom domain to my Lovable project?
+- Node.js (LTS version recommended)
+- npm or bun package manager
 
-Yes, you can!
+### Installation
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Follow these steps to set up the project locally:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+```sh
+# Step 1: Clone the repository
+git clone [repository URL]
+
+# Step 2: Navigate to the project directory
+cd galaxy-digital-portal
+
+# Step 3: Install the necessary dependencies
+npm install
+# or if using bun
+bun install
+
+# Step 4: Start the development server
+npm run dev
+# or if using bun
+bun run dev
+```
+
+The application will be available at `http://localhost:5173` by default.
+
+## Building for Production
+
+To create a production build:
+
+```sh
+npm run build
+# or
+bun run build
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## Preview Production Build
+
+To preview the production build locally:
+
+```sh
+npm run preview
+# or
+bun run preview
+```
+
+## Development
+
+### Code Structure
+
+- `src/` - Contains all source code
+  - `components/` - Reusable UI components
+  - `pages/` - Page components
+  - `assets/` - Static assets like images and fonts
+  - `styles/` - Global styles and Tailwind configuration
+
+### Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint to check code quality
+- `npm run preview` - Preview production build locally

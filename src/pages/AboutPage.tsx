@@ -157,14 +157,19 @@ const AboutPage = () => {
             <div id="ceo" className="mt-16">
               <h3 className="text-2xl font-semibold mb-6 text-center">CEO/MD</h3>
               <div className="flex justify-center">
-                <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center max-w-md">
-                  <div className="w-32 h-32 rounded-full bg-[#33C3F0]/20 mx-auto mb-6 flex items-center justify-center">
-                    <Users className="h-12 w-12 text-[#33C3F0]" />
+                <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center max-w-md shadow-xl border border-[#33C3F0]/20 hover:border-[#33C3F0]/40 transition-all duration-300">
+                  <div className="w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg">
+                    <img 
+                      src="/management/md.png" 
+                      alt="Baffajo Beita - CEO/MD" 
+                      className="w-full h-full object-cover object-center"
+                    />
                   </div>
-                  <h4 className="text-xl font-semibold mb-2">Baffajo Beita</h4>
-                  <p className="text-lg text-[#33C3F0] mb-4">Chief Executive Officer / Managing Director</p>
-                  <p className="text-sm text-gray-300">
-                    Leading Galaxy ITT's vision of digital transformation and technological innovation in sub-Saharan Africa.
+                  <h4 className="text-2xl font-semibold mb-2">Baffajo Beita</h4>
+                  <p className="text-lg text-[#33C3F0] mb-4 font-medium">Chief Executive Officer / Managing Director</p>
+                  <div className="w-16 h-1 bg-[#33C3F0]/60 mx-auto mb-4"></div>
+                  <p className="text-gray-300 leading-relaxed">
+                    Leading Galaxy ITT's vision of digital transformation and technological innovation in sub-Saharan Africa. With extensive experience in the technology sector, Baffajo brings strategic leadership and a forward-thinking approach to drive the company's growth and success.
                   </p>
                 </div>
               </div>
