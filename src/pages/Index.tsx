@@ -2,7 +2,12 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, Clock, Trophy, Wifi, Network, Server, Cloud, Lock, Users, Mail, Bell, ArrowRight } from 'lucide-react';
+import { 
+  Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, 
+  Clock, Trophy, Wifi, Network, Server, Cloud, Lock, Users, 
+  Mail, Bell, ArrowRight, ChevronRight, ChevronLeft, Smartphone, 
+  Laptop, Building2
+} from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AOS from 'aos';
@@ -15,6 +20,7 @@ const Index = () => {
   const [subscriptionStatus, setSubscriptionStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [activeService, setActiveService] = useState<string | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
   
   // Refs for service sections
   const itConsultingRef = useRef<HTMLDivElement>(null);
@@ -23,6 +29,65 @@ const Index = () => {
   const cybersecurityRef = useRef<HTMLDivElement>(null);
   const itInfrastructureRef = useRef<HTMLDivElement>(null);
   const networkInstallationsRef = useRef<HTMLDivElement>(null);
+  
+  // Hero slides data for services showcase
+  const services = [
+    {
+      id: 'fiber-internet',
+      title: 'Fiber Internet',
+      headline: 'Internet Faster Than The Speed of Light',
+      description: 'Experience lightning-fast connectivity with our premium fiber optic network, offering speeds up to 10 Gbps and 99.99% uptime guarantee.',
+      image: 'https://images.unsplash.com/photo-1541728472741-03e45a58cf88?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      icon: <Wifi className="h-6 w-6" />,
+      color: 'from-blue-600 to-cyan-400',
+      highlight: '10 Gbps',
+      link: '/services/internet'
+    },
+    {
+      id: 'business-connectivity',
+      title: 'Business Solutions',
+      headline: 'Enterprise-Grade Connectivity',
+      description: 'Tailored connectivity solutions for businesses of all sizes, with dedicated support, guaranteed SLAs, and scalable bandwidth options.',
+      image: 'https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      icon: <Building2 className="h-6 w-6" />,
+      color: 'from-indigo-600 to-purple-500',
+      highlight: 'Enterprise',
+      link: '/services/business'
+    },
+    {
+      id: 'cloud-services',
+      title: 'Cloud Services',
+      headline: 'Seamless Cloud Integration',
+      description: 'Secure and reliable cloud solutions that optimize your operations, reduce costs, and accelerate your digital transformation journey.',
+      image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      icon: <Cloud className="h-6 w-6" />,
+      color: 'from-sky-500 to-blue-600',
+      highlight: 'Scalable',
+      link: '/services/cloud'
+    },
+    {
+      id: 'cybersecurity',
+      title: 'Cybersecurity',
+      headline: 'Advanced Threat Protection',
+      description: 'Comprehensive security solutions to protect your critical data and infrastructure from evolving cyber threats and vulnerabilities.',
+      image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      icon: <ShieldCheck className="h-6 w-6" />,
+      color: 'from-emerald-500 to-green-600',
+      highlight: 'Secured',
+      link: '/services/security'
+    },
+    {
+      id: 'mobile-solutions',
+      title: 'Mobile Solutions',
+      headline: 'Connectivity On The Go',
+      description: 'Stay connected wherever you go with our high-speed mobile data plans, international roaming, and IoT connectivity solutions.',
+      image: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      icon: <Smartphone className="h-6 w-6" />,
+      color: 'from-pink-500 to-rose-500',
+      highlight: 'Unlimited',
+      link: '/services/mobile'
+    }
+  ];
 
   // Email validation function
   const isValidEmail = (email: string) => {
@@ -43,6 +108,25 @@ const Index = () => {
     setSubscriptionStatus('success');
     setEmail('');
     setTimeout(() => setSubscriptionStatus('idle'), 3000);
+  };
+  
+  // Auto-advance slides
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % services.length);
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [services.length]);
+
+  // Navigate to previous slide
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? services.length - 1 : prev - 1));
+  };
+
+  // Navigate to next slide
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % services.length);
   };
 
   useEffect(() => {
@@ -121,121 +205,146 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#403E43] to-[#221F26]">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <Header />
       
-      {/* Modern Hero Section */}
-      <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0A0F1E]">
-        {/* Background Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-500/20 to-pink-500/20 mix-blend-overlay"></div>
-          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-20"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0F1E]/50 to-[#0A0F1E]"></div>
-        </div>
-
-        {/* Animated Shapes */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-1/2 left-1/2 w-[1000px] h-[1000px] bg-gradient-conic from-blue-500 via-purple-500 to-pink-500 rounded-full mix-blend-normal opacity-30 animate-slow-spin"></div>
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full filter blur-[128px] opacity-30 animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-r from-purple-500 to-pink-500 rounded-full filter blur-[128px] opacity-30 animate-pulse delay-1000"></div>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-4" data-aos="fade-up">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-            {/* Left Content */}
-            <div className="flex-1 text-left max-w-2xl">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4 mt-16"
-                   data-aos="fade-down">
-                <span className="w-2 h-2 rounded-full bg-[#33C3F0] mr-2 animate-pulse"></span>
-                <span className="text-[#33C3F0] text-sm font-medium">Leading Technology Solutions Provider</span>
-              </div>
-              
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 tracking-tight"
-                  data-aos="fade-right" data-aos-delay="100">
-                <span className="text-white">Innovative</span>
-                <br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#33C3F0] via-purple-500 to-pink-500">
-                  Digital Solutions
-                </span>
-              </h1>
-              
-              <p className="text-xl text-gray-300 mb-8 max-w-xl"
-                 data-aos="fade-right" data-aos-delay="200">
-                Transforming businesses through cutting-edge digital innovation and expert IT consulting. We help organizations navigate the digital landscape.
-              </p>
-              
-              <div className="flex flex-wrap gap-4"
-                   data-aos="fade-up" data-aos-delay="300">
-                <Button 
-                  onClick={scrollToServices}
-                  className="bg-[#33C3F0] hover:bg-[#33C3F0]/90 text-white px-8 py-6 text-lg
-                    rounded-xl transition-all duration-300 shadow-lg shadow-[#33C3F0]/25
-                    hover:shadow-xl hover:shadow-[#33C3F0]/30 hover:scale-[1.02]"
-                >
-                  Explore Our Services
-                </Button>
-                <Link to="/contact">
-                  <Button 
-                    className="bg-white/10 backdrop-blur-sm text-white px-8 py-6 text-lg
-                      rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
-                  >
-                    Contact Us
-                  </Button>
-                </Link>
-              </div>
-
-              {/* Stats */}
-              <div id="stats-section" className="grid grid-cols-3 gap-8 mt-12" data-aos="fade-up" data-aos-delay="400">
-                <div>
-                  <div className="text-3xl font-bold text-white mb-1">
-                    <span className="tabular-nums">{counts.years}</span>+
-                  </div>
-                  <div className="text-sm text-gray-400">Years Experience</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-white mb-1">
-                    <span className="tabular-nums">{counts.projects}</span>+
-                  </div>
-                  <div className="text-sm text-gray-400">Projects Completed</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-white mb-1">
-                    <span className="tabular-nums">{counts.team}</span>+
-                  </div>
-                  <div className="text-sm text-gray-400">Expert Team</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Content - Single Animation */}
-            <div className="flex-1 relative" data-aos="zoom-in" data-aos-delay="200">
-              <div className="relative w-full aspect-square max-w-[600px] mx-auto">
-                
-                {/* Animation container with background matching hero section */}
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-[#0A0F1E] to-[#221F26]">
-                  {/* Animated background to match hero gradients */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 via-purple-500/30 to-pink-500/30 mix-blend-overlay animate-pulse"></div>
-                  
-                  {/* Single animation with enhanced blending */}
+      {/* Full-screen Hero Section with Service Showcase */}
+      <div className="relative h-screen overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1128] to-[#001f54] z-0"></div>
+        
+        {/* Service Slider */}
+        <div className="relative z-10 h-full">
+          <div 
+            className="flex transition-transform duration-1000 ease-out h-full"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {services.map((service, index) => (
+              <div key={service.id} className="min-w-full h-full relative flex items-center">
+                {/* Background Image with Overlay - Full Screen */}
+                <div className="absolute inset-0 z-10">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a1128]/80 via-[#001f54]/60 to-transparent z-20"></div>
                   <img 
-                    src="/animations/animation1.gif"
-                    alt="Digital Transformation Animation"
-                    className="w-full h-full object-contain"
-                    style={{ 
-                      mixBlendMode: 'plus-lighter',  // More aggressive blend for dark backgrounds
-                      filter: 'drop-shadow(0 0 25px rgba(51,195,240,0.7))'
-                    }}
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
+                
+                {/* Content Container - Centered */}
+                <div className="container mx-auto px-4 md:px-8 relative z-30 h-full flex items-center">
+                  <div className="max-w-3xl">
+                    {/* Text Content */}
+                    <div className="text-white">
+                      <div 
+                        className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
+                        data-aos="fade-up"
+                        data-aos-delay="100"
+                      >
+                        <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color} mr-2 animate-pulse`}></span>
+                        <span className="text-white text-sm font-medium flex items-center gap-2">
+                          {service.icon}
+                          {service.title}
+                        </span>
+                      </div>
+                      
+                      <h1 
+                        className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                      >
+                        <span className="text-white">{service.headline.split(' ').slice(0, -1).join(' ')} </span>
+                        <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.color}`}>
+                          {service.headline.split(' ').slice(-1)}
+                        </span>
+                      </h1>
+                      
+                      <p 
+                        className="text-xl text-white/80 mb-8 max-w-xl"
+                        data-aos="fade-up"
+                        data-aos-delay="300"
+                      >
+                        {service.description}
+                      </p>
+                      
+                      <div 
+                        className="flex flex-wrap gap-4"
+                        data-aos="fade-up"
+                        data-aos-delay="400"
+                      >
+                        <Link to={service.link}>
+                          <Button 
+                            className={`bg-gradient-to-r ${service.color} text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-base sm:text-lg`}
+                          >
+                            Learn More
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                          </Button>
+                        </Link>
+                        <Button 
+                          onClick={scrollToServices}
+                          className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-all duration-300 text-base sm:text-lg"
+                        >
+                          Explore Services
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Navigation Controls - Positioned at bottom */}
+          <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center items-center gap-8">
+            {/* Slide Indicators */}
+            <div className="flex space-x-3">
+              {services.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    idx === currentSlide 
+                      ? 'bg-white scale-125' 
+                      : 'bg-white/30 hover:bg-white/50'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+            
+            {/* Arrow Controls */}
+            <div className="flex space-x-4">
+              <button
+                onClick={prevSlide}
+                className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+          
+          {/* Scroll Down Indicator */}
+          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 animate-bounce hidden md:block">
+            <div className="flex flex-col items-center cursor-pointer" onClick={scrollToServices}>
+              <span className="text-white/70 text-sm mb-2">Scroll Down</span>
+              <div className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center p-1">
+                <div className="w-1 h-2 bg-white rounded-full animate-pulse"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Services Section */}
+      {/* Services Section - Now starts after the full-screen hero */}
       <section id="services" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#1A1F2C]"
@@ -877,19 +986,19 @@ const Index = () => {
                         <img 
                           src="https://images.unsplash.com/photo-1661956602868-6ae368943878?auto=format&fit=crop&q=80&w=600&h=400"
                           alt="Galaxy ITT Logo" 
-                          className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(51,195,240,0.5)]"
+                          className="w-full h-full object-contain"
                         />
                       </div>
                       <div className="absolute inset-0 flex items-center justify-center animate-carousel" style={{ animationDelay: '5s' }}>
                         <img 
-                          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600&h=400"
+                          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&q=80&w=600&h=400"
                           alt="Technology Innovation"
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="absolute inset-0 flex items-center justify-center animate-carousel" style={{ animationDelay: '10s' }}>
                         <img 
-                          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600&h=400"
+                          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&q=80&w=600&h=400"
                           alt="IT Solutions"
                           className="w-full h-full object-cover"
                         />
@@ -926,7 +1035,7 @@ const Index = () => {
             {/* VR Image 1 with Animation */}
             <div className="relative w-full max-w-md" data-aos="fade-right" data-aos-duration="1000">
               <div className="absolute inset-0 bg-gradient-to-r from-[#33C3F0]/40 to-[#9B87F5]/40 rounded-lg blur-xl animate-pulse"></div>
-              <div className="relative bg-[#2A2D3E]/80 p-2 rounded-lg backdrop-blur-sm border border-[#33C3F0]/30">
+              <div className="relative bg-[#2A2D3E]/80 p-2 rounded-lg backdrop-blur-sm border border-[#33C3F0]/20">
                 <div className="overflow-hidden rounded-lg">
                   <img 
                     src="/animations/animations2/vr1.png" 
@@ -945,7 +1054,7 @@ const Index = () => {
             {/* VR Image 2 with Animation */}
             <div className="relative w-full max-w-md mt-12 md:mt-24" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
               <div className="absolute inset-0 bg-gradient-to-r from-[#9B87F5]/40 to-[#33C3F0]/40 rounded-lg blur-xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-              <div className="relative bg-[#2A2D3E]/80 p-2 rounded-lg backdrop-blur-sm border border-[#9B87F5]/30">
+              <div className="relative bg-[#2A2D3E]/80 p-2 rounded-lg backdrop-blur-sm border border-[#9B87F5]/20">
                 <div className="overflow-hidden rounded-lg">
                   <img 
                     src="/animations/animations2/vr2.png" 
