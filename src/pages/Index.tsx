@@ -6,14 +6,12 @@ import {
   Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, 
   Clock, Trophy, Wifi, Network, Server, Cloud, Lock, Users, 
   Mail, Bell, ArrowRight, ChevronRight, ChevronLeft, Smartphone, 
-  Laptop, Building2, MessageCircle, X, Send, Headphones, User,
-  Loader2, Phone
+  Laptop, Building2, MessageCircle, X, Send, Headphones, User
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { sendWhatsAppMessage, sendWhatsAppTemplate, checkMessageStatus } from '@/services/whatsappService';
 
 const Index = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -26,15 +24,9 @@ const Index = () => {
   const [showChatButton, setShowChatButton] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
-  const [chatMessages, setChatMessages] = useState<{type: 'user' | 'agent', text: string, status?: string, messageId?: string}[]>([
+  const [chatMessages, setChatMessages] = useState<{type: 'user' | 'agent', text: string}[]>([
     {type: 'agent', text: 'Hello! Welcome to Galaxy Digital Portal. How can I help you today?'}
   ]);
-  const [isWhatsAppConnected, setIsWhatsAppConnected] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [userPhoneNumber, setUserPhoneNumber] = useState('');
-  const [showPhoneInput, setShowPhoneInput] = useState(false);
-  
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Refs for service sections
   const itConsultingRef = useRef<HTMLDivElement>(null);
@@ -232,169 +224,27 @@ const Index = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll to bottom of chat messages when new messages arrive
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [chatMessages]);
-
-  // Check message status periodically
-  useEffect(() => {
-    const pendingMessages = chatMessages.filter(msg => 
-      msg.type === 'user' && 
-      msg.messageId && 
-      (msg.status === 'sending' || msg.status === 'sent')
-    );
-    
-    if (pendingMessages.length === 0) return;
-    
-    const checkInterval = setInterval(async () => {
-      for (const message of pendingMessages) {
-        if (!message.messageId) continue;
-        
-        try {
-          const statusResponse = await checkMessageStatus(message.messageId);
-          
-          if (statusResponse.status === 'delivered' || statusResponse.status === 'read') {
-            setChatMessages(prev => prev.map(msg => 
-              msg.messageId === message.messageId 
-                ? { ...msg, status: statusResponse.status } 
-                : msg
-            ));
-          }
-        } catch (error) {
-          console.error('Error checking message status:', error);
-        }
-      }
-    }, 10000); // Check every 10 seconds
-    
-    return () => clearInterval(checkInterval);
-  }, [chatMessages]);
-
-  // Handle connecting to WhatsApp
-  const handleConnectWhatsApp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!userPhoneNumber.trim()) {
-      return;
-    }
-    
-    // Validate phone number format (simple validation)
-    const phoneRegex = /^\+[1-9]\d{1,14}$/;
-    if (!phoneRegex.test(userPhoneNumber)) {
-      setChatMessages(prev => [
-        ...prev,
-        {
-          type: 'agent',
-          text: 'Please enter a valid phone number in international format (e.g., +1234567890)'
-        }
-      ]);
-      return;
-    }
-    
-    setIsLoading(true);
-    
-    try {
-      // Send a template message to initiate WhatsApp conversation
-      const response = await sendWhatsAppTemplate(userPhoneNumber);
-      
-      if (response && response.messages && response.messages[0].id) {
-        setIsWhatsAppConnected(true);
-        setShowPhoneInput(false);
-        
-        setChatMessages(prev => [
-          ...prev,
-          {
-            type: 'agent',
-            text: 'You\'ve been connected to WhatsApp! You should receive a message shortly. Continue chatting here and all messages will be synced with WhatsApp.'
-          }
-        ]);
-      }
-    } catch (error) {
-      console.error('Error connecting to WhatsApp:', error);
-      setChatMessages(prev => [
-        ...prev,
-        {
-          type: 'agent',
-          text: 'Sorry, we couldn\'t connect to WhatsApp at this time. Please try again later or continue chatting here.'
-        }
-      ]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   // Handle sending chat messages
-  const handleSendMessage = async (e: React.FormEvent) => {
+  const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!chatMessage.trim()) return;
     
-    // Add user message to chat
-    const userMessageObj = {
-      type: 'user' as const,
-      text: chatMessage,
-      status: isWhatsAppConnected ? 'sending' : undefined
-    };
+    // Add user message
+    setChatMessages([...chatMessages, {type: 'user', text: chatMessage}]);
     
-    setChatMessages(prev => [...prev, userMessageObj]);
-    const currentMessage = chatMessage;
-    setChatMessage('');
-    
-    if (isWhatsAppConnected) {
-      // Send message to WhatsApp
-      try {
-        const response = await sendWhatsAppMessage(currentMessage, userPhoneNumber);
-        
-        if (response && response.messages && response.messages[0].id) {
-          // Update message with ID and status
-          setChatMessages(prev => 
-            prev.map(msg => 
-              msg === userMessageObj 
-                ? { 
-                    ...msg, 
-                    messageId: response.messages[0].id,
-                    status: 'sent'
-                  } 
-                : msg
-            )
-          );
-          
-          // Simulate agent response after a delay
-          setTimeout(() => {
-            setChatMessages(prev => [
-              ...prev, 
-              {
-                type: 'agent', 
-                text: "Thank you for your message. Our support team has received it on WhatsApp and will respond shortly. Is there anything else I can help you with?"
-              }
-            ]);
-          }, 1000);
+    // Simulate agent response
+    setTimeout(() => {
+      setChatMessages(prev => [
+        ...prev, 
+        {
+          type: 'agent', 
+          text: "Thank you for your message. One of our support agents will respond shortly. Is there anything else I can help you with?"
         }
-      } catch (error) {
-        console.error('Error sending message to WhatsApp:', error);
-        
-        // Update UI to show error
-        setChatMessages(prev => [
-          ...prev,
-          {
-            type: 'agent',
-            text: 'Sorry, we couldn\'t send your message to WhatsApp. Our team has been notified of the issue.'
-          }
-        ]);
-      }
-    } else {
-      // Regular chat flow without WhatsApp
-      setTimeout(() => {
-        setChatMessages(prev => [
-          ...prev, 
-          {
-            type: 'agent', 
-            text: "Thank you for your message. One of our support agents will respond shortly. Would you like to continue this conversation on WhatsApp for faster responses?",
-          }
-        ]);
-        setShowPhoneInput(true);
-      }, 1000);
-    }
+      ]);
+    }, 1000);
+    
+    setChatMessage('');
   };
 
   return (
@@ -1537,20 +1387,13 @@ const Index = () => {
                   <p className="text-white/80 text-sm">We typically reply in a few minutes</p>
                 </div>
               </div>
-              <div className="flex items-center">
-                {isWhatsAppConnected && (
-                  <div className="mr-3 bg-white/10 p-1.5 rounded-full" title="Connected to WhatsApp">
-                    <Phone className="h-4 w-4 text-white" />
-                  </div>
-                )}
-                <button 
-                  onClick={() => setIsChatOpen(false)}
-                  className="text-white/80 hover:text-white transition-colors"
-                  aria-label="Close chat"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-              </div>
+              <button 
+                onClick={() => setIsChatOpen(false)}
+                className="text-white/80 hover:text-white transition-colors"
+                aria-label="Close chat"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
             
             {/* Chat Messages */}
@@ -1565,64 +1408,17 @@ const Index = () => {
                       <User className="h-4 w-4 text-white" />
                     </div>
                   )}
-                  <div className="flex flex-col">
-                    <div 
-                      className={`max-w-[80%] p-3 rounded-lg ${
-                        msg.type === 'user' 
-                          ? 'bg-[#33C3F0] text-white rounded-tr-none' 
-                          : 'bg-white text-gray-800 rounded-tl-none shadow-sm border border-gray-100'
-                      }`}
-                    >
-                      {msg.text}
-                    </div>
-                    {msg.status && (
-                      <div className="text-xs text-gray-500 mt-1 flex items-center justify-end">
-                        {msg.status === 'sending' && <Loader2 className="h-3 w-3 mr-1 animate-spin" />}
-                        {msg.status === 'sent' && <CheckCircle className="h-3 w-3 mr-1" />}
-                        {msg.status === 'delivered' && <CheckCircle className="h-3 w-3 mr-1 text-[#33C3F0]" />}
-                        {msg.status === 'read' && <CheckCircle className="h-3 w-3 mr-1 text-green-500" />}
-                        {msg.status}
-                      </div>
-                    )}
+                  <div 
+                    className={`max-w-[80%] p-3 rounded-lg ${
+                      msg.type === 'user' 
+                        ? 'bg-[#33C3F0] text-white rounded-tr-none' 
+                        : 'bg-white text-gray-800 rounded-tl-none shadow-sm border border-gray-100'
+                    }`}
+                  >
+                    {msg.text}
                   </div>
                 </div>
               ))}
-              
-              {/* WhatsApp Phone Input */}
-              {showPhoneInput && !isWhatsAppConnected && (
-                <div className="bg-white p-3 rounded-lg border border-gray-200 mt-2">
-                  <p className="text-sm text-gray-700 mb-2">
-                    Enter your phone number to continue this conversation on WhatsApp:
-                  </p>
-                  <form onSubmit={handleConnectWhatsApp} className="flex gap-2">
-                    <input
-                      type="text"
-                      value={userPhoneNumber}
-                      onChange={(e) => setUserPhoneNumber(e.target.value)}
-                      placeholder="+1234567890"
-                      className="flex-1 px-3 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#33C3F0] text-sm"
-                    />
-                    <button 
-                      type="submit"
-                      disabled={isLoading}
-                      className="bg-green-500 p-2 rounded-lg text-white flex items-center justify-center"
-                      aria-label="Connect to WhatsApp"
-                    >
-                      {isLoading ? (
-                        <Loader2 className="h-5 w-5 animate-spin" />
-                      ) : (
-                        <Phone className="h-5 w-5" />
-                      )}
-                    </button>
-                  </form>
-                  <p className="text-xs text-gray-500 mt-2">
-                    Enter your number in international format (e.g., +1234567890)
-                  </p>
-                </div>
-              )}
-              
-              {/* Reference for auto-scrolling */}
-              <div ref={messagesEndRef} />
             </div>
             
             {/* Chat Input */}
