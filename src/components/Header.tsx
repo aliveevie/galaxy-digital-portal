@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   NavigationMenu,
@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Menu, Info, Book, File, Users, Phone, Mail, Video, FileQuestion, Newspaper, Moon, Sun } from 'lucide-react';
+import { Menu, Info, Book, File, Users, Phone, Mail, Video, FileQuestion, Newspaper, Moon, Sun, MessageCircle } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -23,6 +23,22 @@ import { useTheme } from '@/hooks/use-theme';
 const Header = () => {
   const isMobile = useIsMobile();
   const { theme, toggleTheme } = useTheme();
+  const [scrolled, setScrolled] = useState(false);
+  
+  // Handle scroll effect for header
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
 
   const menuContent = (
     <>
@@ -330,23 +346,31 @@ const Header = () => {
   );
 
   return (
-    <div className={`w-full fixed top-0 z-50 ${theme === 'dark' ? 'bg-[#1A1F2C]' : 'bg-blue-50'} shadow-md`}>
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div className={`w-full fixed top-0 z-50 transition-all duration-300 ${
+      scrolled 
+        ? `backdrop-blur-md ${theme === 'dark' ? 'bg-[#1A1F2C]/90' : 'bg-white/80'} shadow-lg` 
+        : 'bg-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo on the left */}
         <Link to="/" className="flex-shrink-0">
           <img 
             src="/galaxy-logo.png" 
             alt="Galaxy Digital Portal" 
-            className="h-9 w-auto"
+            className="h-10 w-auto"
             style={{
-              filter: theme === 'dark' ? 'brightness(0) invert(1)' : 'none',
+              filter: theme === 'dark' || !scrolled ? 'brightness(0) invert(1)' : 'none',
               opacity: 1
             }}
           />
         </Link>
 
-        {/* Menu with shaped background */}
-        <div className={`${theme === 'dark' ? 'bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900' : 'bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-400'} rounded-full shadow-lg`}>
+        {/* Menu with glass morphism effect */}
+        <div className={`${
+          scrolled 
+            ? `${theme === 'dark' ? 'bg-gradient-to-r from-blue-900/70 via-indigo-800/70 to-blue-900/70' : 'bg-gradient-to-r from-blue-500/70 via-indigo-600/70 to-blue-500/70'}`
+            : 'bg-transparent'
+        } rounded-full backdrop-blur-sm shadow-lg`}>
           <NavigationMenu>
             <NavigationMenuList className="hidden md:flex px-6 py-2">
               {menuContent}
@@ -355,34 +379,36 @@ const Header = () => {
         </div>
 
         {/* Theme Switch */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={toggleTheme}
-          className={`${theme === 'dark' ? 'text-white hover:text-[#33C3F0] hover:bg-white/10' : 'text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-100'} border border-gray-200`}
-        >
-          {theme === 'dark' ? (
-            <Moon className="h-5 w-5" />
-          ) : (
-            <Sun className="h-5 w-5" />
-          )}
-          <span className="sr-only">Toggle theme</span>
-        </Button>
+        <div className="flex items-center gap-4">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            className={`${theme === 'dark' || !scrolled ? 'text-white hover:text-[#33C3F0] hover:bg-white/10' : 'text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-100'} border border-gray-200 backdrop-blur-sm`}
+          >
+            {theme === 'dark' ? (
+              <Moon className="h-5 w-5" />
+            ) : (
+              <Sun className="h-5 w-5" />
+            )}
+            <span className="sr-only">Toggle theme</span>
+          </Button>
 
-        {/* Mobile Menu */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger className="p-2 rounded-full bg-[#1A1F2C] text-white hover:bg-[#33C3F0] transition-colors">
-              <Menu className="h-6 w-6" />
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-[#1A1F2C]">
-              <NavigationMenu className="w-full">
-                <NavigationMenuList className="flex-col items-start space-y-2">
-                  {menuContent}
-                </NavigationMenuList>
-              </NavigationMenu>
-            </SheetContent>
-          </Sheet>
+          {/* Mobile Menu */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition-colors shadow-md">
+                <Menu className="h-6 w-6" />
+              </SheetTrigger>
+              <SheetContent side="right" className={`${theme === 'dark' ? 'bg-[#1A1F2C]' : 'bg-white'}`}>
+                <NavigationMenu className="w-full">
+                  <NavigationMenuList className="flex-col items-start space-y-2">
+                    {menuContent}
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </div>

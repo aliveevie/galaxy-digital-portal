@@ -6,7 +6,7 @@ import {
   Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, 
   Clock, Trophy, Wifi, Network, Server, Cloud, Lock, Users, 
   Mail, Bell, ArrowRight, ChevronRight, ChevronLeft, Smartphone, 
-  Laptop, Building2
+  Laptop, Building2, MessageCircle, X, Send, Headphones, User
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -21,6 +21,12 @@ const Index = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [activeService, setActiveService] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showChatButton, setShowChatButton] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatMessage, setChatMessage] = useState('');
+  const [chatMessages, setChatMessages] = useState<{type: 'user' | 'agent', text: string}[]>([
+    {type: 'agent', text: 'Hello! Welcome to Galaxy Digital Portal. How can I help you today?'}
+  ]);
   
   // Refs for service sections
   const itConsultingRef = useRef<HTMLDivElement>(null);
@@ -202,6 +208,43 @@ const Index = () => {
   const scrollToServices = () => {
     const servicesSection = document.getElementById('services');
     servicesSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Show chat button on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowChatButton(true);
+      } else {
+        setShowChatButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle sending chat messages
+  const handleSendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!chatMessage.trim()) return;
+    
+    // Add user message
+    setChatMessages([...chatMessages, {type: 'user', text: chatMessage}]);
+    
+    // Simulate agent response
+    setTimeout(() => {
+      setChatMessages(prev => [
+        ...prev, 
+        {
+          type: 'agent', 
+          text: "Thank you for your message. One of our support agents will respond shortly. Is there anything else I can help you with?"
+        }
+      ]);
+    }, 1000);
+    
+    setChatMessage('');
   };
 
   return (
@@ -409,7 +452,7 @@ const Index = () => {
                 <ServiceCard 
                   icon={<Sparkles className="h-8 w-8 text-[#33C3F0]" />}
                   title="Cybersecurity"
-                  description="Comprehensive security services to protect your valuable data and systems."
+                  description="Comprehensive security solutions to protect your critical data and infrastructure from evolving cyber threats and vulnerabilities."
                 />
               </div>
             </div>
@@ -1313,6 +1356,91 @@ const Index = () => {
 
       {/* Footer - replaced with our new Footer component */}
       <Footer />
+
+      {/* Support Chat Button - Appears on scroll */}
+      <div 
+        className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
+          showChatButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`}
+      >
+        {!isChatOpen ? (
+          <button 
+            onClick={() => setIsChatOpen(true)}
+            className="bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+            aria-label="Open support chat"
+          >
+            <MessageCircle className="h-6 w-6 text-white" />
+            <span className="absolute right-full mr-3 bg-white text-[#1A1F2C] px-3 py-1 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium">
+              Chat with support
+            </span>
+          </button>
+        ) : (
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden w-80 md:w-96 flex flex-col max-h-[500px] border border-gray-200">
+            {/* Chat Header */}
+            <div className="bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] p-4 flex justify-between items-center">
+              <div className="flex items-center">
+                <div className="bg-white p-2 rounded-full mr-3">
+                  <Headphones className="h-5 w-5 text-[#33C3F0]" />
+                </div>
+                <div>
+                  <h3 className="text-white font-bold">Support Team</h3>
+                  <p className="text-white/80 text-sm">We typically reply in a few minutes</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setIsChatOpen(false)}
+                className="text-white/80 hover:text-white transition-colors"
+                aria-label="Close chat"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            
+            {/* Chat Messages */}
+            <div className="flex-1 overflow-y-auto p-4 bg-gray-50 flex flex-col gap-3">
+              {chatMessages.map((msg, index) => (
+                <div 
+                  key={index} 
+                  className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  {msg.type === 'agent' && (
+                    <div className="w-8 h-8 rounded-full bg-[#33C3F0] flex items-center justify-center mr-2 flex-shrink-0">
+                      <User className="h-4 w-4 text-white" />
+                    </div>
+                  )}
+                  <div 
+                    className={`max-w-[80%] p-3 rounded-lg ${
+                      msg.type === 'user' 
+                        ? 'bg-[#33C3F0] text-white rounded-tr-none' 
+                        : 'bg-white text-gray-800 rounded-tl-none shadow-sm border border-gray-100'
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Chat Input */}
+            <form onSubmit={handleSendMessage} className="border-t border-gray-200 p-3 flex gap-2">
+              <input
+                type="text"
+                value={chatMessage}
+                onChange={(e) => setChatMessage(e.target.value)}
+                placeholder="Type your message..."
+                className="flex-1 px-4 py-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-[#33C3F0]"
+              />
+              <button 
+                type="submit"
+                className="bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] p-2 rounded-full text-white"
+                aria-label="Send message"
+              >
+                <Send className="h-5 w-5" />
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
