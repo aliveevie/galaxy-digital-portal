@@ -43,11 +43,15 @@ const Index = () => {
       title: 'Fiber Internet',
       headline: 'Internet Faster Than The Speed of Light',
       description: 'Experience lightning-fast connectivity with our premium fiber optic network, offering speeds up to 10 Gbps and 99.99% uptime guarantee.',
-      image: 'https://images.unsplash.com/photo-1541728472741-03e45a58cf88?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      backgroundOverlay: 'bg-gradient-to-r from-[#0a1128]/90 via-[#001f54]/70 to-transparent',
       icon: <Wifi className="h-6 w-6" />,
       color: 'from-blue-600 to-cyan-400',
       highlight: '10 Gbps',
-      link: '/services/internet'
+      link: '/services/internet',
+      position: 'left', // Text position
+      particles: 'data-fiber-lines', // Particle effect class
+      textAnimation: 'typing-effect' // Text animation style
     },
     {
       id: 'business-connectivity',
@@ -55,10 +59,14 @@ const Index = () => {
       headline: 'Enterprise-Grade Connectivity',
       description: 'Tailored connectivity solutions for businesses of all sizes, with dedicated support, guaranteed SLAs, and scalable bandwidth options.',
       image: 'https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      backgroundOverlay: 'bg-gradient-to-b from-[#0a1128]/80 via-[#001f54]/60 to-transparent',
       icon: <Building2 className="h-6 w-6" />,
       color: 'from-indigo-600 to-purple-500',
       highlight: 'Enterprise',
-      link: '/services/business'
+      link: '/services/business',
+      position: 'center', // Text position
+      particles: 'data-grid', // Particle effect class
+      textAnimation: 'zoom-in' // Text animation style
     },
     {
       id: 'cloud-services',
@@ -66,10 +74,14 @@ const Index = () => {
       headline: 'Seamless Cloud Integration',
       description: 'Secure and reliable cloud solutions that optimize your operations, reduce costs, and accelerate your digital transformation journey.',
       image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      backgroundOverlay: 'bg-gradient-to-l from-[#0a1128]/80 via-[#001f54]/60 to-transparent',
       icon: <Cloud className="h-6 w-6" />,
       color: 'from-sky-500 to-blue-600',
       highlight: 'Scalable',
-      link: '/services/cloud'
+      link: '/services/cloud',
+      position: 'right', // Text position
+      particles: 'data-waves', // Particle effect class
+      textAnimation: 'slide-in-right' // Text animation style
     },
     {
       id: 'cybersecurity',
@@ -77,10 +89,14 @@ const Index = () => {
       headline: 'Advanced Threat Protection',
       description: 'Comprehensive security solutions to protect your critical data and infrastructure from evolving cyber threats and vulnerabilities.',
       image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      backgroundOverlay: 'bg-gradient-to-tr from-[#0a1128]/90 via-[#001f54]/70 to-transparent',
       icon: <ShieldCheck className="h-6 w-6" />,
       color: 'from-emerald-500 to-green-600',
       highlight: 'Secured',
-      link: '/services/security'
+      link: '/services/security',
+      position: 'left', // Text position
+      particles: 'data-shield', // Particle effect class
+      textAnimation: 'fade-in-up' // Text animation style
     },
     {
       id: 'mobile-solutions',
@@ -88,10 +104,14 @@ const Index = () => {
       headline: 'Connectivity On The Go',
       description: 'Stay connected wherever you go with our high-speed mobile data plans, international roaming, and IoT connectivity solutions.',
       image: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      backgroundOverlay: 'bg-gradient-to-tl from-[#0a1128]/80 via-[#001f54]/60 to-transparent',
       icon: <Smartphone className="h-6 w-6" />,
       color: 'from-pink-500 to-rose-500',
       highlight: 'Unlimited',
-      link: '/services/mobile'
+      link: '/services/mobile',
+      position: 'center', // Text position
+      particles: 'data-circles', // Particle effect class
+      textAnimation: 'bounce-in' // Text animation style
     }
   ];
 
@@ -247,15 +267,322 @@ const Index = () => {
     setChatMessage('');
   };
 
+  useEffect(() => {
+    // Add custom animation styles to head
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slide-in-left {
+        0% { transform: translateX(-100px); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+      }
+      
+      @keyframes slide-in-right {
+        0% { transform: translateX(100px); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+      }
+      
+      @keyframes zoom-in {
+        0% { transform: scale(0.8); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      
+      @keyframes fade-in-up {
+        0% { transform: translateY(30px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+      }
+      
+      @keyframes bounce-in {
+        0% { transform: scale(0.3); opacity: 0; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+        70% { transform: scale(0.9); opacity: 0.9; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      @keyframes pulse-glow {
+        0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+      }
+      
+      @keyframes text-glow {
+        0% { text-shadow: 0 0 5px rgba(77, 213, 255, 0.5), 0 0 10px rgba(77, 213, 255, 0.3); }
+        50% { text-shadow: 0 0 20px rgba(77, 213, 255, 0.8), 0 0 30px rgba(77, 213, 255, 0.5), 0 0 40px rgba(77, 213, 255, 0.3); }
+        100% { text-shadow: 0 0 5px rgba(77, 213, 255, 0.5), 0 0 10px rgba(77, 213, 255, 0.3); }
+      }
+      
+      @keyframes fiber-line-animation {
+        0% { transform: translateX(-100%) scaleY(0.5); opacity: 0.3; }
+        50% { transform: translateX(0%) scaleY(1); opacity: 0.7; }
+        100% { transform: translateX(100%) scaleY(0.5); opacity: 0.3; }
+      }
+      
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+      
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: rgba(255, 255, 255, 0.75) }
+      }
+      
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        pointer-events: none;
+      }
+      
+      [data-dots] {
+        position: relative;
+      }
+      
+      [data-dots]::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+        opacity: 0.5;
+      }
+      
+      [data-fiber-lines] {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      [data-fiber-lines]::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+          linear-gradient(90deg, rgba(77, 213, 255, 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(77, 213, 255, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px, 10px 10px;
+        opacity: 0.3;
+      }
+      
+      .fiber-line {
+        position: absolute;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(77, 213, 255, 0.7), transparent);
+        animation: fiber-line-animation 3s linear infinite;
+      }
+      
+      [data-grid]::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px;
+        opacity: 0.5;
+      }
+      
+      [data-waves]::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.05),
+          rgba(255, 255, 255, 0.05) 10px,
+          transparent 10px,
+          transparent 20px
+        );
+        opacity: 0.3;
+      }
+      
+      [data-shield]::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: repeating-radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 255, 255, 0.05),
+          rgba(255, 255, 255, 0.05) 10px,
+          transparent 10px,
+          transparent 20px
+        );
+        opacity: 0.4;
+      }
+      
+      [data-circles]::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.1) 20px, transparent 60px),
+                          radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.1) 30px, transparent 70px),
+                          radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.1) 40px, transparent 80px);
+        opacity: 0.6;
+      }
+      
+      .slide-in-left { animation: slide-in-left 0.8s ease forwards; }
+      .slide-in-right { animation: slide-in-right 0.8s ease forwards; }
+      .zoom-in { animation: zoom-in 0.8s ease forwards; }
+      .fade-in-up { animation: fade-in-up 0.8s ease forwards; }
+      .bounce-in { animation: bounce-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+      .float { animation: float 6s ease-in-out infinite; }
+      .pulse-glow { animation: pulse-glow 2s infinite; }
+      .text-glow { animation: text-glow 3s infinite; }
+      
+      .typing-effect {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: 
+          typing 3.5s steps(40, end) forwards,
+          blink-caret .75s step-end 8;
+      }
+      
+      .typing-container {
+        display: inline-block;
+        border-right: 3px solid rgba(255, 255, 255, 0.75);
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Create particle effects
+    const createParticles = () => {
+      const heroSection = document.querySelector('.hero-section');
+      if (!heroSection) return;
+      
+      // Clear existing particles
+      const existingParticles = document.querySelectorAll('.particle');
+      existingParticles.forEach(p => p.remove());
+      
+      // Create new particles
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random position, size and opacity
+        const size = Math.random() * 5 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.opacity = `${Math.random() * 0.5 + 0.1}`;
+        
+        // Random animation
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 5;
+        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+        
+        heroSection.appendChild(particle);
+      }
+    };
+    
+    // Create fiber lines animation for the fiber internet slide
+    const createFiberLines = () => {
+      const fiberSlide = document.querySelector('[data-fiber-lines]');
+      if (!fiberSlide) return;
+      
+      // Clear existing lines
+      const existingLines = fiberSlide.querySelectorAll('.fiber-line');
+      existingLines.forEach(line => line.remove());
+      
+      // Create new lines
+      for (let i = 0; i < 15; i++) {
+        const line = document.createElement('div');
+        line.classList.add('fiber-line');
+        
+        // Random position and width
+        const top = Math.random() * 100;
+        const width = Math.random() * 100 + 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 2 + 2;
+        
+        line.style.top = `${top}%`;
+        line.style.width = `${width}px`;
+        line.style.animationDelay = `${delay}s`;
+        line.style.animationDuration = `${duration}s`;
+        
+        fiberSlide.appendChild(line);
+      }
+    };
+    
+    createParticles();
+    createFiberLines();
+    
+    window.addEventListener('resize', createParticles);
+    window.addEventListener('resize', createFiberLines);
+    
+    // Re-create fiber lines when slide changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'style') {
+          setTimeout(createFiberLines, 100);
+        }
+      });
+    });
+    
+    const slider = document.querySelector('.hero-section .flex');
+    if (slider) {
+      observer.observe(slider, { attributes: true });
+    }
+    
+    return () => {
+      document.head.removeChild(style);
+      window.removeEventListener('resize', createParticles);
+      window.removeEventListener('resize', createFiberLines);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
       <Header />
       
       {/* Full-screen Hero Section with Service Showcase */}
-      <div className="relative h-screen overflow-hidden">
+      <div className="relative h-screen overflow-hidden hero-section">
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1128] to-[#001f54] z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1128] to-[#001f54] z-0">
+          {/* Animated background elements */}
+          <div className="absolute inset-0 overflow-hidden opacity-20">
+            <div className="stars-container">
+              {[...Array(20)].map((_, i) => (
+                <div 
+                  key={i} 
+                  className="absolute rounded-full bg-white" 
+                  style={{
+                    width: `${Math.random() * 3 + 1}px`,
+                    height: `${Math.random() * 3 + 1}px`,
+                    top: `${Math.random() * 100}%`,
+                    left: `${Math.random() * 100}%`,
+                    opacity: Math.random() * 0.8 + 0.2,
+                    animation: `pulse-glow ${Math.random() * 3 + 2}s infinite ${Math.random() * 2}s`
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
         
         {/* Service Slider */}
         <div className="relative z-10 h-full">
@@ -264,10 +591,13 @@ const Index = () => {
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {services.map((service, index) => (
-              <div key={service.id} className="min-w-full h-full relative flex items-center">
+              <div 
+                key={service.id} 
+                className={`min-w-full h-full relative flex items-center ${service.particles}`}
+              >
                 {/* Background Image with Overlay - Full Screen */}
                 <div className="absolute inset-0 z-10">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a1128]/80 via-[#001f54]/60 to-transparent z-20"></div>
+                  <div className={`absolute inset-0 ${service.backgroundOverlay} z-20`}></div>
                   <img 
                     src={service.image} 
                     alt={service.title} 
@@ -275,13 +605,21 @@ const Index = () => {
                   />
                 </div>
                 
-                {/* Content Container - Centered */}
+                {/* Content Container - Positioned based on service.position */}
                 <div className="container mx-auto px-4 md:px-8 relative z-30 h-full flex items-center">
-                  <div className="max-w-3xl">
+                  <div 
+                    className={`max-w-3xl ${
+                      service.position === 'left' 
+                        ? 'ml-0 mr-auto text-left' 
+                        : service.position === 'right' 
+                          ? 'mr-0 ml-auto text-right' 
+                          : 'mx-auto text-center'
+                    }`}
+                  >
                     {/* Text Content */}
                     <div className="text-white">
                       <div 
-                        className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
+                        className={`inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 ${service.position === 'center' ? 'mx-auto' : ''}`}
                         data-aos="fade-up"
                         data-aos-delay="100"
                       >
@@ -292,33 +630,46 @@ const Index = () => {
                         </span>
                       </div>
                       
-                      <h1 
-                        className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
-                        data-aos="fade-up"
-                        data-aos-delay="200"
-                      >
-                        <span className="text-white">{service.headline.split(' ').slice(0, -1).join(' ')} </span>
-                        <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.color}`}>
-                          {service.headline.split(' ').slice(-1)}
-                        </span>
-                      </h1>
+                      {service.id === 'fiber-internet' ? (
+                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                          <div className="mb-2 text-glow">
+                            <span className="text-white typing-container">Internet</span>
+                          </div>
+                          <div className="mb-2 text-glow" style={{ animationDelay: '0.5s' }}>
+                            <span className="text-white typing-container" style={{ animationDelay: '1s' }}>Faster Than</span>
+                          </div>
+                          <div className="text-glow" style={{ animationDelay: '1s' }}>
+                            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.color} typing-container`} style={{ animationDelay: '2s' }}>
+                              The Speed of Light
+                            </span>
+                          </div>
+                        </h1>
+                      ) : (
+                        <h1 
+                          className={`text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight ${service.textAnimation}`}
+                          style={{ animationDelay: '0.3s' }}
+                        >
+                          <span className="text-white">{service.headline.split(' ').slice(0, -1).join(' ')} </span>
+                          <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.color} float`}>
+                            {service.headline.split(' ').slice(-1)}
+                          </span>
+                        </h1>
+                      )}
                       
                       <p 
-                        className="text-xl text-white/80 mb-8 max-w-xl"
-                        data-aos="fade-up"
-                        data-aos-delay="300"
+                        className={`text-xl text-white/80 mb-8 max-w-xl ${service.textAnimation}`}
+                        style={{ animationDelay: service.id === 'fiber-internet' ? '3s' : '0.5s' }}
                       >
                         {service.description}
                       </p>
                       
                       <div 
-                        className="flex flex-wrap gap-4"
-                        data-aos="fade-up"
-                        data-aos-delay="400"
+                        className={`flex ${service.position === 'right' ? 'justify-end' : service.position === 'center' ? 'justify-center' : 'justify-start'} flex-wrap gap-4 ${service.textAnimation}`}
+                        style={{ animationDelay: service.id === 'fiber-internet' ? '3.5s' : '0.7s' }}
                       >
                         <Link to={service.link}>
                           <Button 
-                            className={`bg-gradient-to-r ${service.color} text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-base sm:text-lg`}
+                            className={`bg-gradient-to-r ${service.color} text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-base sm:text-lg ${service.id === 'fiber-internet' ? 'pulse-glow' : ''}`}
                           >
                             Learn More
                             <ArrowRight className="ml-2 h-5 w-5" />
@@ -332,6 +683,41 @@ const Index = () => {
                         </Button>
                       </div>
                     </div>
+                  </div>
+                  
+                  {/* Decorative elements specific to each slide */}
+                  <div className="absolute inset-0 z-20 pointer-events-none">
+                    {service.id === 'fiber-internet' && (
+                      <>
+                        <div className="absolute bottom-20 right-10 md:right-20 lg:right-40 w-40 h-40 md:w-64 md:h-64 opacity-30 hidden md:block">
+                          <div className="w-full h-full border-2 border-white/30 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
+                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 border-2 border-white/20 rounded-full animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 border-2 border-white/10 rounded-full animate-spin" style={{ animationDuration: '10s' }}></div>
+                        </div>
+                        <div className="absolute top-1/4 right-1/4 w-64 h-64 opacity-20 hidden lg:block">
+                          <div className="absolute w-full h-full rounded-full border border-cyan-400/30 animate-ping" style={{ animationDuration: '3s', animationIterationCount: 'infinite' }}></div>
+                          <div className="absolute w-full h-full rounded-full border border-blue-500/20 animate-ping" style={{ animationDuration: '3s', animationDelay: '1s', animationIterationCount: 'infinite' }}></div>
+                        </div>
+                        <div className="absolute bottom-1/4 left-1/4 w-32 h-32 opacity-20 hidden lg:block">
+                          <div className="absolute w-full h-full rounded-full border border-cyan-400/30 animate-ping" style={{ animationDuration: '4s', animationIterationCount: 'infinite' }}></div>
+                        </div>
+                      </>
+                    )}
+                    
+                    {service.id === 'cloud-services' && (
+                      <div className="absolute top-20 left-10 md:left-20 lg:left-40 opacity-20 hidden md:block">
+                        <Cloud className="w-20 h-20 md:w-32 md:h-32 text-white float" />
+                        <Cloud className="w-16 h-16 md:w-24 md:h-24 text-white absolute top-20 left-20 float" style={{ animationDelay: '1s' }} />
+                        <Cloud className="w-12 h-12 md:w-16 md:h-16 text-white absolute top-10 left-40 float" style={{ animationDelay: '2s' }} />
+                      </div>
+                    )}
+                    
+                    {service.id === 'cybersecurity' && (
+                      <div className="absolute top-1/4 right-10 md:right-20 lg:right-40 opacity-20 hidden md:block">
+                        <ShieldCheck className="w-24 h-24 md:w-40 md:h-40 text-white float" />
+                        <Lock className="w-16 h-16 md:w-24 md:h-24 text-white absolute bottom-20 right-10 float" style={{ animationDelay: '1.5s' }} />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -348,7 +734,7 @@ const Index = () => {
                   onClick={() => setCurrentSlide(idx)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     idx === currentSlide 
-                      ? 'bg-white scale-125' 
+                      ? 'bg-white scale-125 pulse-glow' 
                       : 'bg-white/30 hover:bg-white/50'
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
@@ -360,14 +746,14 @@ const Index = () => {
             <div className="flex space-x-4">
               <button
                 onClick={prevSlide}
-                className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all"
+                className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all hover:scale-110"
                 aria-label="Previous slide"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 onClick={nextSlide}
-                className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all"
+                className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all hover:scale-110"
                 aria-label="Next slide"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -540,7 +926,7 @@ const Index = () => {
               <div className="order-1 md:order-2" data-aos="fade-left">
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600&q=80" 
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
                     alt="IT Consulting Services" 
                     className="w-full h-auto"
                   />
@@ -654,7 +1040,7 @@ const Index = () => {
               <div className="order-1 md:order-2" data-aos="fade-left">
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600&q=80" 
+                    src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
                     alt="Software Development" 
                     className="w-full h-auto"
                   />
@@ -674,7 +1060,7 @@ const Index = () => {
               <div data-aos="fade-right">
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600&q=80" 
+                    src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
                     alt="Cybersecurity Services" 
                     className="w-full h-auto"
                   />
@@ -788,7 +1174,7 @@ const Index = () => {
               <div data-aos="fade-right">
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600&q=80" 
+                    src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
                     alt="Network Installations" 
                     className="w-full h-auto"
                   />
@@ -840,7 +1226,7 @@ const Index = () => {
       {/* Network Visualization Section */}
       <section className="py-16 relative overflow-hidden" data-aos="fade-up">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 animate-pulse"></div>
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
             Powering Next-Gen <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#33C3F0] to-[#9B87F5]">Digital Infrastructure</span>
           </h2>
