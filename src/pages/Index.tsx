@@ -42,13 +42,13 @@ const Index = () => {
       id: 'fiber-internet',
       title: 'Fiber Internet',
       headline: 'Internet Faster Than The Speed of Light',
-      description: 'Experience lightning-fast connectivity with our premium fiber optic network, offering speeds up to 10 Gbps and 99.99% uptime guarantee.',
+      description: 'Experience lightning-fast connectivity with our premium fiber optic',
       image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
       backgroundOverlay: 'bg-gradient-to-r from-[#0a1128]/90 via-[#001f54]/70 to-transparent',
       icon: <Wifi className="h-6 w-6" />,
       color: 'from-blue-600 to-cyan-400',
       highlight: '10 Gbps',
-      link: '/services/internet',
+      link: '#',
       position: 'left', // Text position
       particles: 'data-fiber-lines', // Particle effect class
       textAnimation: 'typing-effect' // Text animation style
@@ -63,7 +63,7 @@ const Index = () => {
       icon: <Building2 className="h-6 w-6" />,
       color: 'from-indigo-600 to-purple-500',
       highlight: 'Enterprise',
-      link: '/services/business',
+      link: '#',
       position: 'center', // Text position
       particles: 'data-grid', // Particle effect class
       textAnimation: 'zoom-in' // Text animation style
@@ -78,7 +78,7 @@ const Index = () => {
       icon: <Cloud className="h-6 w-6" />,
       color: 'from-sky-500 to-blue-600',
       highlight: 'Scalable',
-      link: '/services/cloud',
+      link: '#',
       position: 'right', // Text position
       particles: 'data-waves', // Particle effect class
       textAnimation: 'slide-in-right' // Text animation style
@@ -93,7 +93,7 @@ const Index = () => {
       icon: <ShieldCheck className="h-6 w-6" />,
       color: 'from-emerald-500 to-green-600',
       highlight: 'Secured',
-      link: '/services/security',
+      link: '#',
       position: 'left', // Text position
       particles: 'data-shield', // Particle effect class
       textAnimation: 'fade-in-up' // Text animation style
@@ -108,7 +108,7 @@ const Index = () => {
       icon: <Smartphone className="h-6 w-6" />,
       color: 'from-pink-500 to-rose-500',
       highlight: 'Unlimited',
-      link: '/services/mobile',
+      link: '#',
       position: 'center', // Text position
       particles: 'data-circles', // Particle effect class
       textAnimation: 'bounce-in' // Text animation style
