@@ -774,7 +774,7 @@ const Index = () => {
       </div>
 
       {/* Services Section - Now starts after the full-screen hero */}
-      <section id="services" className="py-16 px-4 bg-white">
+      {/* <section id="services" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#1A1F2C]"
               data-aos="fade-up">
@@ -874,7 +874,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Detailed Service Sections */}
       <section className="py-16 px-4 bg-gradient-to-b from-white to-gray-100">
@@ -1269,38 +1269,6 @@ const Index = () => {
               </p>
             </div>
           </div>
-
-          {/* Live Network Stats */}
-          <div className="bg-[#2A2D3E]/50 p-8 rounded-lg backdrop-blur-sm"
-               data-aos="fade-up"
-               data-aos-delay="400">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#33C3F0] mb-2">
-                  <span className="tabular-nums">{counts.networkSpeed || '99.99'}%</span>
-                </div>
-                <div className="text-sm text-gray-300">Network Uptime</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#9B87F5] mb-2">
-                  <span className="tabular-nums">10</span> Gbps
-                </div>
-                <div className="text-sm text-gray-300">Peak Speed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#33C3F0] mb-2">
-                  <span className="tabular-nums">50</span>+
-                </div>
-                <div className="text-sm text-gray-300">Data Centers</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#9B87F5] mb-2">
-                  <span className="tabular-nums">24/7</span>
-                </div>
-                <div className="text-sm text-gray-300">Support</div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Animated Network Lines */}
@@ -1358,11 +1326,39 @@ const Index = () => {
           
           <div className="mt-12 text-center"
                data-aos="fade-up" data-aos-delay="600">
-            <Link to="/about">
-              <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
-                Learn More About Us
-              </Button>
-            </Link>
+           
+          {/* Live Network Stats */}
+          <div className="bg-[#2A2D3E]/50 p-8 rounded-lg backdrop-blur-sm"
+               data-aos="fade-up"
+               data-aos-delay="400">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-[#33C3F0] mb-2">
+                  <span className="tabular-nums">{counts.networkSpeed || '99.99'}%</span>
+                </div>
+                <div className="text-sm text-gray-300">Network Uptime</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-[#9B87F5] mb-2">
+                  <span className="tabular-nums">10</span> Gbps
+                </div>
+                <div className="text-sm text-gray-300">Peak Speed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-[#33C3F0] mb-2">
+                  <span className="tabular-nums">50</span>+
+                </div>
+                <div className="text-sm text-gray-300">Data Centers</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-[#9B87F5] mb-2">
+                  <span className="tabular-nums">24/7</span>
+                </div>
+                <div className="text-sm text-gray-300">Support</div>
+              </div>
+            </div>
+          </div>
+        
           </div>
         </div>
       </section>
@@ -1449,64 +1445,11 @@ const Index = () => {
       </section>
 
       {/* Digital Transformation VR Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-[#1A1F2C] to-[#33C3F0]/20 text-white overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-white"
-              data-aos="fade-up">
-            Experience <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#33C3F0] to-[#9B87F5]">Virtual Reality</span> Solutions
-          </h2>
-          <p className="text-center text-gray-300 mb-12 max-w-3xl mx-auto"
-             data-aos="fade-up" data-aos-delay="100">
-            Immerse yourself in our cutting-edge virtual reality experiences designed to transform how you visualize and interact with digital environments.
-          </p>
-          
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-            {/* VR Image 1 with Animation */}
-            <div className="relative w-full max-w-md" data-aos="fade-right" data-aos-duration="1000">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#33C3F0]/40 to-[#9B87F5]/40 rounded-lg blur-xl animate-pulse"></div>
-              <div className="relative bg-[#2A2D3E]/80 p-2 rounded-lg backdrop-blur-sm border border-[#33C3F0]/20">
-                <div className="overflow-hidden rounded-lg">
-                  <img 
-                    src="/animations/animations2/vr1.png" 
-                    alt="VR Experience" 
-                    className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(51,195,240,0.7)]"
-                  />
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] rounded-full blur-xl opacity-70 animate-ping" style={{ animationDuration: '3s' }}></div>
-              </div>
-              <div className="mt-6 text-center">
-                <h3 className="text-xl font-semibold text-[#33C3F0]">Immersive Training</h3>
-                <p className="text-gray-300 mt-2">Virtual reality training solutions for enhanced learning experiences</p>
-              </div>
-            </div>
-            
-            {/* VR Image 2 with Animation */}
-            <div className="relative w-full max-w-md mt-12 md:mt-24" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#9B87F5]/40 to-[#33C3F0]/40 rounded-lg blur-xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-              <div className="relative bg-[#2A2D3E]/80 p-2 rounded-lg backdrop-blur-sm border border-[#9B87F5]/20">
-                <div className="overflow-hidden rounded-lg">
-                  <img 
-                    src="/animations/animations2/vr2.png" 
-                    alt="VR Visualization" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -top-3 -left-3 w-24 h-24 bg-gradient-to-r from-[#9B87F5] to-[#33C3F0] rounded-full blur-xl opacity-70 animate-ping" style={{ animationDuration: '4s' }}></div>
-              </div>
-              <div className="mt-6 text-center">
-                <h3 className="text-xl font-semibold text-[#9B87F5]">3D Visualization</h3>
-                <p className="text-gray-300 mt-2">Transform complex data into intuitive visual experiences</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
-            <Button className="bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] hover:from-[#1EAEDB] hover:to-[#8A76E4] text-white">
-              Explore VR Solutions
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/**
+       * 
+       * 
+       */}
+     
 
       {/* Testimonials Section */}
       <section className="py-16 px-4 bg-[#1A1F2C] text-white">
@@ -1542,108 +1485,8 @@ const Index = () => {
       </section>
 
       {/* AI Innovation Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-[#0A0F1E] via-[#1A1F2C] to-[#33C3F0]/30 relative overflow-hidden">
-        {/* Background Animation Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#33C3F0] rounded-full animate-ping" style={{ animationDuration: '3s' }}></div>
-            <div className="absolute top-3/4 left-1/3 w-2 h-2 bg-purple-500 rounded-full animate-ping" style={{ animationDuration: '2.5s' }}></div>
-            <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-[#33C3F0] rounded-full animate-ping" style={{ animationDuration: '4s' }}></div>
-            <div className="absolute bottom-1/4 right-1/3 w-2 h-2 bg-purple-500 rounded-full animate-ping" style={{ animationDuration: '3.5s' }}></div>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] via-transparent to-transparent"></div>
-        </div>
-        
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16" data-aos="fade-up">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#33C3F0] mr-2 animate-pulse"></span>
-              <span className="text-[#33C3F0] text-sm font-medium">Next-Generation Technology</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-6 mb-6">
-              Powering Innovation with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#33C3F0] via-purple-500 to-pink-500">Artificial Intelligence</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Harness the power of AI to transform your business processes, enhance decision-making, and create intelligent solutions.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Left Side - AI Brain Visualization */}
-            <div className="relative" data-aos="fade-right" data-aos-duration="1200">
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#33C3F0]/30 to-purple-500/30 rounded-full blur-3xl opacity-70 animate-pulse"></div>
-              <div className="relative bg-[#1A1F2C]/80 p-3 rounded-xl backdrop-blur-sm border border-[#33C3F0]/20">
-                <div className="overflow-hidden rounded-lg h-[300px]">
-                  <img 
-                    src="/animations/2151137476.jpg" 
-                    alt="AI Brain Visualization" 
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                
-                {/* Animated Connection Lines */}
-                <div className="absolute top-1/2 left-0 w-16 h-px bg-gradient-to-r from-transparent to-[#33C3F0] animate-grow-x"></div>
-                <div className="absolute top-1/2 right-0 w-16 h-px bg-gradient-to-l from-transparent to-[#33C3F0] animate-grow-x"></div>
-                <div className="absolute top-0 left-1/2 w-px h-16 bg-gradient-to-b from-transparent to-[#33C3F0] animate-grow-y"></div>
-                <div className="absolute bottom-0 left-1/2 w-px h-16 bg-gradient-to-t from-transparent to-[#33C3F0] animate-grow-y"></div>
-                
-                {/* Animated Nodes */}
-                <div className="absolute top-0 left-0 w-3 h-3 bg-[#33C3F0] rounded-full animate-pulse"></div>
-                <div className="absolute top-0 right-0 w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="absolute bottom-0 left-0 w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute bottom-0 right-0 w-3 h-3 bg-[#33C3F0] rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-              </div>
-            </div>
-            
-            {/* Right Side - AI Features */}
-            <div data-aos="fade-left" data-aos-duration="1200">
-              <div className="space-y-8">
-                <div className="bg-[#2A2D3E]/60 p-6 rounded-lg backdrop-blur-sm border border-[#33C3F0]/20 transform hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#33C3F0]/20 flex items-center justify-center mr-3">
-                      <span className="text-[#33C3F0] font-bold">01</span>
-                    </div>
-                    Predictive Analytics
-                  </h3>
-                  <p className="text-gray-300">
-                    Leverage machine learning algorithms to predict trends, customer behavior, and business outcomes with remarkable accuracy.
-                  </p>
-                </div>
-                
-                <div className="bg-[#2A2D3E]/60 p-6 rounded-lg backdrop-blur-sm border border-purple-500/20 transform hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-3">
-                      <span className="text-purple-500 font-bold">02</span>
-                    </div>
-                    Intelligent Automation
-                  </h3>
-                  <p className="text-gray-300">
-                    Automate complex business processes with AI-powered solutions that learn and improve over time, increasing efficiency.
-                  </p>
-                </div>
-                
-                <div className="bg-[#2A2D3E]/60 p-6 rounded-lg backdrop-blur-sm border border-[#33C3F0]/20 transform hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#33C3F0]/20 flex items-center justify-center mr-3">
-                      <span className="text-[#33C3F0] font-bold">03</span>
-                    </div>
-                    Natural Language Processing
-                  </h3>
-                  <p className="text-gray-300">
-                    Enhance customer interactions with advanced NLP capabilities that understand and respond to human language naturally.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="mt-8 text-center md:text-left">
-                <Button className="bg-gradient-to-r from-[#33C3F0] to-purple-500 hover:from-[#1EAEDB] hover:to-purple-600 text-white px-8 py-3">
-                  Explore AI Solutions
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     
+      
 
       {/* Contact CTA Section */}
       <section className="py-16 px-4 bg-gradient-to-r from-[#1A1F2C] to-[#33C3F0]">
