@@ -226,7 +226,7 @@ const Index = () => {
   }, [hasAnimated]);
 
   const scrollToServices = () => {
-    const servicesSection = document.getElementById('services');
+    const servicesSection = document.getElementById('expert-services');
     servicesSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -724,8 +724,8 @@ const Index = () => {
             ))}
           </div>
           
-          {/* Navigation Controls - Positioned at bottom */}
-          <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center items-center gap-8">
+          {/* Navigation Controls */}
+          <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center items-center">
             {/* Slide Indicators */}
             <div className="flex space-x-3">
               {services.map((_, idx) => (
@@ -741,24 +741,28 @@ const Index = () => {
                 />
               ))}
             </div>
-            
-            {/* Arrow Controls */}
-            <div className="flex space-x-4">
-              <button
-                onClick={prevSlide}
-                className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all hover:scale-110"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all hover:scale-110"
-                aria-label="Next slide"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
+          </div>
+          
+          {/* Left Arrow Control */}
+          <div className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 z-30">
+            <button
+              onClick={prevSlide}
+              className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all hover:scale-110"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+            </button>
+          </div>
+          
+          {/* Right Arrow Control */}
+          <div className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-30">
+            <button
+              onClick={nextSlide}
+              className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all hover:scale-110"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+            </button>
           </div>
           
           {/* Scroll Down Indicator */}
@@ -773,13 +777,11 @@ const Index = () => {
         </div>
       </div>
 
+
       {/* Services Section - Now starts after the full-screen hero */}
       {/* <section id="services" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#1A1F2C]"
-              data-aos="fade-up">
-            Our Expert Services
-          </h2>
+         
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div data-aos="fade-up" data-aos-delay="100">
@@ -877,7 +879,12 @@ const Index = () => {
       </section> */}
 
       {/* Detailed Service Sections */}
-      <section className="py-16 px-4 bg-gradient-to-b from-white to-gray-100">
+      <section id="expert-services" className="py-16 px-4 bg-gradient-to-b from-white to-gray-100">
+
+       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#33C3F0]"
+              data-aos="fade-up">
+            Our Expert Services
+          </h2>
         <div className="max-w-6xl mx-auto">
           {/* IT Consulting Section */}
           <div 
@@ -1154,7 +1161,7 @@ const Index = () => {
               <div className="order-1 md:order-2" data-aos="fade-left">
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600&q=80" 
+                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
                     alt="IT Infrastructure" 
                     className="w-full h-auto"
                   />
