@@ -6,7 +6,8 @@ import {
   Rocket, Globe, Navigation, Sparkles, CheckCircle, ShieldCheck, 
   Clock, Trophy, Wifi, Network, Server, Cloud, Lock, Users, 
   Mail, Bell, ArrowRight, ChevronRight, ChevronLeft, Smartphone, 
-  Laptop, Building2, MessageCircle, X, Send, Headphones, User
+  Laptop, Building2, MessageCircle, X, Send, Headphones, User,
+  Cookie, Info
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -27,6 +28,13 @@ const Index = () => {
   const [chatMessages, setChatMessages] = useState<{type: 'user' | 'agent', text: string}[]>([
     {type: 'agent', text: 'Hello! Welcome to Galaxy Digital Portal. How can I help you today?'}
   ]);
+  // Cookie consent state
+  const [cookieConsent, setCookieConsent] = useState<'pending' | 'accepted' | 'rejected'>('pending');
+  
+  // Force cookie consent to show for testing
+  useEffect(() => {
+    localStorage.removeItem('cookieConsent');
+  }, []);
   
   // Refs for service sections
   const itConsultingRef = useRef<HTMLDivElement>(null);
@@ -35,6 +43,30 @@ const Index = () => {
   const cybersecurityRef = useRef<HTMLDivElement>(null);
   const itInfrastructureRef = useRef<HTMLDivElement>(null);
   const networkInstallationsRef = useRef<HTMLDivElement>(null);
+  
+  // Partners data
+  const partners = [
+    {
+      name: "Jigawa State Government",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Coat_of_arms_of_Jigawa_State.png/800px-Coat_of_arms_of_Jigawa_State.png",
+      website: "https://jigawastate.gov.ng/"
+    },
+    {
+      name: "NITDA",
+      logo: "https://nitda.gov.ng/wp-content/uploads/2020/11/NITDA-Logo.png",
+      website: "https://nitda.gov.ng/"
+    },
+    {
+      name: "NCC",
+      logo: "https://www.ncc.gov.ng/images/NCC-Logo.png",
+      website: "https://www.ncc.gov.ng/"
+    },
+    {
+      name: "Ministry of Communications and Digital Economy",
+      logo: "https://www.commtech.gov.ng/wp-content/uploads/2023/06/FMoCDE-Logo.png",
+      website: "https://www.commtech.gov.ng/"
+    }
+  ];
   
   // Hero slides data for services showcase
   const services = [
@@ -332,6 +364,27 @@ const Index = () => {
         50% { border-color: rgba(255, 255, 255, 0.75) }
       }
       
+      /* New animations for services section */
+      @keyframes service-fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      
+      @keyframes service-fade-out {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+      
+      @keyframes image-scale {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.05); }
+      }
+      
+      @keyframes content-fade-in {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      
       .particle {
         position: absolute;
         border-radius: 50%;
@@ -381,66 +434,6 @@ const Index = () => {
         animation: fiber-line-animation 3s linear infinite;
       }
       
-      [data-grid]::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        background-size: 20px 20px;
-        opacity: 0.5;
-      }
-      
-      [data-waves]::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: repeating-linear-gradient(
-          45deg,
-          rgba(255, 255, 255, 0.05),
-          rgba(255, 255, 255, 0.05) 10px,
-          transparent 10px,
-          transparent 20px
-        );
-        opacity: 0.3;
-      }
-      
-      [data-shield]::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: repeating-radial-gradient(
-          circle at 50% 50%,
-          rgba(255, 255, 255, 0.05),
-          rgba(255, 255, 255, 0.05) 10px,
-          transparent 10px,
-          transparent 20px
-        );
-        opacity: 0.4;
-      }
-      
-      [data-circles]::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.1) 20px, transparent 60px),
-                          radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.1) 30px, transparent 70px),
-                          radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.1) 40px, transparent 80px);
-        opacity: 0.6;
-      }
-      
       .slide-in-left { animation: slide-in-left 0.8s ease forwards; }
       .slide-in-right { animation: slide-in-right 0.8s ease forwards; }
       .zoom-in { animation: zoom-in 0.8s ease forwards; }
@@ -449,6 +442,41 @@ const Index = () => {
       .float { animation: float 6s ease-in-out infinite; }
       .pulse-glow { animation: pulse-glow 2s infinite; }
       .text-glow { animation: text-glow 3s infinite; }
+      
+      /* New service section styles */
+      .service-fade-in { animation: service-fade-in 0.5s ease-in forwards; }
+      .service-fade-out { animation: service-fade-out 0.5s ease-out forwards; }
+      .service-content-fade-in { animation: content-fade-in 0.6s ease-out forwards; }
+      
+      .service-image-container {
+        overflow: hidden;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        position: relative;
+      }
+      
+      .service-image {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+      
+      .service-image-container:hover .service-image {
+        transform: scale(1.05);
+      }
+      
+      .service-image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+      
+      .service-image-container:hover .service-image-overlay {
+        opacity: 0.6;
+      }
       
       .typing-effect {
         display: inline-block;
@@ -554,8 +582,47 @@ const Index = () => {
     };
   }, []);
 
+  // Handle cookie consent
+  const handleCookieConsent = (consent: 'accepted' | 'rejected') => {
+    setCookieConsent(consent);
+    localStorage.setItem('cookieConsent', consent);
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Cookie Consent Modal */}
+      {cookieConsent === 'pending' && (
+        <div className="fixed bottom-6 right-6 z-50 bg-white shadow-lg rounded-lg border border-gray-200 p-4 max-w-sm">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-start gap-2">
+              <Cookie className="h-5 w-5 text-[#33C3F0] flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-base font-semibold text-[#1A1F2C] mb-1">Cookie Consent</h3>
+                <p className="text-gray-600 text-sm">
+                  We use cookies to enhance your browsing experience and analyze our traffic.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Button 
+                onClick={() => handleCookieConsent('rejected')}
+                className="bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm py-1 px-3 h-auto"
+                size="sm"
+              >
+                Reject
+              </Button>
+              <Button 
+                onClick={() => handleCookieConsent('accepted')}
+                className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white text-sm py-1 px-3 h-auto"
+                size="sm"
+              >
+                Accept
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <Header />
       
@@ -883,7 +950,7 @@ const Index = () => {
 
        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#33C3F0]"
               data-aos="fade-up">
-            Our Expert Services
+           Core Services
           </h2>
         <div className="max-w-6xl mx-auto">
           {/* IT Consulting Section */}
@@ -1230,51 +1297,35 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Network Visualization Section */}
-      <section className="py-16 relative overflow-hidden" data-aos="fade-up">
+      {/* Partners Section */}
+      <section className="py-16 relative overflow-hidden bg-[#1A1F2C]">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 animate-pulse"></div>
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
-            Powering Next-Gen <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#33C3F0] to-[#9B87F5]">Digital Infrastructure</span>
+            Our Trusted <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#33C3F0] to-[#9B87F5]">Partners</span>
           </h2>
           
-          {/* Technology Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-[#2A2D3E] p-6 rounded-lg transform hover:scale-105 transition-transform duration-300"
-                 data-aos="fade-up"
-                 data-aos-delay="100">
-              <div className="flex items-center mb-4">
-                <Network className="w-8 h-8 text-[#33C3F0] mr-3" />
-                <h3 className="text-xl font-semibold text-white">5G Networks</h3>
-              </div>
-              <p className="text-gray-300">
-                Ultra-fast connectivity solutions with speeds up to 10Gbps and sub-millisecond latency.
-              </p>
-            </div>
-
-            <div className="bg-[#2A2D3E] p-6 rounded-lg transform hover:scale-105 transition-transform duration-300"
-                 data-aos="fade-up"
-                 data-aos-delay="200">
-              <div className="flex items-center mb-4">
-                <Cloud className="w-8 h-8 text-[#9B87F5] mr-3" />
-                <h3 className="text-xl font-semibold text-white">Cloud Integration</h3>
-              </div>
-              <p className="text-gray-300">
-                Seamless hybrid cloud solutions with 99.99% uptime guarantee and global reach.
-              </p>
-            </div>
-
-            <div className="bg-[#2A2D3E] p-6 rounded-lg transform hover:scale-105 transition-transform duration-300"
-                 data-aos="fade-up"
-                 data-aos-delay="300">
-              <div className="flex items-center mb-4">
-                <Lock className="w-8 h-8 text-[#33C3F0] mr-3" />
-                <h3 className="text-xl font-semibold text-white">Cyber Security</h3>
-              </div>
-              <p className="text-gray-300">
-                Enterprise-grade security with AI-powered threat detection and real-time monitoring.
-              </p>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            {partners.map((partner, index) => (
+              <a 
+                key={index} 
+                href={partner.website} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group bg-[#2A2D3E] p-6 rounded-lg transform hover:scale-105 transition-transform duration-300"
+                data-aos="fade-up" 
+                data-aos-delay={100 + (index * 50)}
+              >
+                <div className="flex items-center justify-center h-32">
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name} 
+                    className="max-h-20 max-w-full opacity-90 group-hover:opacity-100 transition-opacity" 
+                  />
+                </div>
+                <p className="text-center text-gray-300 mt-4 text-sm font-medium">{partner.name}</p>
+              </a>
+            ))}
           </div>
         </div>
 
@@ -1451,13 +1502,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Digital Transformation VR Section */}
-      {/**
-       * 
-       * 
-       */}
-     
-
       {/* Testimonials Section */}
       <section className="py-16 px-4 bg-[#1A1F2C] text-white">
         <div className="max-w-6xl mx-auto">
@@ -1490,10 +1534,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* AI Innovation Section */}
-     
-      
 
       {/* Contact CTA Section */}
       <section className="py-16 px-4 bg-gradient-to-r from-[#1A1F2C] to-[#33C3F0]">
@@ -1535,7 +1575,7 @@ const Index = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="w-full px-4 py-3 bg-[#221F26] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#33C3F0]"
+                    className="w-full px-4 py-2 bg-[#221F26] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#33C3F0]"
                   />
                   <Button 
                     type="submit"
@@ -1602,7 +1642,7 @@ const Index = () => {
         {!isChatOpen ? (
           <button 
             onClick={() => setIsChatOpen(true)}
-            className="bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+            className="bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] p-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110"
             aria-label="Open support chat"
           >
             <MessageCircle className="h-6 w-6 text-white" />

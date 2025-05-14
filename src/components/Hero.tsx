@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 
+// Define images for the hero section
 const images = [
   {
     src: '/hero-images/network-infrastructure.jpg',
@@ -30,20 +31,20 @@ const images = [
 ];
 
 const Hero: React.FC = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  
-  // Auto-rotate images when not hovered
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Image rotation with fade effect
   useEffect(() => {
-    if (isHovered) return;
+    if (isPaused) return;
     
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    const timer = setTimeout(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000);
     
-    return () => clearInterval(interval);
-  }, [isHovered]);
-  
+    return () => clearTimeout(timer);
+  }, [activeIndex, isPaused]);
+
   return (
     <section className="relative bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 overflow-hidden">
       {/* Background pattern */}
@@ -96,49 +97,52 @@ const Hero: React.FC = () => {
             </div>
           </div>
           
-          {/* Image showcase */}
+          {/* Image showcase with fade animation */}
           <div 
             className="w-full lg:w-1/2 relative h-80 md:h-96 lg:h-[500px]"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
+            {/* Main image container */}
             <div className="relative h-full w-full rounded-xl overflow-hidden shadow-2xl">
-              {/* Images */}
-              {images.map((image, index) => (
-                <div 
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-1000 ${
-                    currentImageIndex === index && !isHovered 
-                      ? 'opacity-100' 
-                      : 'opacity-0'
-                  }`}
-                >
-                  <img 
-                    src={image.src} 
-                    alt={image.alt}
-                    className="h-full w-full object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900/80 to-transparent p-4">
-                    <p className="text-white font-medium">{image.caption}</p>
-                  </div>
-                </div>
-              ))}
-              
-              {/* Hover state - show all images in a grid */}
-              {isHovered && (
-                <div className="absolute inset-0 bg-blue-900/90 p-4 grid grid-cols-2 gap-2 overflow-y-auto">
-                  {images.map((image, index) => (
-                    <div key={index} className="relative rounded overflow-hidden group">
-                      <img 
-                        src={image.src} 
-                        alt={image.alt}
-                        className="h-full w-full object-cover transition-transform group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-blue-800/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <p className="text-white text-center font-medium px-2">{image.caption}</p>
-                      </div>
+              {/* Image slider with fade effect only */}
+              <div className="h-full w-full relative">
+                {images.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                      index === activeIndex && !isPaused ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900/80 to-transparent p-4">
+                      <p className="text-white font-medium">{image.caption}</p>
                     </div>
-                  ))}
+                  </div>
+                ))}
+              </div>
+              
+              {/* Hover overlay */}
+              {isPaused && (
+                <div className="absolute inset-0 bg-blue-900/90 p-4 z-20 transition-opacity duration-300 ease-in-out opacity-100">
+                  <div className="grid grid-cols-2 gap-2 h-full">
+                    {images.map((image, index) => (
+                      <div key={index} className="relative rounded overflow-hidden">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="h-full w-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-blue-800/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                          <p className="text-white text-center font-medium px-2">{image.caption}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -146,6 +150,20 @@ const Hero: React.FC = () => {
             {/* Decorative elements */}
             <div className="absolute -bottom-6 -right-6 h-24 w-24 bg-blue-300 rounded-full opacity-30"></div>
             <div className="absolute -top-6 -left-6 h-16 w-16 bg-white rounded-full opacity-20"></div>
+            
+            {/* Image indicators */}
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-30">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  className={`h-2 w-2 rounded-full transition-colors ${
+                    index === activeIndex && !isPaused ? 'bg-white' : 'bg-white/40'
+                  }`}
+                  onClick={() => setActiveIndex(index)}
+                  aria-label={`View image ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
