@@ -11,23 +11,23 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
-      {/* Top bar with contact info */}
-      <div className="hidden bg-gray-100 py-2 md:block">
+    <header className="sticky top-0 z-50 w-full shadow-sm">
+      {/* Top bar with contact info - now blue */}
+      <div className="bg-blue-600 py-2 text-white">
         <div className="container mx-auto flex justify-end space-x-6 px-4">
-          <a href="tel:08039600006" className="flex items-center text-sm text-gray-600 hover:text-blue-600">
+          <a href="tel:08039600006" className="flex items-center text-sm text-white hover:text-blue-100">
             <Phone className="mr-2 h-4 w-4" />
             <span>08039600006</span>
           </a>
-          <a href="mailto:info@galaxyitt.com.ng" className="flex items-center text-sm text-gray-600 hover:text-blue-600">
+          <a href="mailto:info@galaxyitt.com.ng" className="flex items-center text-sm text-white hover:text-blue-100">
             <Mail className="mr-2 h-4 w-4" />
             <span>info@galaxyitt.com.ng</span>
           </a>
         </div>
       </div>
       
-      {/* Main navigation */}
-      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+      {/* Main navigation - kept white */}
+      <div className="bg-white container mx-auto flex items-center justify-between px-4 py-4">
         {/* Logo */}
         <div className="flex items-center">
           <a href="/" className="flex items-center">

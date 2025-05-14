@@ -63,7 +63,7 @@ export const NavItem: React.FC<NavItemProps> = ({ href, label, dropdown, rightAl
                 <a
                   key={item.href}
                   href={item.href}
-                  className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                  className="-m-3 p-3 flex items-start rounded-lg hover:bg-blue-50 transition ease-in-out duration-150"
                   onClick={closeDropdown}
                 >
                   <div className="ml-4">

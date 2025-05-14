@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronRight, Phone, Mail } from 'lucide-react';
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -88,11 +88,14 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
       
       {/* Mobile menu panel */}
       <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl">
-        {/* Close button */}
-        <div className="flex items-center justify-end p-4 border-b">
+        {/* Header with blue background */}
+        <div className="flex items-center justify-between p-4 bg-blue-600 text-white">
+          <div>
+            <h3 className="text-lg font-medium">Menu</h3>
+          </div>
           <button
             type="button"
-            className="-m-2 p-2 rounded-md text-gray-400 hover:text-gray-500"
+            className="rounded-md p-2 text-white hover:bg-blue-700"
             onClick={onClose}
           >
             <span className="sr-only">Close menu</span>
@@ -102,8 +105,20 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
         
+        {/* Contact information */}
+        <div className="bg-blue-50 p-4 flex flex-col space-y-2">
+          <a href="tel:08039600006" className="flex items-center text-sm text-gray-700 hover:text-blue-600">
+            <Phone className="mr-2 h-4 w-4 text-blue-600" />
+            <span>08039600006</span>
+          </a>
+          <a href="mailto:info@galaxyitt.com.ng" className="flex items-center text-sm text-gray-700 hover:text-blue-600">
+            <Mail className="mr-2 h-4 w-4 text-blue-600" />
+            <span>info@galaxyitt.com.ng</span>
+          </a>
+        </div>
+        
         {/* Navigation items */}
-        <div className="py-6 px-5 space-y-6 overflow-y-auto max-h-[calc(100vh-80px)]">
+        <div className="py-6 px-5 space-y-6 overflow-y-auto max-h-[calc(100vh-180px)]">
           <div className="flex flex-col space-y-2">
             {navSections.map((section) => (
               <div key={section.label} className="border-b border-gray-200 pb-2">
@@ -115,9 +130,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                     >
                       {section.label}
                       {expandedSections[section.label] ? (
-                        <ChevronDown className="h-5 w-5 text-gray-500" />
+                        <ChevronDown className="h-5 w-5 text-blue-500" />
                       ) : (
-                        <ChevronRight className="h-5 w-5 text-gray-500" />
+                        <ChevronRight className="h-5 w-5 text-blue-500" />
                       )}
                     </button>
                     
@@ -149,17 +164,15 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
             ))}
           </div>
           
-          {/* Contact information */}
-          <div className="mt-6 border-t border-gray-200 pt-6">
-            <h3 className="text-base font-medium text-gray-900">Contact Us</h3>
-            <div className="mt-4 space-y-4">
-              <a href="tel:08039600006" className="block text-sm text-gray-500 hover:text-blue-600">
-                Phone: 08039600006
-              </a>
-              <a href="mailto:info@galaxyitt.com.ng" className="block text-sm text-gray-500 hover:text-blue-600">
-                Email: info@galaxyitt.com.ng
-              </a>
-            </div>
+          {/* Call to action */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <a 
+              href="/contact" 
+              className="w-full flex items-center justify-center px-4 py-3 rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+              onClick={onClose}
+            >
+              Contact Us
+            </a>
           </div>
         </div>
       </div>
