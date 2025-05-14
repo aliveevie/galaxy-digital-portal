@@ -74,76 +74,108 @@ const Index = () => {
       id: 'fiber-internet',
       title: 'Fiber Internet',
       headline: 'Internet Faster Than The Speed of Light',
-      description: 'Experience lightning-fast connectivity with our premium fiber optic',
-      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      description: 'Experience lightning-fast connectivity with our premium fiber optic networks, enabling seamless operations for businesses of all sizes.',
+      image: 'https://images.unsplash.com/photo-1573164713712-03790a178651?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
       backgroundOverlay: 'bg-gradient-to-r from-[#0a1128]/90 via-[#001f54]/70 to-transparent',
       icon: <Wifi className="h-6 w-6" />,
       color: 'from-blue-600 to-cyan-400',
       highlight: '10 Gbps',
       link: '#',
-      position: 'left', // Text position
-      particles: 'data-fiber-lines', // Particle effect class
-      textAnimation: 'typing-effect' // Text animation style
+      position: 'left',
+      particles: 'data-fiber-lines',
+      textAnimation: 'typing-effect'
     },
     {
       id: 'business-connectivity',
       title: 'Business Solutions',
       headline: 'Enterprise-Grade Connectivity',
       description: 'Tailored connectivity solutions for businesses of all sizes, with dedicated support, guaranteed SLAs, and scalable bandwidth options.',
-      image: 'https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
       backgroundOverlay: 'bg-gradient-to-b from-[#0a1128]/80 via-[#001f54]/60 to-transparent',
       icon: <Building2 className="h-6 w-6" />,
       color: 'from-indigo-600 to-purple-500',
       highlight: 'Enterprise',
       link: '#',
-      position: 'center', // Text position
-      particles: 'data-grid', // Particle effect class
-      textAnimation: 'zoom-in' // Text animation style
+      position: 'center',
+      particles: 'data-grid',
+      textAnimation: 'zoom-in'
     },
     {
       id: 'cloud-services',
       title: 'Cloud Services',
       headline: 'Seamless Cloud Integration',
       description: 'Secure and reliable cloud solutions that optimize your operations, reduce costs, and accelerate your digital transformation journey.',
-      image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
       backgroundOverlay: 'bg-gradient-to-l from-[#0a1128]/80 via-[#001f54]/60 to-transparent',
       icon: <Cloud className="h-6 w-6" />,
       color: 'from-sky-500 to-blue-600',
       highlight: 'Scalable',
       link: '#',
-      position: 'right', // Text position
-      particles: 'data-waves', // Particle effect class
-      textAnimation: 'slide-in-right' // Text animation style
+      position: 'right',
+      particles: 'data-waves',
+      textAnimation: 'slide-in-right'
     },
     {
       id: 'cybersecurity',
       title: 'Cybersecurity',
       headline: 'Advanced Threat Protection',
       description: 'Comprehensive security solutions to protect your critical data and infrastructure from evolving cyber threats and vulnerabilities.',
-      image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
       backgroundOverlay: 'bg-gradient-to-tr from-[#0a1128]/90 via-[#001f54]/70 to-transparent',
       icon: <ShieldCheck className="h-6 w-6" />,
       color: 'from-emerald-500 to-green-600',
       highlight: 'Secured',
       link: '#',
-      position: 'left', // Text position
-      particles: 'data-shield', // Particle effect class
-      textAnimation: 'fade-in-up' // Text animation style
+      position: 'left',
+      particles: 'data-shield',
+      textAnimation: 'fade-in-up'
     },
     {
       id: 'mobile-solutions',
       title: 'Mobile Solutions',
       headline: 'Connectivity On The Go',
       description: 'Stay connected wherever you go with our high-speed mobile data plans, international roaming, and IoT connectivity solutions.',
-      image: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
       backgroundOverlay: 'bg-gradient-to-tl from-[#0a1128]/80 via-[#001f54]/60 to-transparent',
       icon: <Smartphone className="h-6 w-6" />,
       color: 'from-pink-500 to-rose-500',
       highlight: 'Unlimited',
       link: '#',
-      position: 'center', // Text position
-      particles: 'data-circles', // Particle effect class
-      textAnimation: 'bounce-in' // Text animation style
+      position: 'center',
+      particles: 'data-circles',
+      textAnimation: 'bounce-in'
+    },
+    // NEW SLIDE
+    {
+      id: 'enterprise-networking',
+      title: 'Enterprise Networking',
+      headline: 'Power Your Business Infrastructure',
+      description: 'State-of-the-art networking solutions designed for enterprise-level performance, reliability, and security.',
+      image: 'https://images.unsplash.com/photo-1601758282760-b6cbcce04072?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      backgroundOverlay: 'bg-gradient-to-br from-[#0a1128]/85 via-[#001f54]/65 to-transparent',
+      icon: <Network className="h-6 w-6" />,
+      color: 'from-violet-500 to-purple-600',
+      highlight: 'Enterprise',
+      link: '#',
+      position: 'right',
+      particles: 'data-grid',
+      textAnimation: 'fade-in-up'
+    },
+    // NEW SLIDE
+    {
+      id: 'data-analytics',
+      title: 'Data Analytics',
+      headline: 'Turn Data Into Business Insights',
+      description: 'Advanced analytics platforms that help you make data-driven decisions and gain competitive advantage in your industry.',
+      image: 'https://images.unsplash.com/photo-1581092921461-eab10d86c330?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      backgroundOverlay: 'bg-gradient-to-t from-[#0a1128]/90 via-[#001f54]/70 to-transparent',
+      icon: <Sparkles className="h-6 w-6" />,
+      color: 'from-amber-500 to-orange-600',
+      highlight: 'Intelligent',
+      link: '#',
+      position: 'left',
+      particles: 'data-dots',
+      textAnimation: 'zoom-in'
     }
   ];
 
@@ -810,7 +842,7 @@ const Index = () => {
             </div>
           ))}
           
-          {/* Navigation Controls */}
+          {/* Navigation Controls - Just the dots remain */}
           <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center items-center">
             {/* Slide Indicators */}
             <div className="flex space-x-3">
@@ -826,38 +858,6 @@ const Index = () => {
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
-            </div>
-          </div>
-          
-          {/* Left Arrow Control */}
-          <div className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 z-30">
-            <button
-              onClick={prevSlide}
-              className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all hover:scale-110"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
-            </button>
-          </div>
-          
-          {/* Right Arrow Control */}
-          <div className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-30">
-            <button
-              onClick={nextSlide}
-              className="p-2 md:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all hover:scale-110"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
-            </button>
-          </div>
-          
-          {/* Scroll Down Indicator */}
-          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 animate-bounce hidden md:block">
-            <div className="flex flex-col items-center cursor-pointer" onClick={scrollToServices}>
-              <span className="text-white/70 text-sm mb-2">Scroll Down</span>
-              <div className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center p-1">
-                <div className="w-1 h-2 bg-white rounded-full animate-pulse"></div>
-              </div>
             </div>
           </div>
         </div>
