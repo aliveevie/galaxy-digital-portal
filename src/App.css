@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Add this to your global CSS file */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Fix for mobile animations potentially causing overflow */
+@media (max-width: 768px) {
+  .animate-fade-in-up, 
+  .animate-fade-in, 
+  .animate-scale,
+  [data-aos] {
+    transform: none !important;
+  }
+}
