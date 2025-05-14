@@ -319,8 +319,8 @@ const Index = () => {
       }
       
       @keyframes fade-in-up {
-        0% { transform: translateY(30px); opacity: 0; }
-        100% { transform: translateY(0); opacity: 1; }
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
       }
       
       @keyframes bounce-in {
@@ -491,6 +491,35 @@ const Index = () => {
         display: inline-block;
         border-right: 3px solid rgba(255, 255, 255, 0.75);
       }
+      
+      @keyframes fade-in-up {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      
+      @keyframes image-scale {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+      
+      .animate-fade-in-up {
+        animation: fade-in-up 0.8s ease-out forwards;
+      }
+      
+      .animate-fade-in {
+        animation: fade-in 1s ease-out forwards;
+      }
+      
+      /* Add this to your existing styles */
+      .transition-3000 {
+        transition-duration: 3000ms;
+      }
     `;
     document.head.appendChild(style);
     
@@ -651,128 +680,118 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Service Slider */}
+        {/* Service Slider - Redesigned with fade transitions */}
         <div className="relative z-10 h-full">
-          <div 
-            className="flex transition-transform duration-1000 ease-out h-full"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {services.map((service, index) => (
-              <div 
-                key={service.id} 
-                className={`min-w-full h-full relative flex items-center ${service.particles}`}
-              >
-                {/* Background Image with Overlay - Full Screen */}
-                <div className="absolute inset-0 z-10">
-                  <div className={`absolute inset-0 ${service.backgroundOverlay} z-20`}></div>
-                  <img 
-                    src={service.image} 
-                    alt={service.title} 
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-                
-                {/* Content Container - Positioned based on service.position */}
-                <div className="container mx-auto px-4 md:px-8 relative z-30 h-full flex items-center">
-                  <div 
-                    className={`max-w-3xl ${
-                      service.position === 'left' 
-                        ? 'ml-0 mr-auto text-left' 
-                        : service.position === 'right' 
-                          ? 'mr-0 ml-auto text-right' 
-                          : 'mx-auto text-center'
-                    }`}
-                  >
-                    {/* Text Content */}
-                    <div className="text-white">
-                      <div 
-                        className={`inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 ${service.position === 'center' ? 'mx-auto' : ''}`}
-                        data-aos="fade-up"
-                        data-aos-delay="100"
-                      >
-                        <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color} mr-2 animate-pulse`}></span>
-                        <span className="text-white text-sm font-medium flex items-center gap-2">
-                          {service.icon}
-                          {service.title}
-                        </span>
-                      </div>
-                      
-                      {service.id === 'fiber-internet' ? (
-                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                          <div className="mb-2 text-glow">
-                            <span className="text-white typing-container">Internet</span>
-                          </div>
-                          <div className="mb-2 text-glow" style={{ animationDelay: '0.5s' }}>
-                            <span className="text-white typing-container" style={{ animationDelay: '1s' }}>Faster Than</span>
-                          </div>
-                          <div className="text-glow" style={{ animationDelay: '1s' }}>
-                            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.color} typing-container`} style={{ animationDelay: '2s' }}>
-                              The Speed of Light
-                            </span>
-                          </div>
-                        </h1>
-                      ) : (
+          {services.map((service, index) => (
+            <div 
+              key={service.id} 
+              className={`absolute inset-0 h-full transition-all duration-1000 ${service.particles}`}
+              style={{ 
+                opacity: currentSlide === index ? 1 : 0,
+                visibility: currentSlide === index ? 'visible' : 'hidden',
+                zIndex: currentSlide === index ? 20 : 10
+              }}
+            >
+              {/* Background Image with Overlay - Full Screen */}
+              <div className="absolute inset-0 z-10 overflow-hidden">
+                <div className={`absolute inset-0 ${service.backgroundOverlay} z-20`}></div>
+                <img 
+                  src={service.image} 
+                  alt={service.title} 
+                  className="w-full h-full object-cover object-center transition-transform duration-3000 ease-in-out"
+                  style={{ 
+                    transform: currentSlide === index ? 'scale(1.05)' : 'scale(1)',
+                    animation: currentSlide === index ? 'image-scale 15s ease-in-out alternate infinite' : 'none'
+                  }}
+                />
+              </div>
+              
+              {/* Content Container */}
+              <div className="container mx-auto px-4 md:px-8 relative z-30 h-full flex items-center">
+                <div 
+                  className={`max-w-3xl ${
+                    service.position === 'left' 
+                      ? 'ml-0 mr-auto text-left' 
+                      : service.position === 'right' 
+                        ? 'mr-0 ml-auto text-right' 
+                        : 'mx-auto text-center'
+                  }`}
+                >
+                  {/* Text Content - With staggered reveal */}
+                  <div className="text-white">
+                    {currentSlide === index && (
+                      <>
+                        <div 
+                          className={`inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 ${
+                            service.position === 'center' ? 'mx-auto' : ''
+                          } opacity-0 animate-fade-in-up`}
+                          style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
+                        >
+                          <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color} mr-2 animate-pulse`}></span>
+                          <span className="text-white text-sm font-medium flex items-center gap-2">
+                            {service.icon}
+                            {service.title}
+                          </span>
+                        </div>
+                        
                         <h1 
-                          className={`text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight ${service.textAnimation}`}
-                          style={{ animationDelay: '0.3s' }}
+                          className={`text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight opacity-0 animate-fade-in-up`}
+                          style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
                         >
                           <span className="text-white">{service.headline.split(' ').slice(0, -1).join(' ')} </span>
-                          <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.color} float`}>
+                          <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.color}`}>
                             {service.headline.split(' ').slice(-1)}
                           </span>
                         </h1>
-                      )}
-                      
-                      <p 
-                        className={`text-xl text-white/80 mb-8 max-w-xl ${service.textAnimation}`}
-                        style={{ animationDelay: service.id === 'fiber-internet' ? '3s' : '0.5s' }}
-                      >
-                        {service.description}
-                      </p>
-                      
-                      <div 
-                        className={`flex ${service.position === 'right' ? 'justify-end' : service.position === 'center' ? 'justify-center' : 'justify-start'} flex-wrap gap-4 ${service.textAnimation}`}
-                        style={{ animationDelay: service.id === 'fiber-internet' ? '3.5s' : '0.7s' }}
-                      >
-                        <Link to={service.link}>
-                          <Button 
-                            className={`bg-gradient-to-r ${service.color} text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-base sm:text-lg ${service.id === 'fiber-internet' ? 'pulse-glow' : ''}`}
-                          >
-                            Learn More
-                            <ArrowRight className="ml-2 h-5 w-5" />
-                          </Button>
-                        </Link>
-                        <Button 
-                          onClick={scrollToServices}
-                          className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-all duration-300 text-base sm:text-lg"
+                        
+                        <p 
+                          className="text-xl text-white/80 mb-8 max-w-xl opacity-0 animate-fade-in-up"
+                          style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
                         >
-                          Explore Services
-                        </Button>
-                      </div>
-                    </div>
+                          {service.description}
+                        </p>
+                        
+                        <div 
+                          className={`flex ${
+                            service.position === 'right' ? 'justify-end' : service.position === 'center' ? 'justify-center' : 'justify-start'
+                          } flex-wrap gap-4 opacity-0 animate-fade-in-up`}
+                          style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
+                        >
+                          <Link to={service.link}>
+                            <Button 
+                              className={`bg-gradient-to-r ${service.color} text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-base sm:text-lg`}
+                            >
+                              Learn More
+                              <ArrowRight className="ml-2 h-5 w-5" />
+                            </Button>
+                          </Link>
+                          <Button 
+                            onClick={scrollToServices}
+                            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-all duration-300 text-base sm:text-lg"
+                          >
+                            Explore Services
+                          </Button>
+                        </div>
+                      </>
+                    )}
                   </div>
-                  
-                  {/* Decorative elements specific to each slide */}
+                </div>
+                
+                {/* Visual elements specific to each slide */}
+                {currentSlide === index && (
                   <div className="absolute inset-0 z-20 pointer-events-none">
                     {service.id === 'fiber-internet' && (
                       <>
-                        <div className="absolute bottom-20 right-10 md:right-20 lg:right-40 w-40 h-40 md:w-64 md:h-64 opacity-30 hidden md:block">
+                        <div className="absolute bottom-20 right-10 md:right-20 lg:right-40 w-40 h-40 md:w-64 md:h-64 opacity-0 md:block animate-fade-in" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
                           <div className="w-full h-full border-2 border-white/30 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
                           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 border-2 border-white/20 rounded-full animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
                           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 border-2 border-white/10 rounded-full animate-spin" style={{ animationDuration: '10s' }}></div>
-                        </div>
-                        <div className="absolute top-1/4 right-1/4 w-64 h-64 opacity-20 hidden lg:block">
-                          <div className="absolute w-full h-full rounded-full border border-cyan-400/30 animate-ping" style={{ animationDuration: '3s', animationIterationCount: 'infinite' }}></div>
-                          <div className="absolute w-full h-full rounded-full border border-blue-500/20 animate-ping" style={{ animationDuration: '3s', animationDelay: '1s', animationIterationCount: 'infinite' }}></div>
-                        </div>
-                        <div className="absolute bottom-1/4 left-1/4 w-32 h-32 opacity-20 hidden lg:block">
-                          <div className="absolute w-full h-full rounded-full border border-cyan-400/30 animate-ping" style={{ animationDuration: '4s', animationIterationCount: 'infinite' }}></div>
                         </div>
                       </>
                     )}
                     
                     {service.id === 'cloud-services' && (
-                      <div className="absolute top-20 left-10 md:left-20 lg:left-40 opacity-20 hidden md:block">
+                      <div className="absolute top-20 left-10 md:left-20 lg:left-40 opacity-0 md:block animate-fade-in" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
                         <Cloud className="w-20 h-20 md:w-32 md:h-32 text-white float" />
                         <Cloud className="w-16 h-16 md:w-24 md:h-24 text-white absolute top-20 left-20 float" style={{ animationDelay: '1s' }} />
                         <Cloud className="w-12 h-12 md:w-16 md:h-16 text-white absolute top-10 left-40 float" style={{ animationDelay: '2s' }} />
@@ -780,16 +799,16 @@ const Index = () => {
                     )}
                     
                     {service.id === 'cybersecurity' && (
-                      <div className="absolute top-1/4 right-10 md:right-20 lg:right-40 opacity-20 hidden md:block">
+                      <div className="absolute top-1/4 right-10 md:right-20 lg:right-40 opacity-0 md:block animate-fade-in" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
                         <ShieldCheck className="w-24 h-24 md:w-40 md:h-40 text-white float" />
                         <Lock className="w-16 h-16 md:w-24 md:h-24 text-white absolute bottom-20 right-10 float" style={{ animationDelay: '1.5s' }} />
                       </div>
                     )}
                   </div>
-                </div>
+                )}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
           
           {/* Navigation Controls */}
           <div className="absolute bottom-8 left-0 right-0 z-30 flex justify-center items-center">
@@ -843,7 +862,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-
 
       {/* Services Section - Now starts after the full-screen hero */}
       {/* <section id="services" className="py-16 px-4 bg-white">
