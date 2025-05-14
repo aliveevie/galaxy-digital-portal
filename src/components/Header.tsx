@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Menu, Info, Book, File, Users, Phone, Mail, Video, FileQuestion, Newspaper, Moon, Sun, MessageCircle } from 'lucide-react';
+import { Menu, Info, Book, File, Users, Phone, Mail, Video, FileQuestion, Newspaper, Moon, Sun, MessageCircle, ChevronDown, MessageSquare } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -24,6 +24,7 @@ const Header = () => {
   const isMobile = useIsMobile();
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
+  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({});
   
   // Handle scroll effect for header
   useEffect(() => {
@@ -40,12 +41,23 @@ const Header = () => {
     };
   }, [scrolled]);
 
+  // Toggle mobile menu sections
+  const toggleMenu = (menuName: string) => {
+    setOpenMenus(prev => ({
+      ...prev,
+      [menuName]: !prev[menuName]
+    }));
+  };
+
   const menuContent = (
     <>
       <NavigationMenuItem>
         <Link to="/">
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
-            "text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium"
+          <NavigationMenuLink className={cn(
+            "flex h-10 items-center px-4 text-sm font-medium transition-colors",
+            scrolled 
+              ? "text-gray-800 hover:text-blue-600 hover:bg-gray-50/80" 
+              : "text-white hover:text-blue-300 hover:bg-white/10"
           )}>
             Home
           </NavigationMenuLink>
@@ -53,11 +65,16 @@ const Header = () => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
-          About
+        <NavigationMenuTrigger className={cn(
+          "flex h-10 items-center gap-1 px-4 text-sm font-medium transition-colors",
+          scrolled 
+            ? "text-gray-800 hover:text-blue-600 hover:bg-gray-50/80 data-[state=open]:bg-gray-50/80" 
+            : "text-white hover:text-blue-300 hover:bg-white/10 data-[state=open]:bg-white/10"
+        )}>
+          About <ChevronDown className="h-4 w-4 ml-1" />
         </NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2 bg-white shadow-md border border-gray-100">
+        <NavigationMenuContent className="z-50">
+          <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2 bg-white shadow-lg rounded-lg border border-gray-100">
             <li className="row-span-3">
               <NavigationMenuLink asChild>
                 <Link
@@ -162,11 +179,16 @@ const Header = () => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
-          Services
+        <NavigationMenuTrigger className={cn(
+          "flex h-10 items-center gap-1 px-4 text-sm font-medium transition-colors",
+          scrolled 
+            ? "text-gray-800 hover:text-blue-600 hover:bg-gray-50/80 data-[state=open]:bg-gray-50/80" 
+            : "text-white hover:text-blue-300 hover:bg-white/10 data-[state=open]:bg-white/10"
+        )}>
+          Services <ChevronDown className="h-4 w-4 ml-1" />
         </NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white shadow-md border border-gray-100">
+        <NavigationMenuContent className="z-50">
+          <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white shadow-lg rounded-lg border border-gray-100">
             {[
               {
                 title: "IT Consulting",
@@ -212,11 +234,16 @@ const Header = () => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
-          Customer Service
+        <NavigationMenuTrigger className={cn(
+          "flex h-10 items-center gap-1 px-4 text-sm font-medium transition-colors",
+          scrolled 
+            ? "text-gray-800 hover:text-blue-600 hover:bg-gray-50/80 data-[state=open]:bg-gray-50/80" 
+            : "text-white hover:text-blue-300 hover:bg-white/10 data-[state=open]:bg-white/10"
+        )}>
+          Customer Service <ChevronDown className="h-4 w-4 ml-1" />
         </NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <ul className="grid gap-3 p-4 w-[200px] md:w-[300px] bg-white shadow-md border border-gray-100">
+        <NavigationMenuContent className="z-50">
+          <ul className="grid gap-3 p-6 w-[280px] md:w-[320px] bg-white shadow-lg rounded-lg border border-gray-100">
             <li>
               <NavigationMenuLink asChild>
                 <a
@@ -248,11 +275,16 @@ const Header = () => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
-          Resources
+        <NavigationMenuTrigger className={cn(
+          "flex h-10 items-center gap-1 px-4 text-sm font-medium transition-colors",
+          scrolled 
+            ? "text-gray-800 hover:text-blue-600 hover:bg-gray-50/80 data-[state=open]:bg-gray-50/80" 
+            : "text-white hover:text-blue-300 hover:bg-white/10 data-[state=open]:bg-white/10"
+        )}>
+          Resources <ChevronDown className="h-4 w-4 ml-1" />
         </NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <ul className="grid gap-3 p-4 md:grid-cols-2 w-[400px] bg-white shadow-md border border-gray-100">
+        <NavigationMenuContent className="z-50">
+          <ul className="grid gap-3 p-6 md:grid-cols-2 w-[400px] bg-white shadow-lg rounded-lg border border-gray-100">
             <li>
               <NavigationMenuLink asChild>
                 <Link to="/faq" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-50 hover:text-[#1A1F2C] focus:bg-gray-50 focus:text-[#1A1F2C]">
@@ -310,11 +342,16 @@ const Header = () => {
       </NavigationMenuItem>
       
       <NavigationMenuItem>
-        <NavigationMenuTrigger className="text-white hover:text-[#33C3F0] hover:bg-gray-50 transition-colors bg-transparent font-medium">
-          Contact Us
+        <NavigationMenuTrigger className={cn(
+          "flex h-10 items-center gap-1 px-4 text-sm font-medium transition-colors",
+          scrolled 
+            ? "text-gray-800 hover:text-blue-600 hover:bg-gray-50/80 data-[state=open]:bg-gray-50/80" 
+            : "text-white hover:text-blue-300 hover:bg-white/10 data-[state=open]:bg-white/10"
+        )}>
+          Contact Us <ChevronDown className="h-4 w-4 ml-1" />
         </NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <div className="p-4 w-[350px] bg-white shadow-md border border-gray-100 text-[#1A1F2C]">
+        <NavigationMenuContent className="z-50">
+          <div className="p-6 w-[350px] bg-white shadow-lg rounded-lg border border-gray-100 text-gray-800">
             <h4 className="font-medium mb-2">Galaxy ITT</h4>
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
@@ -346,72 +383,149 @@ const Header = () => {
   );
 
   return (
-    <div className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? `backdrop-blur-md ${theme === 'dark' ? 'bg-[#1A1F2C]/90' : 'bg-white/80'} shadow-lg` 
-        : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo on the left */}
-        <Link to="/" className="flex-shrink-0">
-          <img 
-            src="/galaxy-logo.png" 
-            alt="Galaxy Digital Portal" 
-            className="h-10 w-auto"
-            style={{
-              filter: theme === 'dark' || !scrolled ? 'brightness(0) invert(1)' : 'none',
-              opacity: 1
-            }}
-          />
-        </Link>
+    <header className="fixed top-0 left-0 right-0 w-full z-50">
+      {/* Gradient background for the header */}
+      <div className={cn(
+        "absolute inset-0 w-full h-full transition-all duration-500",
+        scrolled
+          ? theme === 'dark'
+            ? "bg-gradient-to-r from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-md shadow-lg"
+            : "bg-gradient-to-r from-white/95 via-blue-50/95 to-white/95 backdrop-blur-md shadow-lg"
+          : "bg-gradient-to-r from-blue-900/70 via-indigo-800/70 to-blue-900/70 backdrop-blur-sm"
+      )}></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo with enhanced visibility */}
+          <div className="flex items-center">
+            <Link to="/" className="flex-shrink-0 relative">
+              <div className={cn(
+                "transition-all duration-300 overflow-hidden",
+                !scrolled && "bg-white/10 p-2 rounded-lg backdrop-blur-sm"
+              )}>
+                <img 
+                  src="/galaxy-logo.png" 
+                  alt="Galaxy Digital Portal" 
+                  className={cn(
+                    "h-10 w-auto transition-all duration-300",
+                    theme === 'dark' && !scrolled ? "filter brightness-0 invert" : ""
+                  )}
+                  style={{
+                    filter: !scrolled ? "drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))" : ""
+                  }}
+                />
+              </div>
+            </Link>
+            
+            {/* Get in Touch button for mobile view */}
+            <div className="ml-4 md:hidden">
+              <Link 
+                to="/contact" 
+                className={cn(
+                  "inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full transition-colors",
+                  scrolled
+                    ? "bg-blue-600 hover:bg-blue-700 text-white"
+                    : "bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20"
+                )}
+              >
+                <MessageSquare className="mr-1.5 h-3 w-3" />
+                Get in Touch
+              </Link>
+            </div>
+          </div>
 
-        {/* Menu with glass morphism effect */}
-        <div className={`${
-          scrolled 
-            ? `${theme === 'dark' ? 'bg-gradient-to-r from-blue-900/70 via-indigo-800/70 to-blue-900/70' : 'bg-gradient-to-r from-blue-500/70 via-indigo-600/70 to-blue-500/70'}`
-            : 'bg-transparent'
-        } rounded-full backdrop-blur-sm shadow-lg`}>
-          <NavigationMenu>
-            <NavigationMenuList className="hidden md:flex px-6 py-2">
-              {menuContent}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
+          {/* Desktop Navigation with glass effect */}
+          <div className={cn(
+            "hidden md:block rounded-full transition-all duration-300",
+            scrolled
+              ? theme === 'dark'
+                ? "bg-gray-800/50 backdrop-blur-sm"
+                : "bg-white/50 backdrop-blur-sm"
+              : "bg-white/10 backdrop-blur-sm"
+          )}>
+            <NavigationMenu>
+              <NavigationMenuList className="flex items-center px-2">
+                {menuContent}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
 
-        {/* Theme Switch */}
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleTheme}
-            className={`${theme === 'dark' || !scrolled ? 'text-white hover:text-[#33C3F0] hover:bg-white/10' : 'text-[#1A1F2C] hover:text-[#33C3F0] hover:bg-gray-100'} border border-gray-200 backdrop-blur-sm`}
-          >
-            {theme === 'dark' ? (
-              <Moon className="h-5 w-5" />
-            ) : (
-              <Sun className="h-5 w-5" />
-            )}
-            <span className="sr-only">Toggle theme</span>
-          </Button>
+          {/* Right side controls */}
+          <div className="flex items-center gap-3">
+            {/* Get in Touch button for desktop */}
+            <div className="hidden md:block">
+              <Link 
+                to="/contact" 
+                className={cn(
+                  "inline-flex items-center px-4 py-2 text-sm font-medium rounded-full transition-colors",
+                  scrolled
+                    ? "bg-blue-600 hover:bg-blue-700 text-white"
+                    : "bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20"
+                )}
+              >
+                <MessageSquare className="mr-2 h-4 w-4" />
+                Get in Touch
+              </Link>
+            </div>
+            
+            {/* Theme Switch - Desktop only */}
+            <div className="hidden md:block">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={toggleTheme}
+                className={cn(
+                  "rounded-full transition-colors",
+                  scrolled 
+                    ? theme === 'dark'
+                      ? "bg-gray-800/70 border-gray-700 hover:bg-gray-700" 
+                      : "bg-white/70 border-gray-200 hover:bg-gray-100"
+                    : "bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20"
+                )}
+              >
+                {theme === 'dark' ? (
+                  <Moon className={cn("h-5 w-5", scrolled ? "text-gray-200" : "text-white")} />
+                ) : (
+                  <Sun className={cn("h-5 w-5", scrolled ? "text-gray-700" : "text-white")} />
+                )}
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            </div>
 
-          {/* Mobile Menu */}
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger className="p-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition-colors shadow-md">
-                <Menu className="h-6 w-6" />
-              </SheetTrigger>
-              <SheetContent side="right" className={`${theme === 'dark' ? 'bg-[#1A1F2C]' : 'bg-white'}`}>
-                <NavigationMenu className="w-full">
-                  <NavigationMenuList className="flex-col items-start space-y-2">
-                    {menuContent}
-                  </NavigationMenuList>
-                </NavigationMenu>
-              </SheetContent>
-            </Sheet>
+            {/* Mobile Menu */}
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger className={cn(
+                  "p-2 rounded-full transition-colors",
+                  scrolled 
+                    ? theme === 'dark'
+                      ? "bg-gray-800 text-white hover:bg-gray-700" 
+                      : "bg-blue-600 text-white hover:bg-blue-700"
+                    : "bg-white/10 backdrop-blur-sm text-white hover:bg-white/20"
+                )}>
+                  <Menu className="h-5 w-5" />
+                </SheetTrigger>
+                <SheetContent 
+                  side="right" 
+                  className={cn(
+                    "w-[85vw] sm:max-w-sm pt-6",
+                    theme === 'dark' 
+                      ? "bg-gradient-to-b from-gray-900 to-gray-800 text-white" 
+                      : "bg-gradient-to-b from-white to-blue-50 text-gray-900"
+                  )}
+                >
+                  <NavigationMenu className="w-full">
+                    <NavigationMenuList className="flex-col items-start space-y-2">
+                      {menuContent}
+                    </NavigationMenuList>
+                  </NavigationMenu>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
