@@ -71,8 +71,36 @@ const HeroSection = () => {
     }
   };
 
+  // Add a style to remove any horizontal lines
+  useEffect(() => {
+    // Create a style element
+    const styleEl = document.createElement('style');
+    // Add CSS to forcefully remove horizontal lines and overflow
+    styleEl.textContent = `
+      body, html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        position: relative !important;
+      }
+      * {
+        box-sizing: border-box !important;
+      }
+      hr, [role="separator"] {
+        display: none !important;
+      }
+    `;
+    // Append to document head
+    document.head.appendChild(styleEl);
+    
+    // Cleanup
+    return () => {
+      document.head.removeChild(styleEl);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-x-hidden max-w-[100vw]" style={{ overflowX: 'hidden', maxWidth: '100vw', boxSizing: 'border-box' }}>
       <div className="relative h-screen w-full overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a1128] to-[#001f54] z-0">
@@ -98,11 +126,11 @@ const HeroSection = () => {
         </div>
         
         {/* Service Slider */}
-        <div className="relative z-10 h-full w-full">
+        <div className="relative z-10 h-full w-full overflow-hidden">
           {services.map((service, index) => (
             <div 
               key={service.id} 
-              className="absolute inset-0 h-full w-full transition-all duration-1000"
+              className="absolute inset-0 h-full w-full transition-all duration-1000 overflow-hidden"
               style={{ 
                 opacity: currentSlide === index ? 1 : 0,
                 visibility: currentSlide === index ? 'visible' : 'hidden',
@@ -117,7 +145,8 @@ const HeroSection = () => {
                   alt={service.title} 
                   className="w-full h-full object-cover object-center"
                   style={{ 
-                    maxWidth: '100vw',
+                    width: '100%',
+                    maxWidth: '100%',
                     transform: currentSlide === index ? 'scale(1.05)' : 'scale(1)',
                     animation: currentSlide === index ? 'image-scale 15s ease-in-out alternate infinite' : 'none'
                   }}
@@ -125,9 +154,9 @@ const HeroSection = () => {
               </div>
               
               {/* Content Area */}
-              <div className="absolute inset-0 z-20 flex items-center">
-                <div className="container mx-auto px-4">
-                  <div className="max-w-4xl mx-auto md:mx-0">
+              <div className="absolute inset-0 z-20 flex items-center overflow-hidden">
+                <div className="container mx-auto px-4 overflow-hidden">
+                  <div className="max-w-4xl mx-auto md:mx-0 overflow-hidden">
                     {currentSlide === index && (
                       <>
                         <div 
@@ -243,4 +272,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection; 
+export default HeroSection;
