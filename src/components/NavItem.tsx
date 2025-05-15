@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 type DropdownItem = {
@@ -16,18 +16,26 @@ interface NavItemProps {
 
 export const NavItem: React.FC<NavItemProps> = ({ href, label, dropdown, rightAligned = false }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLLIElement>(null);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  // Handle clicks outside the dropdown
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
-  const closeDropdown = () => {
-    setIsOpen(false);
-  };
-
+  // Simple link if no dropdown
   if (!dropdown) {
     return (
-      <li className="relative">
+      <li className="relative px-2">
         <a
           href={href}
           className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
@@ -39,45 +47,48 @@ export const NavItem: React.FC<NavItemProps> = ({ href, label, dropdown, rightAl
   }
 
   return (
-    <li className="relative" onMouseLeave={closeDropdown}>
-      <button
-        onClick={toggleDropdown}
-        onMouseEnter={() => setIsOpen(true)}
+    <li 
+      className="relative px-2" 
+      ref={dropdownRef}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <a
+        href={href}
         className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
         {label}
-        <ChevronDown className="ml-1 h-4 w-4" />
-      </button>
+        <ChevronDown 
+          className={`ml-1 h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
+        />
+      </a>
 
-      {isOpen && (
-        <div 
-          className={`absolute z-10 mt-1 w-screen max-w-xs transform px-2 sm:px-0 ${
-            rightAligned ? 'right-0' : 'left-0'
-          }`}
-        >
-          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-            <div className="relative grid gap-6 bg-white p-6 sm:gap-8">
-              {dropdown.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="-m-3 p-3 flex items-start rounded-lg hover:bg-blue-50 transition ease-in-out duration-150"
-                  onClick={closeDropdown}
-                >
-                  <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-900">{item.label}</p>
-                    {item.description && (
-                      <p className="mt-1 text-xs text-gray-500">{item.description}</p>
-                    )}
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
+      {/* Dropdown menu */}
+      <div
+        className={`
+          absolute z-50 w-64 mt-1 rounded-md shadow-lg bg-blue-100 
+          transition-all duration-200 ease-in-out
+          ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}
+          ${rightAligned ? 'right-0' : 'left-0'}
+        `}
+      >
+        <div className="py-1 rounded-md shadow-xs">
+          {dropdown.map((item, index) => (
+            <a
+              key={index}
+              href={item.href}
+              className="block px-4 py-2 hover:bg-blue-200 transition-colors"
+            >
+              <div className="text-sm font-medium text-gray-700">{item.label}</div>
+              {item.description && (
+                <p className="mt-1 text-xs text-gray-500">{item.description}</p>
+              )}
+            </a>
+          ))}
         </div>
-      )}
+      </div>
     </li>
   );
 };
