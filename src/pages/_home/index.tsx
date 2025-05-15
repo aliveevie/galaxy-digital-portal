@@ -12,6 +12,7 @@ import PartnersSection from './components/PartnersSection';
 import ContactCTASection from './components/ContactCTASection';
 import NewsletterSection from './components/NewsletterSection';
 import SupportChat from './components/SupportChat';
+import CoverageSection from './components/CoverageSection';
 
 const Index = () => {
   // Keep states that need to be shared across components
@@ -55,6 +56,7 @@ const Index = () => {
       <HeroSection />
       <ServicesSection />
       <AboutSection />
+      <CoverageSection />
       <TestimonialsSection />
       <PartnersSection />
       <ContactCTASection />
@@ -71,4 +73,4 @@ const Index = () => {
   );
 };
 
-export default Index; 
+export default Index;
