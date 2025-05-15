@@ -5,22 +5,22 @@ const PartnersSection = () => {
   const partners = [
     {
       name: "Jigawa State Government",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Coat_of_arms_of_Jigawa_State.png/800px-Coat_of_arms_of_Jigawa_State.png",
+      logo: "/partners/jigawalogo.svg",
       website: "https://jigawastate.gov.ng/"
     },
     {
       name: "NITDA",
-      logo: "https://nitda.gov.ng/wp-content/uploads/2020/11/NITDA-Logo.png",
+      logo: "/partners/Nitdalogo.png",
       website: "https://nitda.gov.ng/"
     },
     {
       name: "NCC",
-      logo: "https://www.ncc.gov.ng/images/NCC-Logo.png",
+      logo: "/partners/ncc.png",
       website: "https://www.ncc.gov.ng/"
     },
     {
       name: "Ministry of Communications and Digital Economy",
-      logo: "https://www.commtech.gov.ng/wp-content/uploads/2023/06/FMoCDE-Logo.png",
+      logo: "/partners/Fedmini.png",
       website: "https://www.commtech.gov.ng/"
     }
   ];
