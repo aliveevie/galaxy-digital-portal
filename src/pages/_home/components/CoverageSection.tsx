@@ -59,7 +59,7 @@ const CoverageSection = () => {
               {/* Nigeria Marker */}
               <div 
                 className="absolute cursor-pointer"
-                style={{ top: '52.5%', left: '53.8%' }}
+                style={{ top: '38%', left: '43%' }}
                 onMouseEnter={() => handleLocationHover('nigeria')}
                 onMouseLeave={() => handleLocationHover(null)}
               >
