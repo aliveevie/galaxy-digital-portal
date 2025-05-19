@@ -124,76 +124,92 @@ const AboutPage = () => {
       
       {/* Management Section */}
       <section id="management" className="py-16 px-4 bg-[#221F26] text-white">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Management</h2>
             <div className="w-24 h-1 bg-[#33C3F0] mx-auto"></div>
           </div>
-          
-          <div className="space-y-16">
-            {/* Board of Directors */}
-            <div id="board">
-              <h3 className="text-2xl font-semibold mb-6 text-center">Board of Directors</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-[#2C3342]/60 p-8 rounded-lg">
-                  <h4 className="text-xl font-semibold mb-2 text-[#33C3F0]">Chairman</h4>
-                  <h5 className="text-lg font-medium mb-3">Board Member One</h5>
-                  <p className="text-sm text-gray-300">
-                    Provides strategic leadership and governance oversight for Galaxy ITT, with extensive experience in corporate governance and technology sector.
-                  </p>
+
+          {/* CEO/MD */}
+          <div className="mb-16 flex flex-col items-center">
+            <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center max-w-md shadow-xl border border-[#33C3F0]/20 hover:border-[#33C3F0]/40 transition-all duration-300">
+              <div className="w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg">
+                <img 
+                  src="/management/md.png" 
+                  alt="Baffajo Beita - CEO/MD" 
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              <h4 className="text-2xl font-semibold mb-2">Baffajo Beita</h4>
+              <p className="text-lg text-[#33C3F0] mb-4 font-medium">Chief Executive Officer / Managing Director</p>
+            </div>
+          </div>
+
+          {/* Executive Directors */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-6 text-center">Executive Directors</h3>
+            <div className="grid md:grid-cols-2 gap-8 justify-center">
+              <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
+                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg flex items-center justify-center bg-[#1A1F2C]">
+                  <img 
+                    src="/management/placeholder.png" 
+                    alt="Umar I. Gumel - Director Business Development Services" 
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
-                
-                <div className="bg-[#2C3342]/60 p-8 rounded-lg">
-                  <h4 className="text-xl font-semibold mb-2 text-[#33C3F0]">Board Member</h4>
-                  <h5 className="text-lg font-medium mb-3">Board Member Two</h5>
-                  <p className="text-sm text-gray-300">
-                    Brings valuable insights on financial management and corporate strategy to guide the company's long-term vision and growth.
-                  </p>
+                <h4 className="text-xl font-semibold mb-2">Umar I. Gumel</h4>
+                <p className="text-[#33C3F0] mb-2 font-medium">Director Business Development Services</p>
+              </div>
+              <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
+                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg flex items-center justify-center bg-[#1A1F2C]">
+                  <img 
+                    src="/management/placeholder.png" 
+                    alt="Nura M. Zubair - Director Technical Services" 
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
+                <h4 className="text-xl font-semibold mb-2">Nura M. Zubair</h4>
+                <p className="text-[#33C3F0] mb-2 font-medium">Director Technical Services</p>
               </div>
             </div>
-            
-            {/* CEO/MD */}
-            <div id="ceo" className="mt-16">
-              <h3 className="text-2xl font-semibold mb-6 text-center">CEO/MD</h3>
-              <div className="flex justify-center">
-                <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center max-w-md shadow-xl border border-[#33C3F0]/20 hover:border-[#33C3F0]/40 transition-all duration-300">
-                  <div className="w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg">
-                    <img 
-                      src="/management/md.png" 
-                      alt="Baffajo Beita - CEO/MD" 
-                      className="w-full h-full object-cover object-center"
-                    />
-                  </div>
-                  <h4 className="text-2xl font-semibold mb-2">Baffajo Beita</h4>
-                  <p className="text-lg text-[#33C3F0] mb-4 font-medium">Chief Executive Officer / Managing Director</p>
-                  <div className="w-16 h-1 bg-[#33C3F0]/60 mx-auto mb-4"></div>
-                  <p className="text-gray-300 leading-relaxed">
-                    Leading Galaxy ITT's vision of digital transformation and technological innovation in sub-Saharan Africa. With extensive experience in the technology sector, Baffajo brings strategic leadership and a forward-thinking approach to drive the company's growth and success.
-                  </p>
+          </div>
+
+          {/* Heads of Units */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-6 text-center">Heads of Units</h3>
+            <div className="grid md:grid-cols-3 gap-8 justify-center">
+              <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
+                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg">
+                  <img 
+                    src="/management/heads_of_units/Abdulkadir_muhammad_Head_of_Marketing.png" 
+                    alt="Abdulkadir Muhammad - Head of Marketing" 
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
+                <h4 className="text-xl font-semibold mb-2">Abdulkadir Muhammad</h4>
+                <p className="text-[#33C3F0] mb-2 font-medium">Head of Marketing</p>
               </div>
-            </div>
-            
-            {/* Executive Directors */}
-            <div id="executive-directors" className="mt-16">
-              <h3 className="text-2xl font-semibold mb-6 text-center">Executive Directors</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-[#2C3342]/60 p-8 rounded-lg">
-                  <h4 className="text-xl font-semibold mb-2 text-[#33C3F0]">Executive Director Technical</h4>
-                  <h5 className="text-lg font-medium mb-3">Engr Nura</h5>
-                  <p className="text-sm text-gray-300">
-                    Leads the technical strategy and operations, bringing extensive experience in telecommunications and IT infrastructure development.
-                  </p>
+              <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
+                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg">
+                  <img 
+                    src="/management/heads_of_units/Umar_Sulaiman_Sabo_Head_of_Software_Unit.png" 
+                    alt="Umar Sulaiman Sabo - Head of Software Unit" 
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
-                
-                <div className="bg-[#2C3342]/60 p-8 rounded-lg">
-                  <h4 className="text-xl font-semibold mb-2 text-[#33C3F0]">Executive Director Business Development</h4>
-                  <h5 className="text-lg font-medium mb-3">Umar Gumel</h5>
-                  <p className="text-sm text-gray-300">
-                    Responsible for business growth strategies and client relationship management with a strong background in business development.
-                  </p>
+                <h4 className="text-xl font-semibold mb-2">Umar Sulaiman Sabo</h4>
+                <p className="text-[#33C3F0] mb-2 font-medium">Head of Software Unit</p>
+              </div>
+              <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
+                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg">
+                  <img 
+                    src="/management/heads_of_units/Bashir_Hassan_Head_of_Network.png" 
+                    alt="Bashir Hassan - Head of Network" 
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
+                <h4 className="text-xl font-semibold mb-2">Bashir Hassan</h4>
+                <p className="text-[#33C3F0] mb-2 font-medium">Head of Network</p>
               </div>
             </div>
           </div>
