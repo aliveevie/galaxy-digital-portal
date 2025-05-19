@@ -48,77 +48,29 @@ const CoverageSection = () => {
           <div className="relative w-full lg:w-2/3 h-[500px] bg-[#0a1128]/30 rounded-xl p-4 backdrop-blur-sm border border-white/10"
                data-aos="fade-right" 
                data-aos-duration="1000">
-            {/* Africa Map SVG */}
+            {/* Africa Map Image */}
             <div className="relative w-full h-full">
-              <svg 
-                viewBox="0 0 100 100" 
-                className="w-full h-full"
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Africa outline - simplified path */}
-                <path 
-                  d="M35,10 C32,12 30,15 28,18 C26,21 25,25 23,28 C21,31 18,33 17,37 C16,41 15,45 15,49 C15,53 16,57 18,60 C20,63 23,65 25,68 C27,71 28,75 30,78 C32,81 35,83 38,85 C41,87 45,88 48,90 C51,92 54,94 58,95 C62,96 66,96 70,95 C74,94 77,92 80,90 C83,88 85,85 87,82 C89,79 90,75 91,72 C92,69 92,65 92,62 C92,59 91,56 90,53 C89,50 87,48 85,45 C83,42 80,40 78,37 C76,34 75,30 73,27 C71,24 68,22 65,20 C62,18 58,17 55,15 C52,13 49,11 45,10 C41,9 37,9 35,10 Z" 
-                  fill="#1A1F2C" 
-                  stroke="#33C3F0" 
-                  strokeWidth="0.5"
-                  className="transition-all duration-300 hover:fill-[#1A1F2C]/70"
-                />
-                
-                {/* Coverage Location Dots */}
-                {coverageLocations.map((location) => (
-                  <g 
-                    key={location.id}
-                    onMouseEnter={() => handleLocationHover(location.id)}
-                    onMouseLeave={() => handleLocationHover(null)}
-                    className="cursor-pointer transform transition-transform duration-300 hover:scale-110"
-                  >
-                    {/* Ping Animation Circle */}
-                    <circle
-                      cx={location.coordinates.x}
-                      cy={location.coordinates.y}
-                      r={location.isPrimary ? 2.5 : 1.8}
-                      fill="transparent"
-                      stroke={location.isPrimary ? "#33C3F0" : "#4ADE80"}
-                      strokeWidth="0.3"
-                      className="animate-ping opacity-75"
-                    />
-                    
-                    {/* Main Location Dot */}
-                    <circle
-                      cx={location.coordinates.x}
-                      cy={location.coordinates.y}
-                      r={location.isPrimary ? 1.8 : 1.2}
-                      fill={location.isPrimary ? "#33C3F0" : "#4ADE80"}
-                      className="transition-all duration-300"
-                      stroke="#fff"
-                      strokeWidth="0.2"
-                    />
-                    
-                    {/* Location Label */}
-                    <text
-                      x={location.coordinates.x + (location.isPrimary ? 2.5 : 2)}
-                      y={location.coordinates.y}
-                      fontSize={location.isPrimary ? "2.5" : "2"}
-                      fill="#fff"
-                      className="pointer-events-none"
-                    >
-                      {location.name}
-                    </text>
-                  </g>
-                ))}
-              </svg>
+              <img 
+                src="/coverage/Africa.jpg" 
+                alt="Africa Map" 
+                className="w-full h-full object-contain"
+              />
               
-              {/* Map Legend */}
-              <div className="absolute bottom-4 left-4 bg-[#0a1128]/80 p-3 rounded-lg backdrop-blur-sm border border-white/10">
-                <div className="flex items-center mb-2">
-                  <div className="w-3 h-3 rounded-full bg-[#33C3F0] mr-2"></div>
-                  <span className="text-sm text-white">Primary Coverage</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-3 h-3 rounded-full bg-[#4ADE80] mr-2"></div>
-                  <span className="text-sm text-white">Regional Coverage</span>
-                </div>
+              {/* Nigeria Marker */}
+              <div 
+                className="absolute cursor-pointer"
+                style={{ top: '52.5%', left: '53.8%' }}
+                onMouseEnter={() => handleLocationHover('nigeria')}
+                onMouseLeave={() => handleLocationHover(null)}
+              >
+                {/* Ping animation div */}
+                <div className="absolute -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-transparent border-2 border-[#33C3F0] animate-ping opacity-70"></div>
+                
+                {/* Main dot */}
+                <div className="absolute -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#33C3F0] border border-white"></div>
+                
+                {/* Label */}
+                <span className="absolute -translate-y-1/2 left-4 text-white font-medium">Nigeria</span>
               </div>
             </div>
           </div>

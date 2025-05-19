@@ -5,8 +5,7 @@ import { ArrowRight, Cloud, ShieldCheck, Lock, Wifi, Building2, Smartphone, Netw
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
-   
+ 
  // Hero slides data for services showcase
  const services = [
   {
@@ -284,7 +283,7 @@ const HeroSection = () => {
       </div>
       
       {/* Custom CSS animations */}
-      <style jsx global>{`
+      <style>{`
         @keyframes heroImageAnimation {
           0% { transform: scale(1.1); opacity: 0.6; }
           100% { transform: scale(1); opacity: 1; }
