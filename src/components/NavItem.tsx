@@ -38,7 +38,7 @@ export const NavItem: React.FC<NavItemProps> = ({ href, label, dropdown, rightAl
       <li className="relative px-2">
         <a
           href={href}
-          className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+          className="flex items-center px-3 py-2 text-sm font-medium text-white hover:text-blue-100 transition-colors"
         >
           {label}
         </a>
@@ -55,20 +55,20 @@ export const NavItem: React.FC<NavItemProps> = ({ href, label, dropdown, rightAl
     >
       <a
         href={href}
-        className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+        className="flex items-center px-3 py-2 text-sm font-medium text-white hover:text-blue-100 transition-colors"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
         {label}
         <ChevronDown 
-          className={`ml-1 h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
+          className={`ml-1 h-4 w-4 text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
         />
       </a>
 
       {/* Dropdown menu */}
       <div
         className={`
-          absolute z-50 w-64 mt-1 rounded-md shadow-lg bg-blue-100 
+          absolute z-50 w-64 mt-1 rounded-md shadow-lg bg-[#001f54]/95 backdrop-blur-sm
           transition-all duration-200 ease-in-out
           ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}
           ${rightAligned ? 'right-0' : 'left-0'}
@@ -79,11 +79,11 @@ export const NavItem: React.FC<NavItemProps> = ({ href, label, dropdown, rightAl
             <a
               key={index}
               href={item.href}
-              className="block px-4 py-2 hover:bg-blue-200 transition-colors"
+              className="block px-4 py-2 hover:bg-[#0a1128]/50 transition-colors"
             >
-              <div className="text-sm font-medium text-gray-700">{item.label}</div>
+              <div className="text-sm font-medium text-white">{item.label}</div>
               {item.description && (
-                <p className="mt-1 text-xs text-gray-500">{item.description}</p>
+                <p className="mt-1 text-xs text-blue-100">{item.description}</p>
               )}
             </a>
           ))}

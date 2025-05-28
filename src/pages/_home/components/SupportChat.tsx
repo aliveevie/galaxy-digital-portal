@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { MessageCircle, X, Send, User } from 'lucide-react';
+import { MessageCircle, X, Send, User, MessageSquare, } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { BsWhatsapp } from 'react-icons/bs';
 
 interface SupportChatProps {
   showChatButton: boolean;
@@ -38,23 +39,27 @@ const SupportChat: React.FC<SupportChatProps> = ({ showChatButton, isChatOpen, s
   
   return (
     <div 
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
+      className={`fixed bottom-6 left-6 z-50 transition-all duration-300 ${
         showChatButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
     >
       {!isChatOpen ? (
         <button
           onClick={() => setIsChatOpen(true)}
-          className="bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] p-4 rounded-full shadow-lg hover:shadow-xl transition-transform hover:scale-110"
-          aria-label="Open support chat"
+          className="group flex items-center gap-2 bg-[#25D366] px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          aria-label="Open WhatsApp support chat"
         >
-          <MessageCircle className="h-6 w-6 text-white" />
+          <BsWhatsapp className="h-6 w-6 text-white" />
+          <span className="text-white font-medium">Chat with us</span>
         </button>
       ) : (
         <div className="w-80 md:w-96 h-96 bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col">
           {/* Chat Header */}
-          <div className="bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] p-3 text-white flex justify-between items-center">
-            <h3 className="font-semibold">Live Support</h3>
+          <div className="bg-[#25D366] p-3 text-white flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <BsWhatsapp className="h-5 w-5" />
+              <h3 className="font-semibold">WhatsApp Chat</h3>
+            </div>
             <button
               onClick={() => setIsChatOpen(false)}
               className="p-1 rounded-full hover:bg-white/10"

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Menu, Phone, Mail, Facebook, Instagram, Twitter, Youtube, Search, MessageSquare } from 'lucide-react';
 import { NavItem } from "./NavItem"
 import MobileNav from "./MobileNav";
-import CircularMenu from './CircularMenu';
 
 const Header: React.FC = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -31,102 +30,6 @@ const Header: React.FC = () => {
   const toggleMobileNav = () => {
     setMobileNavOpen(!mobileNavOpen);
   };
-  
-  const scrollToChat = () => {
-    // Scroll to the chat support element at the bottom of the page
-    const chatElement = document.getElementById('chat-support');
-    if (chatElement) {
-      chatElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Menu items configuration
-  const menuItems = [
-    {
-      label: 'Internet Connectivity',
-      href: '/services/internet',
-      submenu: [
-        {
-          label: 'Fiber Service',
-          href: '/services/internet/fiber',
-          description: 'High-speed fiber optic connectivity'
-        },
-        {
-          label: 'Wireless Installations',
-          href: '/services/internet/wireless',
-          description: 'Professional wireless network solutions'
-        },
-        {
-          label: 'VSAT',
-          href: '/services/internet/vsat',
-          description: 'Satellite-based internet connectivity'
-        },
-        {
-          label: 'Last Mile',
-          href: '/services/internet/last-mile',
-          description: 'End-user connection solutions'
-        }
-      ]
-    },
-    {
-      label: 'Software Services',
-      href: '/services/software',
-      submenu: [
-        {
-          label: 'Custom Development',
-          href: '/services/software/custom',
-          description: 'Tailored software solutions'
-        },
-        {
-          label: 'Cloud Solutions',
-          href: '/services/software/cloud',
-          description: 'Secure and scalable cloud infrastructure'
-        },
-        {
-          label: 'Enterprise Applications',
-          href: '/services/software/enterprise',
-          description: 'Business process automation'
-        }
-      ]
-    },
-    {
-      label: 'IT Consulting',
-      href: '/services/consulting',
-      submenu: [
-        {
-          label: 'IT Strategy',
-          href: '/services/consulting/strategy',
-          description: 'Strategic IT planning and roadmap'
-        },
-        {
-          label: 'Digital Transformation',
-          href: '/services/consulting/transformation',
-          description: 'Business process digitization'
-        }
-      ]
-    },
-    {
-      label: 'Cybersecurity',
-      href: '/services/security',
-      submenu: [
-        {
-          label: 'Security Audit',
-          href: '/services/security/audit',
-          description: 'Comprehensive security assessment'
-        },
-        {
-          label: 'Network Security',
-          href: '/services/security/network',
-          description: 'Advanced network protection'
-        },
-        {
-          label: 'Data Protection',
-          href: '/services/security/data',
-          description: 'Data security and compliance'
-        }
-      ]
-    }
-  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -150,19 +53,145 @@ const Header: React.FC = () => {
       </div>
 
       {/* Header content */}
-      <div className="relative z-20 container mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <a href="/" className="flex items-center">
-          <img
-            src="/galaxy-logo.png"
-            alt="Galaxy Logo"
-            className="h-12 w-auto filter brightness-0 invert"  // Makes the logo white
-          />
-        </a>
+      <div className="relative z-20 container mx-auto px-4">
+        {/* Top bar with contact info */}
+        <div className="py-2 bg-gradient-to-r from-blue-400 to-blue-600">
+          <div className="container mx-auto flex justify-end space-x-6">
+            <a href="tel:08039600006" className="flex items-center text-sm text-white hover:text-blue-100">
+              <Phone className="mr-2 h-4 w-4" />
+              <span>08039600006</span>
+            </a>
+            <a href="mailto:info@galaxyitt.com.ng" className="flex items-center text-sm text-white hover:text-blue-100">
+              <Mail className="mr-2 h-4 w-4" />
+              <span>info@galaxyitt.com.ng</span>
+            </a>
+          </div>
+        </div>
 
-        {/* Circular Menu */}
-        <CircularMenu items={menuItems} />
+        {/* Main navigation */}
+        <div className="flex items-center justify-between py-4">
+          {/* Logo */}
+          <a href="/" className="flex items-center">
+            <img
+              src="/galaxy-logo.png"
+              alt="Galaxy Logo"
+              className="h-12 w-auto filter brightness-0 invert"
+            />
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:block">
+            <ul className="flex items-center space-x-8 text-white">
+              <NavItem href="/" label="Home" />
+              
+              <NavItem href="/about" label="About Us" dropdown={[
+                { label: "Our Mandate", href: "/about#mandate" },
+                { 
+                  label: "Our Vision", 
+                  href: "/about#vision",
+                  description: "To become a leading provider of broadband connectivity, software solutions and drive digital transformation in sub-Saharan Africa."
+                },
+                { 
+                  label: "Our Mission", 
+                  href: "/about#mission",
+                  description: "To provide reliable internet services, telecommunications, & software solutions to Ministries, Departments, and Agencies (MDAs) and individuals."
+                },
+                { 
+                  label: "Our Core Values", 
+                  href: "/about#values",
+                  description: "Reliability, Integrity, Confidence, and Innovation drive everything we do."
+                },
+                { label: "Management", href: "/about#management" },
+                { label: "Board of Directors", href: "/about#board" },
+                { label: "Careers", href: "/about#careers" },
+              ]} />
+              
+              <NavItem href="/services" label="Services" dropdown={[
+                { 
+                  label: "IT Consulting", 
+                  href: "/services#consulting",
+                  description: "Expert guidance to optimize your IT strategy and operations."
+                },
+                { 
+                  label: "Cloud Solutions", 
+                  href: "/services#cloud",
+                  description: "Secure, scalable cloud infrastructure and migration services."
+                },
+                { 
+                  label: "Software Development", 
+                  href: "/services#software",
+                  description: "Custom software solutions tailored to your business needs."
+                },
+                { 
+                  label: "Cybersecurity", 
+                  href: "/services#security",
+                  description: "Comprehensive security solutions to protect your digital assets."
+                },
+                { 
+                  label: "IT Infrastructure", 
+                  href: "/services#infrastructure",
+                  description: "Robust infrastructure solutions for reliable business operations."
+                },
+                { 
+                  label: "Network Installations", 
+                  href: "/services#network",
+                  description: "Professional network design and implementation services."
+                },
+              ]} />
+              
+              <NavItem href="/customer-service" label="Customer Service" dropdown={[
+                { 
+                  label: "Service Desk", 
+                  href: "/customer-service#desk",
+                  description: "24/7 support for all your technical needs."
+                },
+                { 
+                  label: "Escalation Path", 
+                  href: "/customer-service#escalation",
+                  description: "Clear process for resolving complex issues efficiently."
+                },
+              ]} />
+              
+              <NavItem href="/resources" label="Resources" dropdown={[
+                { 
+                  label: "FAQ", 
+                  href: "/faq",
+                  description: "Answers to commonly asked questions about our services."
+                },
+                { 
+                  label: "Media", 
+                  href: "/media",
+                  description: "Press releases and media resources about our company."
+                },
+                { 
+                  label: "News", 
+                  href: "/news",
+                  description: "Latest updates and announcements from our team."
+                },
+                { 
+                  label: "Video", 
+                  href: "/video",
+                  description: "Instructional and informational videos about our solutions."
+                },
+              ]} rightAligned />
+            </ul>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <div className="flex items-center lg:hidden">
+            <button
+              className="flex items-center justify-center focus:outline-none"
+              onClick={toggleMobileNav}
+              aria-label="Toggle menu"
+            >
+              <Menu className="h-6 w-6 text-white" />
+            </button>
+          </div>
+        </div>
       </div>
+
+      {/* Mobile Navigation */}
+      <MobileNav isOpen={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
     </header>
   );
 };
