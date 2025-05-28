@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   const backgrounds = [
     {
       image: 'https://images.unsplash.com/photo-1573164713712-03790a178651?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
-      overlay: 'bg-gradient-to-r from-[#0a1128]/90 via-[#001f54]/70 to-transparent'
+      overlay:  'bg-gradient-to-r from-[#0a1128]/90 via-[#001f54]/70 to-transparent'
     },
     {
       image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
@@ -43,86 +43,86 @@ const Header: React.FC = () => {
   // Menu items configuration
   const menuItems = [
     {
-      label: 'About Us',
-      href: '/about',
+      label: 'Internet Connectivity',
+      href: '/services/internet',
       submenu: [
-        { 
-          label: 'Our Mandate',
-          href: '/about#mandate',
-          description: 'Learn about our core mission and objectives'
+        {
+          label: 'Fiber Service',
+          href: '/services/internet/fiber',
+          description: 'High-speed fiber optic connectivity'
         },
-        { 
-          label: 'Our Vision',
-          href: '/about#vision',
-          description: 'To become a leading provider of broadband connectivity in sub-Saharan Africa'
+        {
+          label: 'Wireless Installations',
+          href: '/services/internet/wireless',
+          description: 'Professional wireless network solutions'
         },
-        { 
-          label: 'Management',
-          href: '/about#management',
-          description: 'Meet our leadership team'
+        {
+          label: 'VSAT',
+          href: '/services/internet/vsat',
+          description: 'Satellite-based internet connectivity'
         },
-        { 
-          label: 'Board of Directors',
-          href: '/about#board',
-          description: 'Our governance structure'
+        {
+          label: 'Last Mile',
+          href: '/services/internet/last-mile',
+          description: 'End-user connection solutions'
         }
       ]
     },
     {
-      label: 'Services',
-      href: '/services',
+      label: 'Software Services',
+      href: '/services/software',
       submenu: [
-        { 
-          label: 'IT Consulting',
-          href: '/services#consulting',
-          description: 'Expert guidance for your IT strategy'
+        {
+          label: 'Custom Development',
+          href: '/services/software/custom',
+          description: 'Tailored software solutions'
         },
-        { 
+        {
           label: 'Cloud Solutions',
-          href: '/services#cloud',
+          href: '/services/software/cloud',
           description: 'Secure and scalable cloud infrastructure'
         },
-        { 
-          label: 'Software Development',
-          href: '/services#software',
-          description: 'Custom software solutions'
-        },
-        { 
-          label: 'Cybersecurity',
-          href: '/services#security',
-          description: 'Protect your digital assets'
+        {
+          label: 'Enterprise Applications',
+          href: '/services/software/enterprise',
+          description: 'Business process automation'
         }
       ]
     },
     {
-      label: 'Support',
-      href: '/support',
+      label: 'IT Consulting',
+      href: '/services/consulting',
       submenu: [
-        { 
-          label: 'Service Desk',
-          href: '/support#desk',
-          description: '24/7 technical support'
+        {
+          label: 'IT Strategy',
+          href: '/services/consulting/strategy',
+          description: 'Strategic IT planning and roadmap'
         },
-        { 
-          label: 'FAQs',
-          href: '/support#faq',
-          description: 'Frequently asked questions'
+        {
+          label: 'Digital Transformation',
+          href: '/services/consulting/transformation',
+          description: 'Business process digitization'
         }
       ]
     },
     {
-      label: 'Resources',
-      href: '/resources',
+      label: 'Cybersecurity',
+      href: '/services/security',
       submenu: [
-        { 
-          label: 'Media',
-          href: '/media',
-          description: 'Press releases and media resources'
+        {
+          label: 'Security Audit',
+          href: '/services/security/audit',
+          description: 'Comprehensive security assessment'
         },
-        { 
-          label: 'News',
-          href: '/news',
-          description: 'Latest updates and announcements'
+        {
+          label: 'Network Security',
+          href: '/services/security/network',
+          description: 'Advanced network protection'
+        },
+        {
+          label: 'Data Protection',
+          href: '/services/security/data',
+          description: 'Data security and compliance'
         }
       ]
     }
