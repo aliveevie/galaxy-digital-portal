@@ -3,29 +3,31 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
   CheckCircle, Navigation, Server, Shield, Cloud, Trophy, 
-  Code, Lock, Network, Smartphone, Building2
+  Code, Lock, Network, Wifi, Building2, Satellite
 } from 'lucide-react';
 
+type ServiceType = 'it-consulting' | 'cloud-solutions' | 'software-services' | 'internet-connectivity' | 'it-infrastructure';
+
 const ServicesSection = () => {
-  const [activeService, setActiveService] = useState('it-consulting');
+  const [activeService, setActiveService] = useState<ServiceType>('it-consulting');
   
   // References to service sections for scroll effects
-  const itConsultingRef = useRef(null);
-  const cloudSolutionsRef = useRef(null);
-  const softwareDevelopmentRef = useRef(null);
-  const cybersecurityRef = useRef(null);
-  const itInfrastructureRef = useRef(null);
+  const itConsultingRef = useRef<HTMLDivElement>(null);
+  const cloudSolutionsRef = useRef<HTMLDivElement>(null);
+  const softwareServicesRef = useRef<HTMLDivElement>(null);
+  const internetConnectivityRef = useRef<HTMLDivElement>(null);
+  const itInfrastructureRef = useRef<HTMLDivElement>(null);
   
   // Handle service tab click
-  const handleServiceClick = (service) => {
+  const handleServiceClick = (service: ServiceType) => {
     setActiveService(service);
     
     // Scroll to the selected service section
     const refs = {
       'it-consulting': itConsultingRef,
       'cloud-solutions': cloudSolutionsRef,
-      'software-development': softwareDevelopmentRef,
-      'cybersecurity': cybersecurityRef,
+      'software-services': softwareServicesRef,
+      'internet-connectivity': internetConnectivityRef,
       'it-infrastructure': itInfrastructureRef
     };
     
@@ -69,24 +71,24 @@ const ServicesSection = () => {
             Cloud Solutions
           </button>
           <button
-            onClick={() => handleServiceClick('software-development')}
+            onClick={() => handleServiceClick('software-services')}
             className={`px-4 py-2 rounded-full transition-all ${
-              activeService === 'software-development'
+              activeService === 'software-services'
                 ? 'bg-[#33C3F0] text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
-            Software Development
+            Software Services
           </button>
           <button
-            onClick={() => handleServiceClick('cybersecurity')}
+            onClick={() => handleServiceClick('internet-connectivity')}
             className={`px-4 py-2 rounded-full transition-all ${
-              activeService === 'cybersecurity'
+              activeService === 'internet-connectivity'
                 ? 'bg-[#33C3F0] text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
-            Cybersecurity
+            Internet Connectivity
           </button>
           <button
             onClick={() => handleServiceClick('it-infrastructure')}
@@ -212,43 +214,43 @@ const ServicesSection = () => {
             </div>
           </div>
 
-          {/* Software Development Section */}
+          {/* Updated Software Services Section */}
           <div 
-            ref={softwareDevelopmentRef} 
-            id="software-development-section" 
-            className={`py-16 transition-opacity duration-500 ${activeService === 'software-development' ? 'opacity-100' : 'opacity-100'}`}
+            ref={softwareServicesRef} 
+            id="software-services-section" 
+            className={`py-16 transition-opacity duration-500 ${activeService === 'software-services' ? 'opacity-100' : 'opacity-100'}`}
           >
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1" data-aos="fade-right">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 mb-4">
                   <Code className="w-4 h-4 text-[#33C3F0] mr-2" />
-                  <span className="text-[#33C3F0] text-sm font-medium">Software Development</span>
+                  <span className="text-[#33C3F0] text-sm font-medium">Software Services</span>
                 </div>
                 <h2 className="text-3xl font-bold mb-6 text-[#1A1F2C]">
-                  Custom Software Solutions
+                  Professional Software Solutions
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  Our software development team creates custom applications designed specifically for your business needs, helping you streamline operations and gain a competitive edge.
+                  Our comprehensive software services help businesses streamline operations, enhance productivity, and achieve digital transformation goals through tailored solutions.
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
-                    <span className="text-gray-700">Custom business applications</span>
+                    <span className="text-gray-700">Enterprise software solutions</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
-                    <span className="text-gray-700">Mobile app development</span>
+                    <span className="text-gray-700">Custom application development</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
-                    <span className="text-gray-700">API development and integration</span>
+                    <span className="text-gray-700">Software maintenance and support</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
-                    <span className="text-gray-700">Legacy system modernization</span>
+                    <span className="text-gray-700">System integration services</span>
                   </li>
                 </ul>
-                <Link to="/services/software-development" className="inline-block">
+                <Link to="/services/software-services" className="inline-block">
                   <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
                     Learn More
                   </Button>
@@ -258,7 +260,7 @@ const ServicesSection = () => {
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
                     src="https://images.unsplash.com/photo-1523800503107-5bc3ba2a6f81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
-                    alt="Software Development" 
+                    alt="Software Services" 
                     className="w-full h-auto"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#33C3F0]/20 to-transparent"></div>
@@ -267,18 +269,18 @@ const ServicesSection = () => {
             </div>
           </div>
 
-          {/* Cybersecurity Section */}
+          {/* New Internet Connectivity Section */}
           <div 
-            ref={cybersecurityRef} 
-            id="cybersecurity-section" 
-            className={`py-16 transition-opacity duration-500 ${activeService === 'cybersecurity' ? 'opacity-100' : 'opacity-100'}`}
+            ref={internetConnectivityRef} 
+            id="internet-connectivity-section" 
+            className={`py-16 transition-opacity duration-500 ${activeService === 'internet-connectivity' ? 'opacity-100' : 'opacity-100'}`}
           >
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-1" data-aos="fade-right">
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
-                    alt="Cybersecurity Services" 
+                    src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
+                    alt="Internet Connectivity Services" 
                     className="w-full h-auto"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#33C3F0]/20 to-transparent"></div>
@@ -286,34 +288,34 @@ const ServicesSection = () => {
               </div>
               <div className="order-2" data-aos="fade-left">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 mb-4">
-                  <Shield className="w-4 h-4 text-[#33C3F0] mr-2" />
-                  <span className="text-[#33C3F0] text-sm font-medium">Cybersecurity</span>
+                  <Wifi className="w-4 h-4 text-[#33C3F0] mr-2" />
+                  <span className="text-[#33C3F0] text-sm font-medium">Internet Connectivity</span>
                 </div>
                 <h2 className="text-3xl font-bold mb-6 text-[#1A1F2C]">
-                  Advanced Security Measures
+                  High-Speed Internet Solutions
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  Our cybersecurity services protect your business from evolving threats with comprehensive security measures, monitoring, and incident response.
+                  We provide reliable and high-speed internet connectivity solutions tailored to your business needs through multiple technologies.
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
-                    <span className="text-gray-700">Security assessments and audits</span>
+                    <Wifi className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
+                    <span className="text-gray-700">Wireless Connectivity Solutions</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Satellite className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
+                    <span className="text-gray-700">VSAT Services</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Network className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
+                    <span className="text-gray-700">Last Mile Connectivity</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
-                    <span className="text-gray-700">Threat detection and response</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
-                    <span className="text-gray-700">Data protection solutions</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-[#33C3F0] mr-2 mt-0.5" />
-                    <span className="text-gray-700">Security awareness training</span>
+                    <span className="text-gray-700">24/7 Network Monitoring & Support</span>
                   </li>
                 </ul>
-                <Link to="/services/cybersecurity" className="inline-block">
+                <Link to="/services/internet-connectivity" className="inline-block">
                   <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
                     Learn More
                   </Button>

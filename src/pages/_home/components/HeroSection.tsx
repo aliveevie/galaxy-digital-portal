@@ -163,7 +163,13 @@ const HeroSection = () => {
   return (
     <div
       className="relative w-full"
-      style={{ height: 'calc(100vh - 80px)', minHeight: 400, overflow: 'hidden' }}
+      style={{ 
+        height: '100vh',
+        minHeight: '100vh',
+        marginTop: '-80px',
+        paddingTop: '80px',
+        overflow: 'hidden'
+      }}
     >
       {/* Main slider container */}
       <div className="relative h-full w-full">
@@ -189,8 +195,8 @@ const HeroSection = () => {
               />
             </div>
             
-            {/* Content Container */}
-            <div className="absolute inset-0 z-20 flex items-center">
+            {/* Content Container - Adjust padding top to account for header */}
+            <div className="absolute inset-0 z-20 flex items-center" style={{ paddingTop: '80px' }}>
               <div className="container mx-auto px-4 lg:px-10">
                 <div className="max-w-2xl">
                   {/* Service title tag */}
