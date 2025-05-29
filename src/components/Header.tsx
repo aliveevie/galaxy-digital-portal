@@ -14,17 +14,52 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Header content */}
       <div className="relative z-20">
-        {/* Top bar with contact info */}
+        {/* Top bar with contact info and social media */}
         <div className="w-full py-2 bg-gradient-to-r from-blue-400 to-blue-600">
-          <div className="container mx-auto px-4 flex justify-end space-x-6">
-            <a href="tel:08039600006" className="flex items-center text-sm text-white hover:text-blue-100">
-              <Phone className="mr-2 h-4 w-4" />
-              <span>08039600006</span>
-            </a>
-            <a href="mailto:info@galaxyitt.com.ng" className="flex items-center text-sm text-white hover:text-blue-100">
-              <Mail className="mr-2 h-4 w-4" />
-              <span>info@galaxyitt.com.ng</span>
-            </a>
+          <div className="container mx-auto px-4 flex justify-between items-center">
+            {/* Social Media Links */}
+            <div className="flex items-center space-x-4">
+              <a 
+                href="#" 
+                className="text-white hover:text-blue-100 transition-colors"
+                aria-label="Follow us on Facebook"
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+              <a 
+                href="#" 
+                className="text-white hover:text-blue-100 transition-colors"
+                aria-label="Follow us on Twitter"
+              >
+                <Twitter className="h-4 w-4" />
+              </a>
+              <a 
+                href="#" 
+                className="text-white hover:text-blue-100 transition-colors"
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a 
+                href="#" 
+                className="text-white hover:text-blue-100 transition-colors"
+                aria-label="Subscribe to our YouTube channel"
+              >
+                <Youtube className="h-4 w-4" />
+              </a>
+            </div>
+
+            {/* Contact Information */}
+            <div className="flex items-center space-x-6">
+              <a href="tel:08039600006" className="flex items-center text-sm text-white hover:text-blue-100">
+                <Phone className="mr-2 h-4 w-4" />
+                <span>08039600006</span>
+              </a>
+              <a href="mailto:info@galaxyitt.com.ng" className="flex items-center text-sm text-white hover:text-blue-100">
+                <Mail className="mr-2 h-4 w-4" />
+                <span>info@galaxyitt.com.ng</span>
+              </a>
+            </div>
           </div>
         </div>
 

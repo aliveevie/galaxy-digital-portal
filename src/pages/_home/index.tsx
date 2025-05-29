@@ -14,11 +14,15 @@ import ContactCTASection from './components/ContactCTASection';
 import NewsletterSection from './components/NewsletterSection';
 import SupportChat from './components/SupportChat';
 import CoverageSection from './components/CoverageSection';
+import CookieConsent from './components/CookieConsent';
 
 const Index = () => {
   // Keep states that need to be shared across components
   const [showChatButton, setShowChatButton] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState<'pending' | 'accepted' | 'rejected'>(
+    localStorage.getItem('cookieConsent') as 'accepted' | 'rejected' | null || 'pending'
+  );
   
   // Add scroll event listener for the chat button
   useEffect(() => {
@@ -29,6 +33,12 @@ const Index = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  // Handle cookie consent
+  const handleCookieConsent = (consent: 'accepted' | 'rejected') => {
+    setCookieConsent(consent);
+    localStorage.setItem('cookieConsent', consent);
+  };
   
   // Initialize AOS
   useEffect(() => {
@@ -64,6 +74,12 @@ const Index = () => {
       <ContactCTASection />
       <NewsletterSection />
       <Footer />
+      
+      {/* Cookie Consent */}
+      <CookieConsent 
+        cookieConsent={cookieConsent}
+        onCookieConsent={handleCookieConsent}
+      />
       
       {/* Support Chat Button */}
       <SupportChat 
