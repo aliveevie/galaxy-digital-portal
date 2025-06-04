@@ -9,20 +9,15 @@ const PartnersSection = () => {
       website: "https://jigawastate.gov.ng/"
     },
     {
-      name: "NITDA",
-      logo: "/partners/Nitdalogo.png",
-      website: "https://nitda.gov.ng/"
+      name: "Airtel Nigeria",
+      logo: "/partners/Airtel_logo.jpg",
+      website: "https://www.airtel.com/ng"
     },
     {
-      name: "NCC",
-      logo: "/partners/ncc.png",
-      website: "https://www.ncc.gov.ng/"
+      name: "MTN Nigeria",
+      logo: "/partners/Mtn_logo.png",
+      website: "https://www.mtn.com/ng"
     },
-    {
-      name: "Ministry of Communications and Digital Economy",
-      logo: "/partners/Fedmini.png",
-      website: "https://www.commtech.gov.ng/"
-    }
   ];
 
   return (
