@@ -39,7 +39,7 @@ const SupportChat: React.FC<SupportChatProps> = ({ showChatButton, isChatOpen, s
   
   return (
     <div 
-      className={`fixed bottom-6 left-6 z-50 transition-all duration-300 ${
+      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
         showChatButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
     >
