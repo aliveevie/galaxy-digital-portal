@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Info } from 'lucide-react';
+import { MapPin, Info, ZoomIn, ZoomOut } from 'lucide-react';
 
 interface CoverageLocation {
   id: string;
@@ -11,6 +11,15 @@ interface CoverageLocation {
 
 const CoverageSection = () => {
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  
+  const handleZoomIn = () => {
+    setZoomLevel(prev => Math.min(prev + 0.2, 2)); // Max zoom 2x
+  };
+
+  const handleZoomOut = () => {
+    setZoomLevel(prev => Math.max(prev - 0.2, 0.5)); // Min zoom 0.5x
+  };
   
   // Coverage locations data
   const coverageLocations: CoverageLocation[] = [
@@ -48,29 +57,58 @@ const CoverageSection = () => {
           <div className="relative w-full lg:w-2/3 h-[500px] bg-[#0a1128]/30 rounded-xl p-4 backdrop-blur-sm border border-white/10"
                data-aos="fade-right" 
                data-aos-duration="1000">
-            {/* Africa Map Image */}
-            <div className="relative w-full h-full">
-              <img 
-                src="/coverage/Africa.jpg" 
-                alt="Africa Map" 
-                className="w-full h-full object-contain"
-              />
-              
-              {/* Nigeria Marker */}
-              <div 
-                className="absolute cursor-pointer"
-                style={{ top: '38%', left: '43%' }}
-                onMouseEnter={() => handleLocationHover('nigeria')}
-                onMouseLeave={() => handleLocationHover(null)}
+            {/* Zoom Controls */}
+            <div className="absolute top-6 right-6 z-10 flex flex-col gap-2">
+              <button
+                onClick={handleZoomIn}
+                className="p-2 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm transition-colors"
+                aria-label="Zoom in"
               >
-                {/* Ping animation div */}
-                <div className="absolute -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-transparent border-2 border-[#33C3F0] animate-ping opacity-70"></div>
+                <ZoomIn className="w-5 h-5 text-white" />
+              </button>
+              <button
+                onClick={handleZoomOut}
+                className="p-2 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-sm transition-colors"
+                aria-label="Zoom out"
+              >
+                <ZoomOut className="w-5 h-5 text-white" />
+              </button>
+            </div>
+
+            {/* Africa Map Image */}
+            <div className="relative w-full h-full overflow-hidden">
+              <div 
+                className="w-full h-full transition-transform duration-300 ease-out"
+                style={{ 
+                  transform: `scale(${zoomLevel})`,
+                  transformOrigin: 'center center'
+                }}
+              >
+                <img 
+                  src="/coverage/Africa.jpg" 
+                  alt="Africa Map" 
+                  className="w-full h-full object-contain"
+                />
                 
-                {/* Main dot */}
-                <div className="absolute -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#33C3F0] border border-white"></div>
-                
-                {/* Label */}
-                <span className="absolute -translate-y-1/2 left-4 text-white font-medium">Nigeria</span>
+                {/* Nigeria Marker - adjust position calculation based on zoom */}
+                <div 
+                  className="absolute cursor-pointer"
+                  style={{ 
+                    top: '38%', 
+                    left: '43%',
+                  }}
+                  onMouseEnter={() => handleLocationHover('nigeria')}
+                  onMouseLeave={() => handleLocationHover(null)}
+                >
+                  {/* Ping animation div */}
+                  <div className="absolute -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-transparent border-2 border-[#FF0000] animate-ping opacity-70"></div>
+                  
+                  {/* Main dot */}
+                  <div className="absolute -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#FF0000] border border-white"></div>
+                  
+                  {/* Label */}
+                  <span className="absolute -translate-y-1/2 left-4 text-white font-medium">Nigeria</span>
+                </div>
               </div>
             </div>
           </div>

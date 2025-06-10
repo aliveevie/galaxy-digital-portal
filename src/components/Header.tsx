@@ -11,52 +11,52 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="top-0 left-0 right-0 z-50 bg-white shadow-sm">
       {/* Header content */}
       <div className="relative z-20">
         {/* Top bar with contact info and social media */}
-        <div className="w-full py-2 bg-gradient-to-r from-blue-400 to-blue-600">
+        <div className="w-full py-1 bg-gradient-to-r from-blue-600 to-blue-800">
           <div className="container mx-auto px-4 flex justify-between items-center">
             {/* Social Media Links */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
               <a 
                 href="#" 
-                className="text-white hover:text-blue-100 transition-colors"
+                className="text-white hover:text-blue-200 transition-colors"
                 aria-label="Follow us on Facebook"
               >
-                <Facebook className="h-4 w-4" />
+                <Facebook className="h-3.5 w-3.5" />
               </a>
               <a 
                 href="#" 
-                className="text-white hover:text-blue-100 transition-colors"
+                className="text-white hover:text-blue-200 transition-colors"
                 aria-label="Follow us on Twitter"
               >
-                <Twitter className="h-4 w-4" />
+                <Twitter className="h-3.5 w-3.5" />
               </a>
               <a 
                 href="#" 
-                className="text-white hover:text-blue-100 transition-colors"
+                className="text-white hover:text-blue-200 transition-colors"
                 aria-label="Follow us on Instagram"
               >
-                <Instagram className="h-4 w-4" />
+                <Instagram className="h-3.5 w-3.5" />
               </a>
               <a 
                 href="#" 
-                className="text-white hover:text-blue-100 transition-colors"
+                className="text-white hover:text-blue-200 transition-colors"
                 aria-label="Subscribe to our YouTube channel"
               >
-                <Youtube className="h-4 w-4" />
+                <Youtube className="h-3.5 w-3.5" />
               </a>
             </div>
 
             {/* Contact Information */}
             <div className="flex items-center space-x-6">
-              <a href="tel:08039600006" className="flex items-center text-sm text-white hover:text-blue-100">
-                <Phone className="mr-2 h-4 w-4" />
+              <a href="tel:08039600006" className="flex items-center text-xs text-white hover:text-blue-200">
+                <Phone className="mr-1.5 h-3.5 w-3.5" />
                 <span>08039600006</span>
               </a>
-              <a href="mailto:info@galaxyitt.com.ng" className="flex items-center text-sm text-white hover:text-blue-100">
-                <Mail className="mr-2 h-4 w-4" />
+              <a href="mailto:info@galaxyitt.com.ng" className="flex items-center text-xs text-white hover:text-blue-200">
+                <Mail className="mr-1.5 h-3.5 w-3.5" />
                 <span>info@galaxyitt.com.ng</span>
               </a>
             </div>
@@ -65,22 +65,22 @@ const Header: React.FC = () => {
 
         {/* Main navigation */}
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
+          <div className="flex items-center justify-between py-2">
             {/* Logo */}
             <a href="/" className="flex items-center">
               <img
-                src="/galaxy-logo.png"
+                src="/galaxyitt_logo.png"
                 alt="Galaxy Logo"
-                className="h-12 w-auto filter brightness-0 invert"
+                className="h-10 w-auto"
               />
             </a>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:block">
-              <ul className="flex items-center space-x-8 text-white">
-                <NavItem href="/" label="Home" />
+              <ul className="flex items-center space-x-8">
+                <NavItem href="/" label="Home" className="text-navy-800 hover:text-blue-600 font-medium text-sm" />
                 
-                <NavItem href="/about" label="About Us" dropdown={[
+                <NavItem href="/about" label="About Us" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
                   { label: "Our Mandate", href: "/about#mandate" },
                   { 
                     label: "Our Vision", 
@@ -102,7 +102,7 @@ const Header: React.FC = () => {
                   { label: "Careers", href: "/about#careers" },
                 ]} />
                 
-                <NavItem href="/services" label="Services" dropdown={[
+                <NavItem href="/services" label="Services" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
                   { 
                     label: "IT Consulting", 
                     href: "/services#consulting",
@@ -130,7 +130,7 @@ const Header: React.FC = () => {
                   }
                 ]} />
                 
-                <NavItem href="/customer-service" label="Customer Service" dropdown={[
+                <NavItem href="/customer-service" label="Customer Service" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
                   { 
                     label: "Service Desk", 
                     href: "/customer-service#desk",
@@ -143,7 +143,7 @@ const Header: React.FC = () => {
                   },
                 ]} />
                 
-                <NavItem href="/resources" label="Resources" dropdown={[
+                <NavItem href="/resources" label="Resources" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
                   { 
                     label: "FAQ", 
                     href: "/faq",
@@ -175,7 +175,7 @@ const Header: React.FC = () => {
                 onClick={toggleMobileNav}
                 aria-label="Toggle menu"
               >
-                <Menu className="h-6 w-6 text-white" />
+                <Menu className="h-5 w-5 text-navy-800" />
               </button>
             </div>
           </div>
