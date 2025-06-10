@@ -147,7 +147,7 @@ const AboutPage = () => {
 
           {/* Executive Directors */}
           <div className="mb-16">
-            <h3 className="text-2xl font-semibold mb-6 text-center">Executive Directors</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-center"></h3>
             <div className="grid md:grid-cols-2 gap-8 justify-center">
               <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
                 <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg flex items-center justify-center bg-[#1A1F2C]">
@@ -158,7 +158,7 @@ const AboutPage = () => {
                   />
                 </div>
                 <h4 className="text-xl font-semibold mb-2">Umar I. Gumel</h4>
-                <p className="text-[#33C3F0] mb-2 font-medium">Director Business Development Services</p>
+                <p className="text-[#33C3F0] mb-2 font-medium">Excecutive Director Business Development Services</p>
               </div>
               <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
                 <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg flex items-center justify-center bg-[#1A1F2C]">
@@ -169,13 +169,13 @@ const AboutPage = () => {
                   />
                 </div>
                 <h4 className="text-xl font-semibold mb-2">Nura M. Zubair</h4>
-                <p className="text-[#33C3F0] mb-2 font-medium">Director Technical Services</p>
+                <p className="text-[#33C3F0] mb-2 font-medium">Excecutive Director Technical Services</p>
               </div>
             </div>
           </div>
 
           {/* Heads of Units */}
-          <div>
+          {/* <div>
             <h3 className="text-2xl font-semibold mb-6 text-center">Heads of Units</h3>
             <div className="grid md:grid-cols-3 gap-8 justify-center">
               <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
@@ -212,7 +212,7 @@ const AboutPage = () => {
                 <p className="text-[#33C3F0] mb-2 font-medium">Head of Network</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
       
