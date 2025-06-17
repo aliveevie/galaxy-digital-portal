@@ -48,7 +48,7 @@ const Index = () => {
   const partners = [
     {
       name: "Jigawa State Government",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Coat_of_arms_of_Jigawa_State.png/800px-Coat_of_arms_of_Jigawa_State.png",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/b/bc/Coat_of_arms_of_Nigeria.svg",
       website: "https://jigawastate.gov.ng/"
     },
     {
