@@ -14,27 +14,56 @@ const SupportChat: React.FC<SupportChatProps> = ({ showChatButton, isChatOpen, s
   const [chatMessages, setChatMessages] = useState([
     { type: 'agent', text: 'Hello! How can I help you today?' },
   ]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!chatMessage.trim()) return;
+    if (!chatMessage.trim() || isLoading) return;
 
-    // Add user message
+    const userMessage = chatMessage.trim();
+    
+    // Add user message immediately
     const newMessages = [
       ...chatMessages,
-      { type: 'user', text: chatMessage }
+      { type: 'user', text: userMessage }
     ];
     
     setChatMessages(newMessages);
     setChatMessage('');
+    setIsLoading(true);
     
-    // Simulate agent response after a short delay
-    setTimeout(() => {
+    try {
+      // Send message to server
+      const response = await fetch('http://localhost:4500/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userMessage }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      const data = await response.json();
+      
+      // Add server response
       setChatMessages([
         ...newMessages,
-        { type: 'agent', text: 'Thank you for your message. One of our specialists will get back to you shortly.' }
+        { type: 'agent', text: data.response }
       ]);
-    }, 1000);
+      
+    } catch (error) {
+      console.error('Error sending message:', error);
+      // Add error message
+      setChatMessages([
+        ...newMessages,
+        { type: 'agent', text: 'Sorry, I\'m having trouble connecting right now. Please try again later or contact us directly.' }
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
   };
   
   return (
@@ -92,6 +121,20 @@ const SupportChat: React.FC<SupportChatProps> = ({ showChatButton, isChatOpen, s
                 </div>
               </div>
             ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="w-8 h-8 rounded-full bg-[#33C3F0] flex items-center justify-center mr-2 flex-shrink-0">
+                  <User className="h-4 w-4 text-white" />
+                </div>
+                <div className="bg-white text-gray-800 rounded-tl-none shadow-sm border border-gray-100 p-3">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           
           {/* Chat Input */}
@@ -102,10 +145,16 @@ const SupportChat: React.FC<SupportChatProps> = ({ showChatButton, isChatOpen, s
               onChange={(e) => setChatMessage(e.target.value)}
               placeholder="Type your message..."
               className="flex-1 px-4 py-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-[#33C3F0]"
+              disabled={isLoading}
             />
             <button 
               type="submit"
-              className="bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] p-2 rounded-full text-white"
+              className={`p-2 rounded-full text-white ${
+                isLoading 
+                  ? 'bg-gray-400 cursor-not-allowed' 
+                  : 'bg-gradient-to-r from-[#33C3F0] to-[#9B87F5] hover:opacity-90'
+              }`}
+              disabled={isLoading}
               aria-label="Send message"
             >
               <Send className="h-5 w-5" />
