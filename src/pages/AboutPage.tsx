@@ -48,14 +48,14 @@ const AboutPage = () => {
             <div className="bg-white p-8 rounded-lg shadow-md border-l-4 border-[#33C3F0]">
               <h3 className="text-2xl font-semibold text-[#1A1F2C] mb-4">Our Vision</h3>
               <p className="text-gray-700 leading-relaxed">
-                To become a leading provider of broadband connectivity, software solutions and drive digital transformation in sub-Saharan Africa.
+                To become a leading technology enabler for digital transformation and connectivity, empowering government underserved communities, and businesses with a commitment to excellence and a sustainable future.
               </p>
             </div>
             
             <div className="bg-white p-8 rounded-lg shadow-md border-l-4 border-[#33C3F0]">
               <h3 className="text-2xl font-semibold text-[#1A1F2C] mb-4">Our Mission</h3>
               <p className="text-gray-700 leading-relaxed">
-                To provide reliable internet services, telecommunications, & software solutions to Ministries, Departments, and Agencies (MDAs) and individuals.
+                To empower government, businesses, and communities by delivering innovative and sustainable technology solutions that bridge the digital divide and foster a connected world.
               </p>
             </div>
           </div>

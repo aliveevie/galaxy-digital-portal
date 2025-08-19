@@ -104,29 +104,34 @@ const Header: React.FC = () => {
                 
                 <NavItem href="/services" label="Services" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
                   { 
-                    label: "IT Consulting", 
-                    href: "/services#consulting",
-                    description: "Expert guidance to optimize your IT strategy and operations."
+                    label: "Broadband Internet", 
+                    href: "/services#broadband-internet",
+                    description: "High-speed internet solutions including Fiber optics, Radio, and VSAT services."
                   },
                   { 
-                    label: "Cloud Solutions", 
-                    href: "/services#cloud",
-                    description: "Secure, scalable cloud infrastructure and migration services."
+                    label: "Data Center Colocation", 
+                    href: "/services#data-center-colocation",
+                    description: "Secure, scalable, and cost-effective hosting solutions for critical applications."
                   },
                   { 
-                    label: "Software Services", 
-                    href: "/services#software",
-                    description: "Comprehensive software solutions for business needs."
+                    label: "Cloud Infrastructure", 
+                    href: "/services#cloud-infrastructure",
+                    description: "IaaS, PaaS, and SaaS solutions for flexible and scalable cloud computing."
                   },
                   { 
-                    label: "Internet Connectivity", 
-                    href: "/services#connectivity",
-                    description: "High-speed internet solutions including Wireless, VSAT, and Last Mile connectivity."
+                    label: "Government Messaging", 
+                    href: "/services#government-messaging",
+                    description: "Secure government-wide messaging and collaboration platforms."
                   },
                   { 
-                    label: "IT Infrastructure", 
-                    href: "/services#infrastructure",
-                    description: "Robust infrastructure solutions for reliable business operations."
+                    label: "Government Digitalization", 
+                    href: "/services#government-digitalization",
+                    description: "Digital transformation and automation services for government agencies."
+                  },
+                  { 
+                    label: "Digital Infrastructure", 
+                    href: "/services#digital-infrastructure",
+                    description: "Robust digital infrastructure solutions for government and underserved communities."
                   }
                 ]} />
                 
