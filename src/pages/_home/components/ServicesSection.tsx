@@ -152,7 +152,7 @@ const ServicesSection = () => {
                     <span className="text-gray-700">24/7 technical support</span>
                   </li>
                 </ul>
-                <Link to="/services/broadband-internet" className="inline-block">
+                <Link to="/services#broadband-internet" className="inline-block">
                   <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
                     Learn More
                   </Button>
@@ -217,7 +217,7 @@ const ServicesSection = () => {
                     <span className="text-gray-700">Flexible colocation options</span>
                   </li>
                 </ul>
-                <Link to="/services/data-center-colocation" className="inline-block">
+                <Link to="/services#data-center-colocation" className="inline-block">
                   <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
                     Learn More
                   </Button>
@@ -262,7 +262,7 @@ const ServicesSection = () => {
                     <span className="text-gray-700">24/7 technical support</span>
                   </li>
                 </ul>
-                <Link to="/services/cloud-infrastructure" className="inline-block">
+                <Link to="/services#cloud-infrastructure" className="inline-block">
                   <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
                     Learn More
                   </Button>
@@ -327,7 +327,7 @@ const ServicesSection = () => {
                     <span className="text-gray-700">Compliance and security certifications</span>
                   </li>
                 </ul>
-                <Link to="/services/government-messaging" className="inline-block">
+                <Link to="/services#government-messaging" className="inline-block">
                   <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
                     Learn More
                   </Button>
@@ -372,7 +372,7 @@ const ServicesSection = () => {
                     <span className="text-gray-700">Data analytics and insights</span>
                   </li>
                 </ul>
-                <Link to="/services/government-digitalization" className="inline-block">
+                <Link to="/services#government-digitalization" className="inline-block">
                   <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
                     Learn More
                   </Button>
@@ -427,7 +427,7 @@ const ServicesSection = () => {
                     <span className="text-gray-700">Infrastructure monitoring and maintenance</span>
                   </li>
                 </ul>
-                <Link to="/services/digital-infrastructure" className="inline-block">
+                <Link to="/services#digital-infrastructure" className="inline-block">
                   <Button className="bg-[#33C3F0] hover:bg-[#1EAEDB] text-white">
                     Learn More
                   </Button>

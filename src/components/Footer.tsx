@@ -121,11 +121,11 @@ const Footer = () => {
             <div className="flex items-center">
               <Link to="/" className="text-gray-400 hover:text-[#33C3F0] text-sm">Home</Link>
               <span className="mx-2 text-gray-600">•</span>
-              <Link to="/privacy" className="text-gray-400 hover:text-[#33C3F0] text-sm">Privacy Policy</Link>
+              <Link to="#" className="text-gray-400 hover:text-[#33C3F0] text-sm">Privacy Policy</Link>
               <span className="mx-2 text-gray-600">•</span>
-              <Link to="/terms" className="text-gray-400 hover:text-[#33C3F0] text-sm">Terms of Service</Link>
+              <Link to="#" className="text-gray-400 hover:text-[#33C3F0] text-sm">Terms of Service</Link>
               <span className="mx-2 text-gray-600">•</span>
-              <Link to="/faq" className="text-gray-400 hover:text-[#33C3F0] text-sm">FAQs</Link>
+              <Link to="#" className="text-gray-400 hover:text-[#33C3F0] text-sm">FAQs</Link>
             </div>
           </div>
         </div>

@@ -85,12 +85,12 @@ const Header: React.FC = () => {
                   { 
                     label: "Our Vision", 
                     href: "/about#vision",
-                    description: "To become a leading provider of broadband connectivity, software solutions and drive digital transformation in sub-Saharan Africa."
+                    description: "To become a leading technology enabler for digital transformation and connectivity, empowering government underserved communities, and businesses with a commitment to excellence and a sustainable future."
                   },
                   { 
                     label: "Our Mission", 
                     href: "/about#mission",
-                    description: "To provide reliable internet services, telecommunications, & software solutions to Ministries, Departments, and Agencies (MDAs) and individuals."
+                    description: "To empower government, businesses, and communities by delivering innovative and sustainable technology solutions that bridge the digital divide and foster a connected world."
                   },
                   { 
                     label: "Our Core Values", 
