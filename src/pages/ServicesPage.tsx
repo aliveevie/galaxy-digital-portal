@@ -191,9 +191,9 @@ const ServicesPage = () => {
                     alt={currentService.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t from-${currentService.color.split('-')[1]}-900/50 to-transparent`}></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#33C3F0]/20 to-transparent"></div>
                   <div className="absolute bottom-6 left-6">
-                    <div className={`inline-flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm`}>
+                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm">
                       <currentService.icon className="w-5 h-5 text-[#33C3F0] mr-2" />
                       <span className="text-[#1A1F2C] font-semibold text-sm">
                         {currentService.title.split(' ')[0]}
@@ -262,7 +262,7 @@ const ServicesPage = () => {
                     alt={service.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t from-${service.color.split('-')[1]}-900/50 to-transparent`}></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#33C3F0]/20 to-transparent"></div>
                   <div className="absolute top-4 right-4">
                     <div className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center">
                       <service.icon className="w-6 h-6 text-[#33C3F0]" />
