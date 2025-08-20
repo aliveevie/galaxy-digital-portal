@@ -6,6 +6,10 @@ import {
   Code, Lock, Network, Wifi, Building2, Satellite
 } from 'lucide-react';
 
+import highspeed from '/high-speed-internet.jpg';
+import govt from '/govt-communications.jpg';
+import datacenter from '/data-centers.jpg';
+
 type ServiceType = 'broadband-internet' | 'data-center-colocation' | 'cloud-infrastructure' | 'government-messaging' | 'government-digitalization' | 'digital-infrastructure';
 
 const ServicesSection = () => {
@@ -161,7 +165,7 @@ const ServicesSection = () => {
               <div className="order-1 md:order-2" data-aos="fade-left">
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
+                    src={highspeed} 
                     alt="Broadband Internet Services" 
                     className="w-full h-auto"
                   />
@@ -181,7 +185,7 @@ const ServicesSection = () => {
               <div className="order-1" data-aos="fade-right">
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
+                    src={datacenter} 
                     alt="Data Center Colocation" 
                     className="w-full h-auto"
                   />
@@ -291,7 +295,7 @@ const ServicesSection = () => {
               <div className="order-1" data-aos="fade-right">
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
+                    src={govt} 
                     alt="Government Messaging Services" 
                     className="w-full h-auto"
                   />
