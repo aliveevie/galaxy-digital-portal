@@ -9,6 +9,10 @@ import {
   ArrowRight, Phone, Mail, MessageSquare
 } from 'lucide-react';
 
+import highspeed from '/high-speed-internet.jpg';
+import govt from '/govt-communications.jpg';
+import datacenter from '/data-centers.jpg';
+
 type ServiceType = 'broadband-internet' | 'data-center-colocation' | 'cloud-infrastructure' | 'government-messaging' | 'government-digitalization' | 'digital-infrastructure';
 
 const ServicesPage = () => {
@@ -48,7 +52,7 @@ const ServicesPage = () => {
         '24/7 technical support',
         'Secure and encrypted connections'
       ],
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80',
+      image: highspeed,
       color: 'from-blue-500 to-blue-600'
     },
     {
@@ -64,7 +68,7 @@ const ServicesPage = () => {
         'Dedicated support team',
         'Flexible colocation options'
       ],
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80',
+      image: datacenter,
       color: 'from-green-500 to-green-600'
     },
     {
@@ -96,7 +100,7 @@ const ServicesPage = () => {
         'Compliance certifications',
         'Government-grade security'
       ],
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80',
+      image: govt,
       color: 'from-red-500 to-red-600'
     },
     {
