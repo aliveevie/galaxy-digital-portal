@@ -152,7 +152,7 @@ const AboutPage = () => {
               <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
                 <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg flex items-center justify-center bg-[#1A1F2C]">
                   <img 
-                    src="/EDS/UmarIGumel.jpeg" 
+                    src="/eds/UmarIGumel.jpeg" 
                     alt="Umar I. Gumel - Director Business Development Services" 
                     className="w-full h-full object-cover object-center"
                   />
@@ -163,7 +163,7 @@ const AboutPage = () => {
               <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
                 <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg flex items-center justify-center bg-[#1A1F2C]">
                   <img 
-                    src="/EDS/NuraMuaz.jpeg" 
+                    src="/eds/NuraMuaz.jpeg" 
                     alt="Nura M. Zubair - Director Technical Services" 
                     className="w-full h-full object-cover object-center"
                   />
