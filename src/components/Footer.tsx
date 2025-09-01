@@ -26,19 +26,19 @@ const Footer = () => {
 
         {/* Main Links Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 mb-16">
-          {/* Services Column */}
+          {/* Products & Services Column */}
           <div className="relative">
             <h4 className="text-lg font-semibold mb-6 pb-2 flex items-center">
-              Services
+              Products & Services
               <span className="ml-2 h-4 w-0.5 bg-[#33C3F0]" />
             </h4>
             <ul className="space-y-3">
-              <li><Link to="/#services" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">IT Consulting</Link></li>
-              <li><Link to="/#services" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Cloud Solutions</Link></li>
-              <li><Link to="/#services" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Software Development</Link></li>
-              <li><Link to="/#services" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Cybersecurity</Link></li>
-              <li><Link to="/#services" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">IT Infrastructure</Link></li>
-              <li><Link to="/#services" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Network Installations</Link></li>
+              <li><Link to="/services#broadband-internet" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Broadband Internet</Link></li>
+              <li><Link to="/services#data-center-colocation" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Data Center Colocation</Link></li>
+              <li><Link to="/services#cloud-infrastructure" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Cloud Infrastructure</Link></li>
+              <li><Link to="/services#government-messaging" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Government-wide Messaging and Collaboration</Link></li>
+              <li><Link to="/services#government-digitalization" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Government Digitalization</Link></li>
+              <li><Link to="/services#digital-infrastructure" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Digital Infrastructure</Link></li>
             </ul>
           </div>
 

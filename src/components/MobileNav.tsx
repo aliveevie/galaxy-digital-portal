@@ -44,15 +44,15 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
       ]
     },
     {
-      label: "Services",
+      label: "Products & Services",
       href: "/services",
       dropdown: [
-        { label: "IT Consulting", href: "/services#consulting" },
-        { label: "Cloud Solutions", href: "/services#cloud" },
-        { label: "Software Development", href: "/services#software" },
-        { label: "Cybersecurity", href: "/services#security" },
-        { label: "IT Infrastructure", href: "/services#infrastructure" },
-        { label: "Network Installations", href: "/services#network" },
+        { label: "Broadband Internet", href: "/services#broadband-internet" },
+        { label: "Data Center Colocation", href: "/services#data-center-colocation" },
+        { label: "Cloud Infrastructure", href: "/services#cloud-infrastructure" },
+        { label: "Government-wide Messaging and Collaboration", href: "/services#government-messaging" },
+        { label: "Government Digitalization", href: "/services#government-digitalization" },
+        { label: "Digital Infrastructure", href: "/services#digital-infrastructure" },
       ]
     },
     {

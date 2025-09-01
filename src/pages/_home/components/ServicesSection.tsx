@@ -94,7 +94,7 @@ const ServicesSection = () => {
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
-            Government Messaging
+            Government-wide Messaging and Collaboration
           </button>
           <button
             onClick={() => handleServiceClick('government-digitalization')}
@@ -285,7 +285,7 @@ const ServicesSection = () => {
             </div>
           </div>
 
-          {/* Government Messaging Section */}
+          {/* Government-wide Messaging and Collaboration Section */}
           <div 
             ref={governmentMessagingRef} 
             id="government-messaging-section" 
@@ -296,7 +296,7 @@ const ServicesSection = () => {
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
                     src={govt} 
-                    alt="Government Messaging Services" 
+                    alt="Government-wide Messaging and Collaboration Services" 
                     className="w-full h-auto"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#33C3F0]/20 to-transparent"></div>
@@ -305,10 +305,10 @@ const ServicesSection = () => {
               <div className="order-2" data-aos="fade-left">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 mb-4">
                   <Shield className="w-4 h-4 text-[#33C3F0] mr-2" />
-                  <span className="text-[#33C3F0] text-sm font-medium">Government Messaging</span>
+                  <span className="text-[#33C3F0] text-sm font-medium">Government-wide Messaging and Collaboration</span>
                 </div>
                 <h2 className="text-3xl font-bold mb-6 text-[#1A1F2C]">
-                  Secure Government Communication
+                  Secure Government-wide Communication
                 </h2>
                 <p className="text-gray-600 mb-6">
                   Our government messaging services ensure secure, reliable, and efficient communication channels for government agencies, including secure email, messaging, and collaboration platforms.

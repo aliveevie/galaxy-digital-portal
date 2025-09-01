@@ -102,7 +102,7 @@ const Header: React.FC = () => {
                   { label: "Careers", href: "/about#careers" },
                 ]} />
                 
-                <NavItem href="/services" label="Services" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
+                <NavItem href="/services" label="Products & Services" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
                   { 
                     label: "Broadband Internet", 
                     href: "/services#broadband-internet",
@@ -119,7 +119,7 @@ const Header: React.FC = () => {
                     description: "IaaS, PaaS, and SaaS solutions for flexible and scalable cloud computing."
                   },
                   { 
-                    label: "Government Messaging", 
+                    label: "Government-wide Messaging and Collaboration", 
                     href: "/services#government-messaging",
                     description: "Secure government-wide messaging and collaboration platforms."
                   },

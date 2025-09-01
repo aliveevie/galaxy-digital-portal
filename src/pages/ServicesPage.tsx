@@ -160,7 +160,7 @@ const ServicesPage = () => {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-[#1A1F2C] mb-4">Choose Your Service</h2>
+            <h2 className="text-3xl font-bold text-[#1A1F2C] mb-4">Choose Your Product & Service</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Explore our comprehensive range of technology solutions designed to meet your specific needs.
             </p>
@@ -247,7 +247,7 @@ const ServicesPage = () => {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-[#1A1F2C] mb-4">All Our Services</h2>
+            <h2 className="text-3xl font-bold text-[#1A1F2C] mb-4">All Our Products & Services</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover our complete portfolio of technology solutions designed for the modern digital landscape.
             </p>
