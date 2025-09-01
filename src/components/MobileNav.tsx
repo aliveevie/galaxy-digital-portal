@@ -125,7 +125,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                 {section.dropdown ? (
                   <div>
                     <button
-                      className="flex w-full items-center justify-between py-2 text-base font-medium text-gray-900"
+                      className="flex w-full items-center justify-between py-2 text-base font-medium text-gray-900 hover:text-[#33C3F0] hover:bg-blue-50 rounded-md px-2 transition-all duration-200 ease-in-out"
                       onClick={() => toggleSection(section.label)}
                     >
                       {section.label}
@@ -142,7 +142,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                           <a
                             key={item.href}
                             href={item.href}
-                            className="block py-2 text-sm text-gray-500 hover:text-blue-600"
+                            className="block py-2 text-sm text-gray-500 hover:text-[#33C3F0] hover:bg-blue-50 rounded-md px-2 transition-all duration-200 ease-in-out"
                             onClick={onClose}
                           >
                             {item.label}
@@ -154,7 +154,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                 ) : (
                   <a
                     href={section.href}
-                    className="block py-2 text-base font-medium text-gray-900 hover:text-blue-600"
+                    className="block py-2 text-base font-medium text-gray-900 hover:text-[#33C3F0] hover:bg-blue-50 rounded-md px-2 transition-all duration-200 ease-in-out"
                     onClick={onClose}
                   >
                     {section.label}

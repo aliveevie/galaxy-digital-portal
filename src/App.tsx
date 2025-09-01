@@ -14,6 +14,8 @@ import FAQPage from "./pages/FAQPage";
 import MediaPage from "./pages/MediaPage";
 import NewsPage from "./pages/NewsPage";
 import VideoPage from "./pages/VideoPage";
+import CustomerServicePage from "./pages/CustomerServicePage";
+import ResourcesPage from "./pages/ResourcesPage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/customer-service" element={<CustomerServicePage />} />
+          <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/feedback" element={<FeedbackPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FAQPage />} />

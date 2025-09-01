@@ -75,8 +75,8 @@ const Footer = () => {
               <span className="ml-2 h-4 w-0.5 bg-[#33C3F0]" />
             </h4>
             <ul className="space-y-3">
-              <li><Link to="/faq" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">FAQ</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Support</Link></li>
+              <li><Link to="/customer-service#desk" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Service Desk</Link></li>
+              <li><Link to="/customer-service#escalation" className="text-gray-300 hover:text-[#33C3F0] transition-colors block">Escalation Path</Link></li>
             </ul>
           </div>
 

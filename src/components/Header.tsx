@@ -78,9 +78,9 @@ const Header: React.FC = () => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:block">
               <ul className="flex items-center space-x-8">
-                <NavItem href="/" label="Home" className="text-navy-800 hover:text-blue-600 font-medium text-sm" />
+                <NavItem href="/" label="Home" className="text-navy-800 font-medium text-sm" />
                 
-                <NavItem href="/about" label="About Us" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
+                <NavItem href="/about" label="About Us" className="text-navy-800 font-medium text-sm" dropdown={[
                   { label: "Our Mandate", href: "/about#mandate" },
                   { 
                     label: "Our Vision", 
@@ -102,7 +102,7 @@ const Header: React.FC = () => {
                   { label: "Careers", href: "/about#careers" },
                 ]} />
                 
-                <NavItem href="/services" label="Products & Services" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
+                <NavItem href="/services" label="Products & Services" className="text-navy-800 font-medium text-sm" dropdown={[
                   { 
                     label: "Broadband Internet", 
                     href: "/services#broadband-internet",
@@ -135,7 +135,7 @@ const Header: React.FC = () => {
                   }
                 ]} />
                 
-                <NavItem href="/customer-service" label="Customer Service" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
+                <NavItem href="/customer-service" label="Customer Service" className="text-navy-800 font-medium text-sm" dropdown={[
                   { 
                     label: "Service Desk", 
                     href: "/customer-service#desk",
@@ -148,7 +148,7 @@ const Header: React.FC = () => {
                   },
                 ]} />
                 
-                <NavItem href="/resources" label="Resources" className="text-navy-800 hover:text-blue-600 font-medium text-sm" dropdown={[
+                <NavItem href="/resources" label="Resources" className="text-navy-800 font-medium text-sm" dropdown={[
                   { 
                     label: "FAQ", 
                     href: "/faq",
