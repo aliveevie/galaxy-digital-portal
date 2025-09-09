@@ -150,26 +150,26 @@ const AboutPage = () => {
             <h3 className="text-2xl font-semibold mb-6 text-center"></h3>
             <div className="grid md:grid-cols-2 gap-8 justify-center">
               <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
-                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg flex items-center justify-center bg-[#1A1F2C]">
+                <div className="w-56 h-56 mx-auto mb-6 overflow-hidden rounded-lg border-4 border-[#33C3F0]/30 shadow-lg">
                   <img 
-                    src="/eds/UmarIGumel.jpeg" 
+                    src="/eds/UmarIGumel.png" 
                     alt="Umar I. Gumel - Director Business Development Services" 
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-top pt-2"
                   />
                 </div>
-                <h4 className="text-xl font-semibold mb-2">Umar I. Gumel</h4>
-                <p className="text-[#33C3F0] mb-2 font-medium">Excecutive Director Business Development Services</p>
+                <h4 className="text-2xl font-semibold mb-2">Umar I. Gumel</h4>
+                <p className="text-lg text-[#33C3F0] mb-4 font-medium">Excecutive Director Business Development Services</p>
               </div>
               <div className="bg-[#2C3342]/60 p-8 rounded-lg text-center shadow-xl border border-[#33C3F0]/20">
-                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-[#33C3F0]/30 shadow-lg flex items-center justify-center bg-[#1A1F2C]">
+                <div className="w-56 h-56 mx-auto mb-6 overflow-hidden rounded-lg border-4 border-[#33C3F0]/30 shadow-lg">
                   <img 
-                    src="/eds/NuraMuaz.jpeg" 
+                    src="/eds/NuraMuaz.png" 
                     alt="Nura M. Zubair - Director Technical Services" 
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-top pt-2"
                   />
                 </div>
-                <h4 className="text-xl font-semibold mb-2">Nura M. Zubair</h4>
-                <p className="text-[#33C3F0] mb-2 font-medium">Excecutive Director Technical Services</p>
+                <h4 className="text-2xl font-semibold mb-2">Nura M. Zubair</h4>
+                <p className="text-lg text-[#33C3F0] mb-4 font-medium">Excecutive Director Technical Services</p>
               </div>
             </div>
           </div>
